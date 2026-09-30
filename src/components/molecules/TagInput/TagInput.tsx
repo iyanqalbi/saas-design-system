@@ -7,6 +7,9 @@ export interface TagInputProps {
   value?: string[]
   defaultValue?: string[]
   placeholder?: string
+  size?: 'sm' | 'md' | 'lg'
+  disabled?: boolean
+  invalid?: boolean
   onValueChange?: (tags: string[]) => void
   className?: string
 }
@@ -16,6 +19,9 @@ export function TagInput({
   value,
   defaultValue = [],
   placeholder = 'Add tag and press Enter',
+  size = 'md',
+  disabled = false,
+  invalid = false,
   onValueChange,
   className = '',
 }: TagInputProps) {
@@ -30,6 +36,7 @@ export function TagInput({
   }
 
   function addTag(raw: string) {
+    if (disabled) return
     const nextTag = raw.trim().replace(/,/g, '')
     if (!nextTag) return
     if (tags.some((tag) => tag.toLowerCase() === nextTag.toLowerCase())) {
@@ -41,6 +48,7 @@ export function TagInput({
   }
 
   function removeTag(tag: string) {
+    if (disabled) return
     commit(tags.filter((item) => item !== tag))
   }
 
@@ -55,7 +63,9 @@ export function TagInput({
   }
 
   return (
-    <div className={`tag-input ${className}`.trim()}>
+    <div
+      className={`tag-input tag-input--${size} ${disabled ? 'tag-input--disabled' : ''} ${invalid ? 'tag-input--invalid' : ''} ${className}`.trim()}
+    >
       {label ? (
         <label className="tag-input__label" htmlFor={inputId}>
           {label}
@@ -69,6 +79,7 @@ export function TagInput({
               type="button"
               className="tag-input__remove"
               aria-label={`Remove ${tag}`}
+              disabled={disabled}
               onClick={() => removeTag(tag)}
             >
               <X size={12} />
@@ -80,6 +91,8 @@ export function TagInput({
           className="tag-input__field"
           value={draft}
           placeholder={tags.length === 0 ? placeholder : ''}
+          disabled={disabled}
+          aria-invalid={invalid || undefined}
           onChange={(event) => setDraft(event.target.value)}
           onKeyDown={onKeyDown}
           onBlur={() => addTag(draft)}

@@ -1,21 +1,47 @@
 .status-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  min-height: 24px;
-  padding: 0 10px;
   border-radius: var(--radius-badges);
-  font-size: var(--text-caption);
   font-weight: var(--font-weight-semibold);
   line-height: 1;
   white-space: nowrap;
 }
 
+.status-chip--sm {
+  gap: 4px;
+  min-height: 20px;
+  padding: 0 8px;
+  font-size: 10px;
+}
+
+.status-chip--md {
+  gap: 6px;
+  min-height: 24px;
+  padding: 0 10px;
+  font-size: var(--text-caption);
+}
+
+.status-chip--lg {
+  gap: 6px;
+  min-height: 28px;
+  padding: 0 12px;
+  font-size: 12px;
+}
+
 .status-chip__dot {
-  width: 6px;
-  height: 6px;
   border-radius: var(--radius-avatars);
   background: currentColor;
+}
+
+.status-chip--sm .status-chip__dot {
+  width: 5px;
+  height: 5px;
+}
+
+.status-chip--md .status-chip__dot,
+.status-chip--lg .status-chip__dot {
+  width: 6px;
+  height: 6px;
 }
 
 .status-chip--neutral {

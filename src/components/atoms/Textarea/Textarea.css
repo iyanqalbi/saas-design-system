@@ -1,18 +1,33 @@
 .textarea {
   width: 100%;
-  min-height: 96px;
-  padding: 10px 12px;
   border: 1px solid var(--color-bebe);
   border-radius: var(--radius-inputs);
   background: var(--color-white);
   color: var(--color-hof);
-  font-size: var(--text-body);
   line-height: var(--leading-body);
   resize: vertical;
   outline: none;
   transition:
     border-color var(--duration-fast) var(--ease-out),
     box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.textarea--sm {
+  min-height: 72px;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.textarea--md {
+  min-height: 96px;
+  padding: 10px 12px;
+  font-size: var(--text-body);
+}
+
+.textarea--lg {
+  min-height: 128px;
+  padding: 12px 14px;
+  font-size: var(--text-ui);
 }
 
 .textarea::placeholder {

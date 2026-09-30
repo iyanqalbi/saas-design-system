@@ -7,6 +7,7 @@ export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
   label: string
   size?: IconButtonSize
   tone?: 'subtle' | 'white' | 'ghost'
+  loading?: boolean
   children: ReactNode
 }
 
@@ -14,20 +15,26 @@ export function IconButton({
   label,
   size = 'md',
   tone = 'subtle',
+  loading = false,
   className = '',
   children,
   type = 'button',
+  disabled,
   ...props
 }: IconButtonProps) {
+  const isDisabled = disabled || loading
+
   return (
     <button
       type={type}
       aria-label={label}
       title={label}
-      className={`icon-btn icon-btn--${size} icon-btn--${tone} ${className}`.trim()}
+      disabled={isDisabled}
+      aria-busy={loading || undefined}
+      className={`icon-btn icon-btn--${size} icon-btn--${tone} ${loading ? 'icon-btn--loading' : ''} ${className}`.trim()}
       {...props}
     >
-      {children}
+      {loading ? <span className="icon-btn__spinner" aria-hidden="true" /> : children}
     </button>
   )
 }

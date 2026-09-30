@@ -12,6 +12,7 @@ export interface SliderProps {
   showValue?: boolean
   unit?: string
   disabled?: boolean
+  size?: 'sm' | 'md' | 'lg'
   className?: string
   id?: string
 }
@@ -27,6 +28,7 @@ export function Slider({
   showValue = true,
   unit = '',
   disabled = false,
+  size = 'md',
   className = '',
   id,
 }: SliderProps) {
@@ -43,7 +45,7 @@ export function Slider({
   }
 
   return (
-    <div className={`slider ${disabled ? 'slider--disabled' : ''} ${className}`.trim()}>
+    <div className={`slider slider--${size} ${disabled ? 'slider--disabled' : ''} ${className}`.trim()}>
       {label || showValue ? (
         <div className="slider__meta">
           {label ? (

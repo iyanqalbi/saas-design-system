@@ -118,7 +118,7 @@ function SliderDemo() {
   return (
     <div className="demo-stack demo-stack--wide">
       <Slider label="Seat limit" min={5} max={100} value={seats} onValueChange={setSeats} unit=" seats" />
-      <ProgressBar label="Seats used" value={seats} max={100} tone="accent" />
+      <Slider label="Disabled" min={0} max={100} defaultValue={40} disabled unit="%" />
     </div>
   )
 }
@@ -127,23 +127,49 @@ function SelectDemo() {
   const [plan, setPlan] = useState('growth')
 
   return (
-    <Select
-      label="Plan"
-      value={plan}
-      onValueChange={setPlan}
-      options={[
-        { value: 'starter', label: 'Starter' },
-        { value: 'growth', label: 'Growth' },
-        { value: 'scale', label: 'Scale' },
-        { value: 'enterprise', label: 'Enterprise', disabled: true },
-      ]}
-    />
+    <div className="demo-stack demo-stack--wide">
+      <Select
+        label="Plan"
+        value={plan}
+        onValueChange={setPlan}
+        options={[
+          { value: 'starter', label: 'Starter' },
+          { value: 'growth', label: 'Growth' },
+          { value: 'scale', label: 'Scale' },
+          { value: 'enterprise', label: 'Enterprise', disabled: true },
+        ]}
+      />
+      <Select
+        label="Billing email"
+        defaultValue="ops@"
+        invalid
+        options={[
+          { value: 'ops@', label: 'ops@' },
+          { value: 'finance@acme.com', label: 'finance@acme.com' },
+        ]}
+      />
+      <Select
+        label="Region"
+        defaultValue="us"
+        disabled
+        options={[
+          { value: 'us', label: 'United States' },
+          { value: 'eu', label: 'Europe' },
+        ]}
+      />
+    </div>
   )
 }
 
 function PaginationDemo() {
   const [page, setPage] = useState(3)
-  return <Pagination page={page} pageCount={12} onPageChange={setPage} />
+  return (
+    <div className="demo-stack">
+      <Pagination page={page} pageCount={12} onPageChange={setPage} size="sm" />
+      <Pagination page={page} pageCount={12} onPageChange={setPage} size="md" />
+      <Pagination page={page} pageCount={12} onPageChange={setPage} size="lg" />
+    </div>
+  )
 }
 
 function DrawerDemo() {
@@ -312,50 +338,94 @@ function TableDemo() {
 
 const previews: Record<string, ReactNode> = {
   button: (
-    <div className="demo-row">
-      <Button variant="inverse" size="sm">
-        Inverse
-      </Button>
-      <Button variant="ghost" size="sm">
-        Ghost
-      </Button>
-      <Button variant="accent" size="sm">
-        Accent
-      </Button>
+    <div className="demo-stack">
+      <div className="demo-row">
+        <Button variant="inverse" size="sm">
+          Default
+        </Button>
+        <Button variant="ghost" size="sm" disabled>
+          Disabled
+        </Button>
+        <Button variant="accent" size="sm" loading>
+          Loading
+        </Button>
+      </div>
+      <div className="demo-row">
+        <Button variant="inverse" size="sm">
+          Inverse
+        </Button>
+        <Button variant="ghost" size="sm">
+          Ghost
+        </Button>
+        <Button variant="accent" size="sm">
+          Accent
+        </Button>
+        <Button variant="subtle" size="sm">
+          Subtle
+        </Button>
+      </div>
     </div>
   ),
   badge: (
-    <div className="demo-row">
-      <Badge>Neutral</Badge>
-      <Badge tone="success">Paid</Badge>
-      <Badge tone="warning">Open</Badge>
-      <Badge tone="danger">Failed</Badge>
+    <div className="demo-stack">
+      <div className="demo-row">
+        <Badge size="sm">Small</Badge>
+        <Badge size="md">Medium</Badge>
+        <Badge size="lg">Large</Badge>
+      </div>
+      <div className="demo-row">
+        <Badge>Neutral</Badge>
+        <Badge tone="success">Paid</Badge>
+        <Badge tone="warning">Open</Badge>
+        <Badge tone="danger">Failed</Badge>
+      </div>
     </div>
   ),
   avatar: (
     <div className="demo-row">
-      <Avatar name="Maya Chen" />
-      <Avatar name="Jordan Lee" size="lg" />
+      <Avatar name="Maya Chen" size="sm" />
+      <Avatar name="Jordan Lee" size="md" />
+      <Avatar name="Priya Shah" size="lg" />
     </div>
   ),
-  input: <Input placeholder="Workspace name" style={{ maxWidth: 260 }} />,
-  checkbox: <Checkbox label="Email digests" defaultChecked />,
+  input: (
+    <div className="demo-stack demo-stack--wide">
+      <Input placeholder="Default" style={{ maxWidth: 260 }} />
+      <Input placeholder="Invalid email" invalid defaultValue="ops@" style={{ maxWidth: 260 }} />
+      <Input placeholder="Disabled" disabled defaultValue="Northwind Labs" style={{ maxWidth: 260 }} />
+    </div>
+  ),
+  checkbox: (
+    <div className="demo-stack">
+      <Checkbox label="Unchecked" />
+      <Checkbox label="Checked" defaultChecked />
+      <Checkbox label="Indeterminate" indeterminate />
+      <Checkbox label="Disabled" disabled />
+      <Checkbox label="Disabled checked" defaultChecked disabled />
+    </div>
+  ),
   'progress-bar': (
     <div className="demo-stack demo-stack--wide">
-      <ProgressBar label="Onboarding" value={72} />
       <ProgressBar label="Storage" value={48} tone="accent" size="sm" />
-      <ProgressBar label="Export" value={100} tone="success" showValue={false} />
+      <ProgressBar label="Onboarding" value={72} size="md" />
+      <ProgressBar label="Export" value={100} tone="success" size="lg" />
     </div>
   ),
   slider: <SliderDemo />,
   switch: (
     <div className="demo-stack demo-stack--wide">
-      <Switch label="Email digests" description="Weekly summary of billing and seats." defaultChecked />
-      <Switch label="Maintenance mode" description="Temporarily pause customer signups." />
+      <Switch label="On" defaultChecked />
+      <Switch label="Off" />
+      <Switch label="Disabled on" defaultChecked disabled />
+      <Switch label="Disabled off" disabled description="Cannot change while locked." />
     </div>
   ),
   textarea: (
-    <Textarea placeholder="Add an internal note for this customer…" style={{ maxWidth: 360 }} />
+    <div className="demo-stack demo-stack--wide">
+      <Textarea placeholder="Default note…" style={{ maxWidth: 360 }} />
+      <Textarea placeholder="Invalid…" invalid defaultValue="Missing required context" style={{ maxWidth: 360 }} rows={2} />
+      <Textarea placeholder="Disabled…" disabled defaultValue="Read-only note" style={{ maxWidth: 360 }} rows={2} />
+    </div>
   ),
   label: (
     <div className="demo-stack">
@@ -369,12 +439,19 @@ const previews: Record<string, ReactNode> = {
     </div>
   ),
   'status-chip': (
-    <div className="demo-row">
-      <StatusChip>Queued</StatusChip>
-      <StatusChip tone="success">Matched</StatusChip>
-      <StatusChip tone="warning">Waiting</StatusChip>
-      <StatusChip tone="danger">Failed</StatusChip>
-      <StatusChip tone="info">Imported</StatusChip>
+    <div className="demo-stack">
+      <div className="demo-row">
+        <StatusChip size="sm">Small</StatusChip>
+        <StatusChip size="md">Medium</StatusChip>
+        <StatusChip size="lg">Large</StatusChip>
+      </div>
+      <div className="demo-row">
+        <StatusChip>Queued</StatusChip>
+        <StatusChip tone="success">Matched</StatusChip>
+        <StatusChip tone="warning">Waiting</StatusChip>
+        <StatusChip tone="danger">Failed</StatusChip>
+        <StatusChip tone="info">Imported</StatusChip>
+      </div>
     </div>
   ),
   'amount-diff': (
@@ -384,13 +461,28 @@ const previews: Record<string, ReactNode> = {
       <AmountDiff value={0} suffix="%" />
     </div>
   ),
-  'search-field': <SearchField placeholder="Search customers…" style={{ maxWidth: 280 }} />,
+  'search-field': (
+    <div className="demo-stack demo-stack--wide">
+      <SearchField placeholder="Search customers…" style={{ maxWidth: 280 }} />
+      <SearchField placeholder="Invalid query" invalid defaultValue="@@@" style={{ maxWidth: 280 }} />
+      <SearchField placeholder="Disabled" disabled defaultValue="Northwind" style={{ maxWidth: 280 }} />
+    </div>
+  ),
   'stat-metric': <StatMetric label="Active seats" value="1,284" delta="+86" />,
   'form-field': (
-    <FormField id="company" label="Company" placeholder="Acme Inc." hint="Shown on invoices" style={{ maxWidth: 280 }} />
+    <div className="demo-stack demo-stack--wide">
+      <FormField id="company" label="Company" placeholder="Acme Inc." hint="Shown on invoices" style={{ maxWidth: 280 }} />
+      <FormField id="company-error" label="Owner email" defaultValue="ops@" error="Enter a valid email address." style={{ maxWidth: 280 }} />
+      <FormField id="company-disabled" label="Workspace ID" defaultValue="ws_northwind" disabled style={{ maxWidth: 280 }} />
+    </div>
   ),
   'alert-banner': (
-    <AlertBanner tone="warning" title="Card expiring" description="Update billing before Apr 12." />
+    <div className="demo-stack demo-stack--wide">
+      <AlertBanner tone="info" title="New seats available" description="Invite up to 12 more members this cycle." />
+      <AlertBanner tone="warning" title="Card expiring" description="Update billing before Apr 12." />
+      <AlertBanner tone="danger" title="Payment failed" description="Retry the charge or update the card on file." />
+      <AlertBanner tone="success" title="Export ready" description="Your CSV is ready to download." />
+    </div>
   ),
   'user-chip': <UserChip name="Maya Chen" role="Admin" onClick={() => undefined} />,
   tabs: (
@@ -430,7 +522,9 @@ const previews: Record<string, ReactNode> = {
   ),
   toast: (
     <div className="demo-stack">
+      <Toast tone="info" title="Sync scheduled" description="Customer list refreshes in 5 minutes." />
       <Toast tone="success" title="Invoice sent" description="Northwind Labs received #4821." />
+      <Toast tone="warning" title="Seats nearly full" description="4 of 48 seats remain." />
       <Toast tone="danger" title="Payment failed" description="Card ending 4242 was declined." />
     </div>
   ),
@@ -537,19 +631,46 @@ const previews: Record<string, ReactNode> = {
     </Popover>
   ),
   drawer: <DrawerDemo />,
-  'file-upload': <FileUpload accept=".csv,.png,.pdf" />,
+  'file-upload': (
+    <div className="demo-stack demo-stack--wide">
+      <FileUpload accept=".csv,.png,.pdf" />
+      <FileUpload label="Locked upload" hint="Uploads disabled for viewers." accept=".csv" disabled />
+    </div>
+  ),
   'avatar-group': (
-    <AvatarGroup
-      items={[
-        { name: 'Maya Chen' },
-        { name: 'Jordan Lee' },
-        { name: 'Priya Shah' },
-        { name: 'Noah Kim' },
-        { name: 'Alex Rivera' },
-        { name: 'Sam Ortiz' },
-      ]}
-      max={4}
-    />
+    <div className="demo-stack">
+      <AvatarGroup
+        size="sm"
+        items={[
+          { name: 'Maya Chen' },
+          { name: 'Jordan Lee' },
+          { name: 'Priya Shah' },
+          { name: 'Noah Kim' },
+        ]}
+        max={4}
+      />
+      <AvatarGroup
+        size="md"
+        items={[
+          { name: 'Maya Chen' },
+          { name: 'Jordan Lee' },
+          { name: 'Priya Shah' },
+          { name: 'Noah Kim' },
+          { name: 'Alex Rivera' },
+          { name: 'Sam Ortiz' },
+        ]}
+        max={4}
+      />
+      <AvatarGroup
+        size="lg"
+        items={[
+          { name: 'Maya Chen' },
+          { name: 'Jordan Lee' },
+          { name: 'Priya Shah' },
+        ]}
+        max={4}
+      />
+    </div>
   ),
   stepper: (
     <Stepper
@@ -586,7 +707,11 @@ const previews: Record<string, ReactNode> = {
     />
   ),
   'tag-input': (
-    <TagInput label="Invite domains" defaultValue={['acme.com', 'northwind.io']} />
+    <div className="demo-stack demo-stack--wide">
+      <TagInput label="Invite domains" defaultValue={['acme.com', 'northwind.io']} />
+      <TagInput label="Invalid domains" defaultValue={['bad']} invalid />
+      <TagInput label="Locked domains" defaultValue={['acme.com']} disabled />
+    </div>
   ),
   'chart-card': (
     <ChartCard

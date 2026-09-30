@@ -67,3 +67,11 @@
 .file-upload__size {
   font-size: 12px !important;
 }
+
+.file-upload--disabled {
+  opacity: 0.55;
+}
+
+.file-upload--disabled .file-upload__dropzone {
+  cursor: not-allowed;
+}

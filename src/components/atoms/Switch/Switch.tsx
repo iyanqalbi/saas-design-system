@@ -1,11 +1,15 @@
 import { useId, useState, type InputHTMLAttributes } from 'react'
 import './Switch.css'
 
-export interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange'> {
+export type SwitchSize = 'sm' | 'md' | 'lg'
+
+export interface SwitchProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange' | 'size'> {
   label: string
   description?: string
   checked?: boolean
   defaultChecked?: boolean
+  size?: SwitchSize
   onCheckedChange?: (checked: boolean) => void
 }
 
@@ -14,6 +18,7 @@ export function Switch({
   description,
   checked,
   defaultChecked = false,
+  size = 'md',
   onCheckedChange,
   className = '',
   id,
@@ -27,7 +32,7 @@ export function Switch({
 
   return (
     <label
-      className={`switch ${disabled ? 'switch--disabled' : ''} ${className}`.trim()}
+      className={`switch switch--${size} ${disabled ? 'switch--disabled' : ''} ${className}`.trim()}
       htmlFor={inputId}
     >
       <span className="switch__copy">

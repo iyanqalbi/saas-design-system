@@ -10,6 +10,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   leftIcon?: ReactNode
   rightIcon?: ReactNode
   fullWidth?: boolean
+  loading?: boolean
 }
 
 export function Button({
@@ -18,20 +19,30 @@ export function Button({
   leftIcon,
   rightIcon,
   fullWidth = false,
+  loading = false,
   className = '',
   children,
   type = 'button',
+  disabled,
   ...props
 }: ButtonProps) {
+  const isDisabled = disabled || loading
+
   return (
     <button
       type={type}
-      className={`btn btn--${variant} btn--${size} ${fullWidth ? 'btn--full' : ''} ${className}`.trim()}
+      disabled={isDisabled}
+      aria-busy={loading || undefined}
+      className={`btn btn--${variant} btn--${size} ${fullWidth ? 'btn--full' : ''} ${loading ? 'btn--loading' : ''} ${className}`.trim()}
       {...props}
     >
-      {leftIcon ? <span className="btn__icon">{leftIcon}</span> : null}
+      {loading ? (
+        <span className="btn__spinner" aria-hidden="true" />
+      ) : leftIcon ? (
+        <span className="btn__icon">{leftIcon}</span>
+      ) : null}
       <span className="btn__label">{children}</span>
-      {rightIcon ? <span className="btn__icon">{rightIcon}</span> : null}
+      {!loading && rightIcon ? <span className="btn__icon">{rightIcon}</span> : null}
     </button>
   )
 }

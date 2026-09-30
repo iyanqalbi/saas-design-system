@@ -16,15 +16,34 @@
 }
 
 .switch__label {
-  font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   color: var(--color-hof);
 }
 
-.switch__description {
+.switch--sm .switch__label {
   font-size: 13px;
+}
+
+.switch--md .switch__label {
+  font-size: var(--text-body);
+}
+
+.switch--lg .switch__label {
+  font-size: var(--text-ui);
+}
+
+.switch__description {
   color: var(--color-foggy);
   line-height: 1.4;
+}
+
+.switch--sm .switch__description {
+  font-size: 12px;
+}
+
+.switch--md .switch__description,
+.switch--lg .switch__description {
+  font-size: 13px;
 }
 
 .switch__control {
@@ -40,30 +59,66 @@
 
 .switch__track {
   display: block;
-  width: 44px;
-  height: 26px;
-  padding: 3px;
   border-radius: var(--radius-badges);
   background: var(--color-deco);
   transition: background var(--duration-fast) var(--ease-out);
 }
 
+.switch--sm .switch__track {
+  width: 36px;
+  height: 20px;
+  padding: 2px;
+}
+
+.switch--md .switch__track {
+  width: 44px;
+  height: 26px;
+  padding: 3px;
+}
+
+.switch--lg .switch__track {
+  width: 52px;
+  height: 30px;
+  padding: 3px;
+}
+
 .switch__thumb {
   display: block;
-  width: 20px;
-  height: 20px;
   border-radius: var(--radius-avatars);
   background: var(--color-white);
   box-shadow: var(--shadow-subtle);
   transition: transform var(--duration-fast) var(--ease-out);
 }
 
+.switch--sm .switch__thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.switch--md .switch__thumb {
+  width: 20px;
+  height: 20px;
+}
+
+.switch--lg .switch__thumb {
+  width: 24px;
+  height: 24px;
+}
+
 .switch__input:checked + .switch__track {
   background: var(--color-hof);
 }
 
-.switch__input:checked + .switch__track .switch__thumb {
+.switch--sm .switch__input:checked + .switch__track .switch__thumb {
+  transform: translateX(16px);
+}
+
+.switch--md .switch__input:checked + .switch__track .switch__thumb {
   transform: translateX(18px);
+}
+
+.switch--lg .switch__input:checked + .switch__track .switch__thumb {
+  transform: translateX(22px);
 }
 
 .switch__input:focus-visible + .switch__track {

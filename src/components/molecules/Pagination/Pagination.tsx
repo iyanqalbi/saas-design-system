@@ -3,10 +3,13 @@ import { IconButton } from '../../atoms/IconButton'
 import { Text } from '../../atoms/Text'
 import './Pagination.css'
 
+export type PaginationSize = 'sm' | 'md' | 'lg'
+
 export interface PaginationProps {
   page: number
   pageCount: number
   onPageChange: (page: number) => void
+  size?: PaginationSize
   className?: string
 }
 
@@ -21,19 +24,32 @@ function buildPages(page: number, pageCount: number) {
     .sort((a, b) => a - b)
 }
 
-export function Pagination({ page, pageCount, onPageChange, className = '' }: PaginationProps) {
+const chevronBySize = {
+  sm: 14,
+  md: 16,
+  lg: 18,
+} as const
+
+export function Pagination({
+  page,
+  pageCount,
+  onPageChange,
+  size = 'md',
+  className = '',
+}: PaginationProps) {
   const pages = buildPages(page, pageCount)
+  const chevron = chevronBySize[size]
 
   return (
-    <nav className={`pagination ${className}`.trim()} aria-label="Pagination">
+    <nav className={`pagination pagination--${size} ${className}`.trim()} aria-label="Pagination">
       <IconButton
         label="Previous page"
-        size="sm"
+        size={size === 'lg' ? 'md' : 'sm'}
         tone="subtle"
         disabled={page <= 1}
         onClick={() => onPageChange(page - 1)}
       >
-        <ChevronLeft size={16} />
+        <ChevronLeft size={chevron} />
       </IconButton>
 
       <div className="pagination__pages">
@@ -62,12 +78,12 @@ export function Pagination({ page, pageCount, onPageChange, className = '' }: Pa
 
       <IconButton
         label="Next page"
-        size="sm"
+        size={size === 'lg' ? 'md' : 'sm'}
         tone="subtle"
         disabled={page >= pageCount}
         onClick={() => onPageChange(page + 1)}
       >
-        <ChevronRight size={16} />
+        <ChevronRight size={chevron} />
       </IconButton>
     </nav>
   )

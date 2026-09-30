@@ -10,6 +10,7 @@ export interface FileUploadProps {
   hint?: string
   accept?: string
   multiple?: boolean
+  disabled?: boolean
   onFilesChange?: (files: File[]) => void
   className?: string
 }
@@ -19,6 +20,7 @@ export function FileUpload({
   hint = 'CSV, PNG, or PDF up to 10MB',
   accept,
   multiple = false,
+  disabled = false,
   onFilesChange,
   className = '',
 }: FileUploadProps) {
@@ -33,7 +35,7 @@ export function FileUpload({
   }
 
   function handleFiles(list: FileList | null) {
-    if (!list) return
+    if (disabled || !list) return
     const next = multiple ? [...files, ...Array.from(list)] : Array.from(list).slice(0, 1)
     commit(next)
   }
@@ -50,12 +52,12 @@ export function FileUpload({
   }
 
   return (
-    <div className={`file-upload ${className}`.trim()}>
+    <div className={`file-upload ${disabled ? 'file-upload--disabled' : ''} ${className}`.trim()}>
       <div
-        className={`file-upload__dropzone ${dragging ? 'file-upload__dropzone--active' : ''}`}
+        className={`file-upload__dropzone ${dragging && !disabled ? 'file-upload__dropzone--active' : ''}`}
         onDragEnter={(event) => {
           event.preventDefault()
-          setDragging(true)
+          if (!disabled) setDragging(true)
         }}
         onDragOver={(event) => event.preventDefault()}
         onDragLeave={() => setDragging(false)}
@@ -70,7 +72,7 @@ export function FileUpload({
         <Text as="p" variant="muted">
           {hint}
         </Text>
-        <Button size="sm" variant="ghost" onClick={() => inputRef.current?.click()}>
+        <Button size="sm" variant="ghost" disabled={disabled} onClick={() => inputRef.current?.click()}>
           Browse files
         </Button>
         <input
@@ -80,6 +82,7 @@ export function FileUpload({
           className="file-upload__input"
           accept={accept}
           multiple={multiple}
+          disabled={disabled}
           onChange={onChange}
         />
       </div>
@@ -100,6 +103,7 @@ export function FileUpload({
                 label={`Remove ${file.name}`}
                 size="sm"
                 tone="ghost"
+                disabled={disabled}
                 onClick={() => commit(files.filter((_, i) => i !== index))}
               >
                 <X size={14} />

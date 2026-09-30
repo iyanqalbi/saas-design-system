@@ -1,14 +1,15 @@
 import type { InputHTMLAttributes, ReactNode } from 'react'
-import { Input } from '../../atoms/Input'
+import { Input, type InputSize } from '../../atoms/Input'
 import { Text } from '../../atoms/Text'
 import './FormField.css'
 
-export interface FormFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> {
+export interface FormFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'size'> {
   id: string
   label: string
   hint?: string
   error?: string
   optional?: boolean
+  size?: InputSize
   children?: ReactNode
 }
 
@@ -18,6 +19,7 @@ export function FormField({
   hint,
   error,
   optional = false,
+  size = 'md',
   children,
   className = '',
   ...inputProps
@@ -34,7 +36,7 @@ export function FormField({
           </Text>
         ) : null}
       </div>
-      {children ?? <Input id={id} invalid={Boolean(error)} {...inputProps} />}
+      {children ?? <Input id={id} size={size} invalid={Boolean(error)} {...inputProps} />}
       {error ? (
         <Text as="p" variant="caption" className="form-field__error">
           {error}

@@ -22,6 +22,7 @@ export interface SelectProps {
   label?: string
   disabled?: boolean
   invalid?: boolean
+  size?: 'sm' | 'md' | 'lg'
   onValueChange?: (value: string) => void
   className?: string
   id?: string
@@ -35,6 +36,7 @@ export function Select({
   label,
   disabled = false,
   invalid = false,
+  size = 'md',
   onValueChange,
   className = '',
   id,
@@ -134,7 +136,7 @@ export function Select({
   return (
     <div
       ref={rootRef}
-      className={`select ${open ? 'select--open' : ''} ${disabled ? 'select--disabled' : ''} ${className}`.trim()}
+      className={`select select--${size} ${open ? 'select--open' : ''} ${disabled ? 'select--disabled' : ''} ${className}`.trim()}
     >
       {label ? (
         <label className="select__label" htmlFor={triggerId}>

@@ -16,14 +16,27 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 6px;
-  min-height: 40px;
-  padding: 6px 10px;
   border: 1px solid var(--color-bebe);
   border-radius: var(--radius-inputs);
   background: var(--color-white);
   transition:
     border-color var(--duration-fast) var(--ease-out),
     box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.tag-input--sm .tag-input__control {
+  min-height: 32px;
+  padding: 4px 8px;
+}
+
+.tag-input--md .tag-input__control {
+  min-height: 40px;
+  padding: 6px 10px;
+}
+
+.tag-input--lg .tag-input__control {
+  min-height: 48px;
+  padding: 8px 12px;
 }
 
 .tag-input__control:focus-within {
@@ -35,13 +48,26 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  min-height: 24px;
   padding: 0 8px;
   border-radius: var(--radius-badges);
   background: var(--color-faint);
   color: var(--color-hof);
-  font-size: 12px;
   font-weight: var(--font-weight-medium);
+}
+
+.tag-input--sm .tag-input__chip {
+  min-height: 20px;
+  font-size: 11px;
+}
+
+.tag-input--md .tag-input__chip {
+  min-height: 24px;
+  font-size: 12px;
+}
+
+.tag-input--lg .tag-input__chip {
+  min-height: 28px;
+  font-size: 13px;
 }
 
 .tag-input__remove {
@@ -69,10 +95,44 @@
   border: none;
   outline: none;
   background: transparent;
-  font-size: var(--text-body);
   color: var(--color-hof);
+}
+
+.tag-input--sm .tag-input__field {
+  font-size: 13px;
+}
+
+.tag-input--md .tag-input__field {
+  font-size: var(--text-body);
+}
+
+.tag-input--lg .tag-input__field {
+  font-size: var(--text-ui);
 }
 
 .tag-input__field::placeholder {
   color: var(--color-grey-500);
+}
+
+.tag-input--invalid .tag-input__control {
+  border-color: var(--color-rausch);
+}
+
+.tag-input--invalid .tag-input__control:focus-within {
+  border-color: var(--color-rausch);
+  box-shadow: 0 0 0 1px var(--color-rausch);
+}
+
+.tag-input--disabled {
+  opacity: 0.55;
+}
+
+.tag-input--disabled .tag-input__control {
+  background: var(--color-faint);
+  cursor: not-allowed;
+}
+
+.tag-input--disabled .tag-input__field,
+.tag-input--disabled .tag-input__remove {
+  cursor: not-allowed;
 }

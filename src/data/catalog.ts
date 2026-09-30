@@ -15,7 +15,7 @@ export const catalog: CatalogEntry[] = [
     name: 'Button',
     layer: 'Atom',
     category: 'Actions',
-    description: 'Inverse, ghost, accent, and subtle actions for admin surfaces.',
+    description: 'Inverse, ghost, accent, and subtle actions with sm/md/lg sizes.',
     tags: ['cta', 'form'],
   },
   {
@@ -23,7 +23,7 @@ export const catalog: CatalogEntry[] = [
     name: 'Badge',
     layer: 'Atom',
     category: 'Feedback',
-    description: 'Status pills for invoices, seats, and workflow states.',
+    description: 'Status pills for invoices, seats, and workflow states. Supports sm/md/lg.',
     tags: ['status'],
   },
   {
@@ -39,7 +39,7 @@ export const catalog: CatalogEntry[] = [
     name: 'Input',
     layer: 'Atom',
     category: 'Forms',
-    description: 'Quiet text field with hairline borders and Hof focus ring.',
+    description: 'Quiet text field with hairline borders, Hof focus ring, and sm/md/lg sizes.',
     tags: ['form'],
   },
   {

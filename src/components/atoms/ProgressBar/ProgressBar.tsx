@@ -8,7 +8,7 @@ export interface ProgressBarProps {
   label?: string
   showValue?: boolean
   tone?: ProgressBarTone
-  size?: 'sm' | 'md'
+  size?: 'sm' | 'md' | 'lg'
   className?: string
 }
 

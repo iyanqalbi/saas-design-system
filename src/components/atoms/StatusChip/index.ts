@@ -1,2 +1,2 @@
 export { StatusChip } from './StatusChip'
-export type { StatusChipProps, StatusChipTone } from './StatusChip'
+export type { StatusChipProps, StatusChipTone, StatusChipSize } from './StatusChip'

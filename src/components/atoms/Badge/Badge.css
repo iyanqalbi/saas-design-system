@@ -2,13 +2,28 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  height: 24px;
-  padding: 0 12px;
   border-radius: var(--radius-badges);
-  font-size: var(--text-caption);
   font-weight: var(--font-weight-semibold);
   line-height: 1;
   white-space: nowrap;
+}
+
+.badge--sm {
+  height: 20px;
+  padding: 0 8px;
+  font-size: 10px;
+}
+
+.badge--md {
+  height: 24px;
+  padding: 0 12px;
+  font-size: var(--text-caption);
+}
+
+.badge--lg {
+  height: 28px;
+  padding: 0 14px;
+  font-size: 12px;
 }
 
 .badge--soft.badge--neutral {
