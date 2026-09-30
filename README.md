@@ -22,6 +22,18 @@ npm install
 npm run dev
 ```
 
+## Deploy
+
+Site is published to GitHub Pages via Actions on every push to `main`:
+
+**https://iyanqalbi.github.io/saas-design-system/**
+
+```bash
+npm run build
+```
+
+Vite `base` and React Router `basename` are set to `/saas-design-system/`.
+
 ## Structure
 
 ```

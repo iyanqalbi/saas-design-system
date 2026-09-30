@@ -5,7 +5,7 @@ import { TemplatesPage } from './pages/TemplatesPage'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/saas-design-system">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/components" element={<ComponentsPage />} />
