@@ -1,0 +1,111 @@
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.slider__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.slider__label {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-hof);
+}
+
+.slider__value {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-hof);
+  font-variant-numeric: tabular-nums;
+}
+
+.slider__control {
+  position: relative;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.slider__track {
+  position: absolute;
+  inset-inline: 0;
+  height: 4px;
+  border-radius: var(--radius-badges);
+  background: var(--color-bebe);
+  pointer-events: none;
+}
+
+.slider__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-hof);
+}
+
+.slider__input {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider__input::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+}
+
+.slider__input::-moz-range-track {
+  height: 4px;
+  background: transparent;
+  border: none;
+}
+
+.slider__input::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -8px;
+  border-radius: var(--radius-avatars);
+  background: var(--color-white);
+  border: 2px solid var(--color-hof);
+  box-shadow: var(--shadow-subtle);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.slider__input::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-avatars);
+  background: var(--color-white);
+  border: 2px solid var(--color-hof);
+  box-shadow: var(--shadow-subtle);
+}
+
+.slider__input:hover:not(:disabled)::-webkit-slider-thumb,
+.slider__input:focus-visible::-webkit-slider-thumb {
+  transform: scale(1.08);
+}
+
+.slider__input:focus-visible {
+  outline: none;
+}
+
+.slider__input:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px rgba(34, 34, 34, 0.12);
+}
+
+.slider--disabled {
+  opacity: 0.45;
+}
+
+.slider--disabled .slider__input {
+  cursor: not-allowed;
+}

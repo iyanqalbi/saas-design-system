@@ -1,0 +1,106 @@
+.radio-group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+}
+
+.radio-group__legend {
+  margin-bottom: 10px;
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-hof);
+}
+
+.radio-group__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radio-group__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--color-bebe);
+  border-radius: var(--radius-cards);
+  background: var(--color-white);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out);
+}
+
+.radio-group__item:hover:not(.radio-group__item--disabled) {
+  border-color: var(--color-deco);
+  background: var(--color-faint);
+}
+
+.radio-group__item--checked {
+  border-color: var(--color-hof);
+  box-shadow: 0 0 0 1px var(--color-hof);
+}
+
+.radio-group__item--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.radio-group__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-group__control {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  border: 1.5px solid var(--color-foggy);
+  border-radius: var(--radius-avatars);
+  background: var(--color-white);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.radio-group__control::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: inherit;
+  background: var(--color-hof);
+  transform: scale(0);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.radio-group__input:checked + .radio-group__control {
+  border-color: var(--color-hof);
+}
+
+.radio-group__input:checked + .radio-group__control::after {
+  transform: scale(1);
+}
+
+.radio-group__input:focus-visible + .radio-group__control {
+  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-hof);
+}
+
+.radio-group__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.radio-group__label {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-hof);
+}
+
+.radio-group__description {
+  font-size: 13px;
+  color: var(--color-foggy);
+  line-height: 1.4;
+}

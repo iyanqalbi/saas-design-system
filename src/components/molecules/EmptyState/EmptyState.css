@@ -1,0 +1,36 @@
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-8);
+  width: 100%;
+  padding: var(--spacing-32) var(--spacing-20);
+  background: var(--color-white);
+  border-radius: var(--radius-cards);
+}
+
+.empty-state__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-4);
+  border-radius: var(--radius-avatars);
+  background: var(--color-faint);
+  color: var(--color-foggy);
+}
+
+.empty-state__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.empty-state__description {
+  max-width: 36ch;
+}
+
+.empty-state__action {
+  margin-top: var(--spacing-12);
+}

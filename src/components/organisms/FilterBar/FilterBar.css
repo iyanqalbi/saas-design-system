@@ -1,0 +1,49 @@
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  background: var(--color-white);
+  border-radius: var(--radius-cards);
+}
+
+.filter-bar__search {
+  position: relative;
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+
+.filter-bar__search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-foggy);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.filter-bar__search-input {
+  padding-left: 40px;
+}
+
+.filter-bar__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

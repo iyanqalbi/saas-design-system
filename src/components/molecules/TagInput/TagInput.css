@@ -1,0 +1,78 @@
+.tag-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.tag-input__label {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-hof);
+}
+
+.tag-input__control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 6px 10px;
+  border: 1px solid var(--color-bebe);
+  border-radius: var(--radius-inputs);
+  background: var(--color-white);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.tag-input__control:focus-within {
+  border-color: var(--color-hof);
+  box-shadow: 0 0 0 1px var(--color-hof);
+}
+
+.tag-input__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: var(--radius-badges);
+  background: var(--color-faint);
+  color: var(--color-hof);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+}
+
+.tag-input__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: var(--radius-avatars);
+  background: transparent;
+  color: var(--color-foggy);
+  cursor: pointer;
+  padding: 0;
+}
+
+.tag-input__remove:hover {
+  background: var(--color-bebe);
+  color: var(--color-hof);
+}
+
+.tag-input__field {
+  flex: 1;
+  min-width: 120px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--text-body);
+  color: var(--color-hof);
+}
+
+.tag-input__field::placeholder {
+  color: var(--color-grey-500);
+}

@@ -1,0 +1,145 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  width: 100%;
+}
+
+.tabs__list {
+  display: flex;
+  align-items: stretch;
+  gap: var(--spacing-4);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs__list::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: none;
+  background: transparent;
+  color: var(--color-foggy);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.tabs__trigger:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tabs__trigger:focus-visible {
+  outline: 2px solid var(--color-hof);
+  outline-offset: 2px;
+}
+
+.tabs__label {
+  line-height: 1;
+}
+
+.tabs__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-badges);
+  background: var(--color-faint);
+  color: var(--color-hof);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-semibold);
+}
+
+.tabs__trigger--active .tabs__badge {
+  background: var(--color-bebe);
+}
+
+.tabs__panel {
+  color: var(--color-hof);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  animation: tabs-panel-in var(--duration-base) var(--ease-out);
+}
+
+@keyframes tabs-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Underline — Refero gallery nav signature */
+.tabs--underline .tabs__list {
+  gap: var(--spacing-8);
+  border-bottom: 1px solid var(--color-bebe);
+}
+
+.tabs--underline .tabs__trigger {
+  border-radius: 0;
+  padding: 0 4px 12px;
+  position: relative;
+}
+
+.tabs--underline .tabs__trigger--active {
+  color: var(--color-hof);
+}
+
+.tabs--underline .tabs__trigger--active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--color-hof);
+  border-radius: 2px 2px 0 0;
+}
+
+.tabs--underline .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
+  color: var(--color-hof);
+}
+
+/* Segmented — admin filter / settings pattern */
+.tabs--segmented .tabs__list {
+  width: fit-content;
+  max-width: 100%;
+  padding: 4px;
+  gap: 4px;
+  background: var(--color-faint);
+  border-radius: var(--radius-badges);
+}
+
+.tabs--segmented .tabs__trigger {
+  border-radius: var(--radius-badges);
+  min-height: 32px;
+  padding: 0 14px;
+}
+
+.tabs--segmented .tabs__trigger--active {
+  background: var(--color-white);
+  color: var(--color-hof);
+  box-shadow: var(--shadow-subtle);
+}
+
+.tabs--segmented .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
+  color: var(--color-hof);
+}
