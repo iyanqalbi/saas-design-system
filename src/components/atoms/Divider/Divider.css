@@ -1,0 +1,25 @@
+.divider {
+  border: 0;
+  border-top: 1px solid var(--color-bebe);
+  margin: 0;
+}
+
+.divider-labeled {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+}
+
+.divider-labeled__line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-bebe);
+}
+
+.divider-labeled__label {
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-foggy);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}

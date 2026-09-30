@@ -1,0 +1,32 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.form-field__label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-8);
+}
+
+.form-field__label {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-hof);
+}
+
+.form-field__optional {
+  font-size: var(--text-caption) !important;
+}
+
+.form-field__hint {
+  font-size: 12px !important;
+  margin: 0;
+}
+
+.form-field__error {
+  margin: 0;
+  color: var(--color-rausch-600);
+}

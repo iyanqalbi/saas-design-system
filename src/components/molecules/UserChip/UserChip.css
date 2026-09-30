@@ -1,0 +1,34 @@
+.user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: 4px 8px 4px 4px;
+  border-radius: var(--radius-badges);
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+
+.user-chip--interactive {
+  cursor: pointer;
+}
+
+.user-chip--interactive:hover {
+  background: var(--color-faint);
+}
+
+.user-chip__meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.user-chip__role {
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+}
+
+.user-chip__caret {
+  color: var(--color-foggy);
+  flex-shrink: 0;
+}

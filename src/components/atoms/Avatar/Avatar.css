@@ -1,0 +1,39 @@
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-avatars);
+  background: var(--color-bebe);
+  color: var(--color-hof);
+  flex-shrink: 0;
+}
+
+.avatar--sm {
+  width: 28px;
+  height: 28px;
+  font-size: 11px;
+}
+
+.avatar--md {
+  width: 36px;
+  height: 36px;
+  font-size: 12px;
+}
+
+.avatar--lg {
+  width: 48px;
+  height: 48px;
+  font-size: 14px;
+}
+
+.avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar__fallback {
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.02em;
+}

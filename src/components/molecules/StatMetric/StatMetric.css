@@ -1,0 +1,39 @@
+.stat-metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  padding: var(--spacing-20);
+  background: var(--surface-card);
+  border-radius: var(--radius-cards);
+  min-height: 120px;
+}
+
+.stat-metric__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-12);
+}
+
+.stat-metric__label {
+  margin: 0;
+}
+
+.stat-metric__icon {
+  display: inline-flex;
+  color: var(--color-foggy);
+}
+
+.stat-metric__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.stat-metric__value {
+  margin: 0;
+}
+
+.stat-metric__delta {
+  align-self: flex-start;
+  margin-top: auto;
+}

@@ -1,0 +1,93 @@
+/**
+ * Design tokens — adapted from Refero style
+ * https://styles.refero.design/style/c2325884-4391-4688-85cd-e143f5107517
+ * Quiet white gallery wall with one coral-red bookmark
+ */
+:root {
+  /* Colors */
+  --color-rausch: #ff385c;
+  --color-rausch-600: #e00b41;
+  --color-hof: #222222;
+  --color-foggy: #6a6a6a;
+  --color-grey-500: #c1c1c1;
+  --color-bebe: #ebebeb;
+  --color-deco: #dddddd;
+  --color-faint: #f7f7f7;
+  --color-white: #ffffff;
+
+  /* Surfaces */
+  --surface-canvas: #f7f7f7;
+  --surface-card: #ffffff;
+  --surface-muted: #dddddd;
+  --surface-inverse: #222222;
+
+  /* Typography — DM Sans as Airbnb Cereal substitute */
+  --font-sans: 'DM Sans', 'Circular', ui-sans-serif, system-ui, sans-serif;
+
+  --text-caption: 11px;
+  --leading-caption: 1.18;
+  --text-body: 14px;
+  --leading-body: 1.43;
+  --text-ui: 16px;
+  --leading-ui: 1.25;
+  --text-subheading: 20px;
+  --leading-subheading: 1.2;
+  --tracking-subheading: -0.18px;
+  --text-heading-sm: 22px;
+  --leading-heading-sm: 1.18;
+  --tracking-heading-sm: -0.44px;
+  --text-heading: 28px;
+  --leading-heading: 1.43;
+  --text-display: 48px;
+  --leading-display: 1.1;
+  --tracking-display: -0.03em;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing (4px base) */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-44: 44px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+  --spacing-80: 80px;
+
+  /* Layout */
+  --page-max-width: 1440px;
+  --section-gap: 48px;
+  --card-padding: 12px;
+  --element-gap: 12px;
+  --page-padding: 40px;
+
+  /* Radius */
+  --radius-inputs: 8px;
+  --radius-ghost: 8px;
+  --radius-cards: 12px;
+  --radius-badges: 9999px;
+  --radius-buttons: 9999px;
+  --radius-avatars: 9999px;
+  --radius-search: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: rgba(0, 0, 0, 0.02) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.04) 0px 2px 6px 0px,
+    rgba(0, 0, 0, 0.1) 0px 4px 8px 0px;
+  --shadow-overlay: 0 8px 28px rgba(0, 0, 0, 0.28);
+  --shadow-dropdown: 0 6px 20px rgba(0, 0, 0, 0.2);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-slow: 480ms;
+}
