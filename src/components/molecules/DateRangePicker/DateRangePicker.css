@@ -1,0 +1,139 @@
+.daterange {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.daterange__label {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-hof);
+}
+
+.daterange__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--color-bebe);
+  border-radius: var(--radius-inputs);
+  background: var(--color-white);
+  cursor: pointer;
+  color: var(--color-foggy);
+}
+
+.daterange--open .daterange__trigger,
+.daterange__trigger:hover {
+  border-color: var(--color-hof);
+  box-shadow: 0 0 0 1px var(--color-hof);
+}
+
+.daterange__value {
+  color: var(--color-hof);
+  font-size: var(--text-body);
+}
+
+.daterange__placeholder {
+  color: var(--color-grey-500);
+  font-size: var(--text-body);
+}
+
+.daterange__panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 40;
+  width: 300px;
+  padding: 12px;
+  background: var(--color-white);
+  border-radius: var(--radius-cards);
+  box-shadow: var(--shadow-dropdown);
+  animation: daterange-in var(--duration-fast) var(--ease-out);
+}
+
+.daterange__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.daterange__month {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-semibold);
+}
+
+.daterange__weekdays,
+.daterange__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.daterange__weekdays {
+  margin-bottom: 4px;
+}
+
+.daterange__weekdays span {
+  text-align: center;
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-foggy);
+  padding: 4px 0;
+}
+
+.daterange__day {
+  height: 34px;
+  border: none;
+  border-radius: var(--radius-buttons);
+  background: transparent;
+  color: var(--color-hof);
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+
+.daterange__day:hover {
+  background: var(--color-faint);
+}
+
+.daterange__day--muted {
+  color: var(--color-grey-500);
+}
+
+.daterange__day--range {
+  background: color-mix(in srgb, var(--color-hof) 8%, white);
+  border-radius: 0;
+}
+
+.daterange__day--selected,
+.daterange__day--selected:hover {
+  background: var(--color-hof);
+  color: var(--color-white);
+}
+
+.daterange__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-bebe);
+}
+
+@keyframes daterange-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

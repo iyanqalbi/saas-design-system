@@ -1,0 +1,49 @@
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  padding: 0 10px;
+  border-radius: var(--radius-badges);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.status-chip__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-avatars);
+  background: currentColor;
+}
+
+.status-chip--neutral {
+  background: var(--color-faint);
+  color: var(--color-hof);
+}
+
+.status-chip--success {
+  background: #eaf7ef;
+  color: #1f7a45;
+}
+
+.status-chip--warning {
+  background: #fff4e5;
+  color: #9a5b00;
+}
+
+.status-chip--danger {
+  background: #ffe8ec;
+  color: var(--color-rausch-600);
+}
+
+.status-chip--info {
+  background: #f3f6ff;
+  color: #2a4a9b;
+}
+
+.status-chip--accent {
+  background: #ffe8ec;
+  color: var(--color-rausch);
+}

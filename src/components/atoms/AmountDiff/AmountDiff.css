@@ -1,0 +1,20 @@
+.amount-diff {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+.amount-diff--success {
+  color: #1f7a45;
+}
+
+.amount-diff--danger {
+  color: var(--color-rausch-600);
+}
+
+.amount-diff--neutral {
+  color: var(--color-foggy);
+}

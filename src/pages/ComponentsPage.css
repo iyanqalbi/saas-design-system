@@ -154,6 +154,19 @@
   width: 160px;
 }
 
+.app-shell-preview {
+  width: min(100%, 720px);
+  max-height: 360px;
+  overflow: auto;
+  border-radius: var(--radius-cards);
+}
+
+.app-shell-preview .app-shell {
+  min-height: 320px;
+  padding: 8px;
+  grid-template-columns: 200px 1fr;
+}
+
 @media (min-width: 720px) {
   .token-swatches {
     grid-template-columns: repeat(6, 1fr);

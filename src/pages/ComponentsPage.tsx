@@ -12,6 +12,7 @@ import {
   Users,
   SlidersHorizontal,
 } from 'lucide-react'
+import { AmountDiff } from '../components/atoms/AmountDiff'
 import { Badge } from '../components/atoms/Badge'
 import { Button } from '../components/atoms/Button'
 import { Avatar } from '../components/atoms/Avatar'
@@ -19,9 +20,11 @@ import { Checkbox } from '../components/atoms/Checkbox'
 import { Divider } from '../components/atoms/Divider'
 import { IconButton } from '../components/atoms/IconButton'
 import { Input } from '../components/atoms/Input'
+import { Label } from '../components/atoms/Label'
 import { ProgressBar } from '../components/atoms/ProgressBar'
 import { Skeleton } from '../components/atoms/Skeleton'
 import { Slider } from '../components/atoms/Slider'
+import { StatusChip } from '../components/atoms/StatusChip'
 import { Switch } from '../components/atoms/Switch'
 import { Text } from '../components/atoms/Text'
 import { Textarea } from '../components/atoms/Textarea'
@@ -29,8 +32,19 @@ import { Accordion } from '../components/molecules/Accordion'
 import { AlertBanner } from '../components/molecules/AlertBanner'
 import { AvatarGroup } from '../components/molecules/AvatarGroup'
 import { Breadcrumb } from '../components/molecules/Breadcrumb'
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '../components/molecules/Card'
 import { ConfirmModal } from '../components/molecules/ConfirmModal'
 import { DatePicker } from '../components/molecules/DatePicker'
+import { DateRangePicker } from '../components/molecules/DateRangePicker'
+import { Dialog } from '../components/molecules/Dialog'
 import { Drawer } from '../components/molecules/Drawer'
 import { DropdownMenu } from '../components/molecules/DropdownMenu'
 import { EmptyState } from '../components/molecules/EmptyState'
@@ -44,6 +58,15 @@ import { SearchField } from '../components/molecules/SearchField'
 import { Select } from '../components/molecules/Select'
 import { StatMetric } from '../components/molecules/StatMetric'
 import { Stepper } from '../components/molecules/Stepper'
+import {
+  SortableTh,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '../components/molecules/Table'
 import { Tabs } from '../components/molecules/Tabs'
 import { TagInput } from '../components/molecules/TagInput'
 import { Toast } from '../components/molecules/Toast'
@@ -55,10 +78,12 @@ import { ChartCard } from '../components/organisms/ChartCard'
 import { CommandPalette } from '../components/organisms/CommandPalette'
 import { DataTable } from '../components/organisms/DataTable'
 import { FilterBar } from '../components/organisms/FilterBar'
+import { NotificationsMenu } from '../components/organisms/NotificationsMenu'
 import { PageHeader } from '../components/organisms/PageHeader'
 import { Sidebar } from '../components/organisms/Sidebar'
 import { SkeletonLayout } from '../components/organisms/SkeletonLayout'
 import { StatsRow } from '../components/organisms/StatsRow'
+import { AppShell } from '../templates/AppShell'
 import { catalog } from '../data/catalog'
 import type { ComponentLayer } from '../data/catalog'
 import { MarketingLayout } from '../templates/MarketingLayout'
@@ -224,6 +249,67 @@ function FilterBarDemo() {
   )
 }
 
+function DialogDemo() {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="demo-stack">
+      <Button size="sm" variant="inverse" onClick={() => setOpen(true)}>
+        Open dialog
+      </Button>
+      <Dialog
+        open={open}
+        title="Edit workspace"
+        description="Update the display name shown across your admin portal."
+        onClose={() => setOpen(false)}
+        footer={
+          <>
+            <Button variant="ghost" onClick={() => setOpen(false)}>
+              Cancel
+            </Button>
+            <Button variant="inverse" onClick={() => setOpen(false)}>
+              Save
+            </Button>
+          </>
+        }
+      >
+        <FormField id="workspace-name" label="Workspace name" defaultValue="Northwind Labs" />
+      </Dialog>
+    </div>
+  )
+}
+
+function TableDemo() {
+  const [sorted, setSorted] = useState<'asc' | 'desc' | false>('asc')
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <SortableTh
+            sorted={sorted}
+            onSort={() => setSorted((value) => (value === 'asc' ? 'desc' : 'asc'))}
+          >
+            Customer
+          </SortableTh>
+          <TableHead>Plan</TableHead>
+          <TableHead>Amount</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Northwind</TableCell>
+          <TableCell>Growth</TableCell>
+          <TableCell>$890</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Harbor</TableCell>
+          <TableCell>Starter</TableCell>
+          <TableCell>$120</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  )
+}
+
 const previews: Record<string, ReactNode> = {
   button: (
     <div className="demo-row">
@@ -270,6 +356,33 @@ const previews: Record<string, ReactNode> = {
   ),
   textarea: (
     <Textarea placeholder="Add an internal note for this customer…" style={{ maxWidth: 360 }} />
+  ),
+  label: (
+    <div className="demo-stack">
+      <Label htmlFor="demo-label">Workspace name</Label>
+      <Label htmlFor="demo-required" required>
+        Owner email
+      </Label>
+      <Label htmlFor="demo-optional" optional>
+        Internal note
+      </Label>
+    </div>
+  ),
+  'status-chip': (
+    <div className="demo-row">
+      <StatusChip>Queued</StatusChip>
+      <StatusChip tone="success">Matched</StatusChip>
+      <StatusChip tone="warning">Waiting</StatusChip>
+      <StatusChip tone="danger">Failed</StatusChip>
+      <StatusChip tone="info">Imported</StatusChip>
+    </div>
+  ),
+  'amount-diff': (
+    <div className="demo-row">
+      <AmountDiff value={12.4} suffix="%" />
+      <AmountDiff value={-3.1} suffix="%" />
+      <AmountDiff value={0} suffix="%" />
+    </div>
   ),
   'search-field': <SearchField placeholder="Search customers…" style={{ maxWidth: 280 }} />,
   'stat-metric': <StatMetric label="Active seats" value="1,284" delta="+86" />,
@@ -513,6 +626,65 @@ const previews: Record<string, ReactNode> = {
     />
   ),
   'filter-bar': <FilterBarDemo />,
+  card: (
+    <Card className="demo-stack--wide">
+      <CardHeader>
+        <div>
+          <CardTitle>Settlement summary</CardTitle>
+          <CardDescription>Last reconciled batch for Harbor Retail.</CardDescription>
+        </div>
+        <CardAction>
+          <StatusChip tone="success">Synced</StatusChip>
+        </CardAction>
+      </CardHeader>
+      <CardContent>
+        <Text as="p" variant="muted">
+          128 matched · 4 waiting · 1 unidentified
+        </Text>
+      </CardContent>
+      <CardFooter>
+        <Button size="sm" variant="ghost">
+          Details
+        </Button>
+        <Button size="sm" variant="inverse">
+          Re-run
+        </Button>
+      </CardFooter>
+    </Card>
+  ),
+  dialog: <DialogDemo />,
+  'date-range-picker': (
+    <DateRangePicker label="Report range" defaultValue={{ from: '2026-03-01', to: '2026-03-31' }} />
+  ),
+  table: <TableDemo />,
+  'notifications-menu': (
+    <NotificationsMenu
+      items={[
+        {
+          id: '1',
+          title: 'Import finished',
+          description: 'BCA statement · 842 rows',
+          time: '2m ago',
+          unread: true,
+        },
+        {
+          id: '2',
+          actor: 'Priya Shah',
+          title: 'Review assigned',
+          description: 'Waiting queue item #1904',
+          time: '1h ago',
+        },
+      ]}
+      onViewAll={() => undefined}
+    />
+  ),
+  'app-shell': (
+    <div className="app-shell-preview">
+      <AppShell title="Customers" crumbs={[{ label: 'Admin', to: '#' }, { label: 'Customers' }]}>
+        <StatsRow />
+      </AppShell>
+    </div>
+  ),
   sidebar: <Sidebar compact />,
   'admin-topbar': <AdminTopBar title="Customers" />,
   'data-table': (
