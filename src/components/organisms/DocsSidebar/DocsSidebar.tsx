@@ -72,26 +72,30 @@ export function DocsSidebar({ query, onQueryChange, activeId, onSelect }: DocsSi
 
   return (
     <nav className="docs-sidebar" aria-label="Component catalog">
-      <SearchField
-        size="sm"
-        placeholder="Filter components…"
-        value={query}
-        onChange={(event) => onQueryChange(event.target.value)}
-        className="docs-sidebar__search"
-      />
-
-      {groups.map((group) => (
-        <DocsGroup
-          key={group.id}
-          group={group}
-          collapsed={Boolean(query ? false : collapsed[group.id])}
-          activeId={activeId}
-          onToggle={() =>
-            setCollapsed((current) => ({ ...current, [group.id]: !current[group.id] }))
-          }
-          onSelect={onSelect}
+      <div className="docs-sidebar__search-bar">
+        <SearchField
+          size="sm"
+          placeholder="Filter components…"
+          value={query}
+          onChange={(event) => onQueryChange(event.target.value)}
+          className="docs-sidebar__search"
         />
-      ))}
+      </div>
+
+      <div className="docs-sidebar__nav">
+        {groups.map((group) => (
+          <DocsGroup
+            key={group.id}
+            group={group}
+            collapsed={Boolean(query ? false : collapsed[group.id])}
+            activeId={activeId}
+            onToggle={() =>
+              setCollapsed((current) => ({ ...current, [group.id]: !current[group.id] }))
+            }
+            onSelect={onSelect}
+          />
+        ))}
+      </div>
     </nav>
   )
 }

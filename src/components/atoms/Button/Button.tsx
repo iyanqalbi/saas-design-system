@@ -3,37 +3,61 @@ import { ChevronDown } from 'lucide-react'
 import './Button.css'
 
 export type ButtonVariant =
-  | 'contained'
-  | 'outlined'
-  | 'texted'
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'linkColor'
+  | 'linkGray'
   | 'split'
-  /** @deprecated Use `contained` */
+  /** @deprecated Use `primary` */
+  | 'contained'
+  /** @deprecated Use `secondary` */
+  | 'outlined'
+  /** @deprecated Use `tertiary` */
+  | 'texted'
+  /** @deprecated Use `primary` */
   | 'inverse'
-  /** @deprecated Use `outlined` */
+  /** @deprecated Use `tertiary` */
   | 'ghost'
-  /** @deprecated Use `contained` */
+  /** @deprecated Use `primary` */
   | 'accent'
-  /** @deprecated Use `texted` */
+  /** @deprecated Use `tertiary` */
   | 'subtle'
+  /** @deprecated Use `linkColor` */
+  | 'link'
 
-export type ButtonSize = 'sm' | 'md' | 'lg'
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
-type ResolvedVariant = 'contained' | 'outlined' | 'texted' | 'split'
+type ResolvedVariant =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'linkColor'
+  | 'linkGray'
+  | 'split'
 
 const VARIANT_MAP: Record<ButtonVariant, ResolvedVariant> = {
-  contained: 'contained',
-  outlined: 'outlined',
-  texted: 'texted',
+  primary: 'primary',
+  secondary: 'secondary',
+  tertiary: 'tertiary',
+  linkColor: 'linkColor',
+  linkGray: 'linkGray',
   split: 'split',
-  inverse: 'contained',
-  ghost: 'outlined',
-  accent: 'contained',
-  subtle: 'texted',
+  contained: 'primary',
+  outlined: 'secondary',
+  texted: 'tertiary',
+  inverse: 'primary',
+  ghost: 'tertiary',
+  accent: 'primary',
+  subtle: 'tertiary',
+  link: 'linkColor',
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   size?: ButtonSize
+  /** Danger/destructive tone for primary, secondary, and tertiary. */
+  destructive?: boolean
   leftIcon?: ReactNode
   rightIcon?: ReactNode
   /** Renders children as the only icon; requires `aria-label`. */
@@ -50,8 +74,9 @@ function Spinner() {
 }
 
 export function Button({
-  variant = 'contained',
+  variant = 'primary',
   size = 'md',
+  destructive = false,
   leftIcon,
   rightIcon,
   iconOnly = false,
@@ -68,11 +93,14 @@ export function Button({
   const resolved = VARIANT_MAP[variant]
   const isDisabled = Boolean(disabled || loading)
   const isSplit = resolved === 'split'
+  const isLink = resolved === 'linkColor' || resolved === 'linkGray'
+  const showDestructive = destructive && !isSplit && !isLink
 
   const rootClass = [
     'btn',
     isSplit ? 'btn--split' : `btn--${resolved}`,
     `btn--${size}`,
+    showDestructive ? 'btn--destructive' : '',
     iconOnly ? 'btn--icon-only' : '',
     fullWidth ? 'btn--full' : '',
     loading ? 'btn--loading' : '',

@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 import './ButtonGroup.css'
 
-export type ButtonGroupSize = 'sm' | 'md' | 'lg'
+export type ButtonGroupSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode

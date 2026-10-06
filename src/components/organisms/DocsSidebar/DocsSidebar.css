@@ -1,12 +1,32 @@
 .docs-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: var(--spacing-16) var(--spacing-12) var(--spacing-32);
+  height: 100%;
+  min-height: 0;
+  gap: 0;
+}
+
+.docs-sidebar__search-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  flex-shrink: 0;
+  padding: var(--spacing-16) var(--spacing-12) var(--spacing-12);
+  background: var(--surface-canvas);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--color-border) 85%, transparent);
 }
 
 .docs-sidebar__search {
-  margin: 0 4px var(--spacing-16);
+  margin: 0;
+}
+
+.docs-sidebar__nav {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--spacing-4) var(--spacing-12) var(--spacing-32);
+  scrollbar-gutter: stable;
 }
 
 .docs-sidebar__group {

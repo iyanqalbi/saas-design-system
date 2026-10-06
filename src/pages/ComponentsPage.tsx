@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import {
+  ArrowRight,
   Bug,
+  Circle,
   Copy,
   Download,
   Eye,
@@ -438,67 +440,258 @@ function TableDemo() {
 const previews: Record<string, ReactNode> = {
   button: (
     <div className="demo-stack demo-stack--button">
-      <div className="button-matrix">
-        <span className="button-matrix__label" />
-        <span className="button-matrix__label">Contained</span>
-        <span className="button-matrix__label">Outlined</span>
-        <span className="button-matrix__label">Texted</span>
-        <span className="button-matrix__label">Split</span>
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Primary buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="xs">Button xs</Button>
+          <Button size="sm">Button sm</Button>
+          <Button size="md">Button md</Button>
+          <Button size="lg">Button lg</Button>
+          <Button size="xl">Button xl</Button>
+        </div>
+      </section>
 
-        <span className="button-matrix__state">Default</span>
-        <Button size="sm">Enabled</Button>
-        <Button size="sm" variant="outlined">
-          Enabled
-        </Button>
-        <Button size="sm" variant="texted">
-          Enabled
-        </Button>
-        <Button size="sm" variant="split">
-          Enabled
-        </Button>
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Secondary buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="xs" variant="secondary">
+            Button xs
+          </Button>
+          <Button size="sm" variant="secondary">
+            Button sm
+          </Button>
+          <Button size="md" variant="secondary">
+            Button md
+          </Button>
+          <Button size="lg" variant="secondary">
+            Button lg
+          </Button>
+          <Button size="xl" variant="secondary">
+            Button xl
+          </Button>
+        </div>
+      </section>
 
-        <span className="button-matrix__state">With icon</span>
-        <Button size="sm" leftIcon={<Plus size={14} />}>
-          Enabled
-        </Button>
-        <Button size="sm" variant="outlined" leftIcon={<Plus size={14} />}>
-          Enabled
-        </Button>
-        <Button size="sm" variant="texted" leftIcon={<Plus size={14} />}>
-          Enabled
-        </Button>
-        <Button size="sm" variant="split" leftIcon={<Plus size={14} />}>
-          Enabled
-        </Button>
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Tertiary buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="xs" variant="tertiary">
+            Button xs
+          </Button>
+          <Button size="sm" variant="tertiary">
+            Button sm
+          </Button>
+          <Button size="md" variant="tertiary">
+            Button md
+          </Button>
+          <Button size="lg" variant="tertiary">
+            Button lg
+          </Button>
+          <Button size="xl" variant="tertiary">
+            Button xl
+          </Button>
+        </div>
+      </section>
 
-        <span className="button-matrix__state">Icon only</span>
-        <Button size="sm" iconOnly aria-label="Add">
-          <Plus size={14} />
-        </Button>
-        <Button size="sm" variant="outlined" iconOnly aria-label="Add">
-          <Plus size={14} />
-        </Button>
-        <Button size="sm" variant="texted" iconOnly aria-label="Add">
-          <Plus size={14} />
-        </Button>
-        <Button size="sm" variant="split" iconOnly aria-label="Add">
-          <Plus size={14} />
-        </Button>
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Link color buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="xs" variant="linkColor">
+            Button xs
+          </Button>
+          <Button size="sm" variant="linkColor">
+            Button sm
+          </Button>
+          <Button size="md" variant="linkColor">
+            Button md
+          </Button>
+          <Button size="lg" variant="linkColor">
+            Button lg
+          </Button>
+          <Button size="xl" variant="linkColor">
+            Button xl
+          </Button>
+        </div>
+      </section>
 
-        <span className="button-matrix__state">States</span>
-        <Button size="sm" disabled>
-          Disabled
-        </Button>
-        <Button size="sm" variant="outlined" loading>
-          Processing
-        </Button>
-        <Button size="sm" variant="texted" leftIcon={<Plus size={14} />} loading>
-          Processing
-        </Button>
-        <Button size="sm" variant="split" loading>
-          Processing
-        </Button>
-      </div>
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Link gray buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="xs" variant="linkGray">
+            Button xs
+          </Button>
+          <Button size="sm" variant="linkGray">
+            Button sm
+          </Button>
+          <Button size="md" variant="linkGray">
+            Button md
+          </Button>
+          <Button size="lg" variant="linkGray">
+            Button lg
+          </Button>
+          <Button size="xl" variant="linkGray">
+            Button xl
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Icon leading buttons</h4>
+        <div className="button-size-grid">
+          {(['primary', 'secondary', 'tertiary'] as const).map((variant) => (
+            <div key={variant} className="demo-row demo-row--baseline">
+              {(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+                <Button
+                  key={`${variant}-${size}`}
+                  size={size}
+                  variant={variant}
+                  leftIcon={<Circle strokeWidth={2} />}
+                >
+                  Button {size}
+                </Button>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Icon trailing buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="sm" rightIcon={<ArrowRight />}>
+            Continue
+          </Button>
+          <Button size="sm" variant="secondary" rightIcon={<ArrowRight />}>
+            Continue
+          </Button>
+          <Button size="sm" variant="tertiary" rightIcon={<ArrowRight />}>
+            Continue
+          </Button>
+          <Button size="sm" variant="linkColor" rightIcon={<ArrowRight />}>
+            Continue
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Icon only buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="sm" iconOnly aria-label="Add">
+            <Plus />
+          </Button>
+          <Button size="sm" variant="secondary" iconOnly aria-label="Add">
+            <Plus />
+          </Button>
+          <Button size="sm" variant="tertiary" iconOnly aria-label="Add">
+            <Plus />
+          </Button>
+          <Button size="md" iconOnly aria-label="Add">
+            <Plus />
+          </Button>
+          <Button size="lg" variant="secondary" iconOnly aria-label="Add">
+            <Plus />
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Loading buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="sm" loading>
+            Processing
+          </Button>
+          <Button size="sm" variant="secondary" loading>
+            Processing
+          </Button>
+          <Button size="sm" variant="tertiary" loading>
+            Processing
+          </Button>
+          <Button size="sm" variant="split" loading>
+            Processing
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Disabled buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="sm" disabled>
+            Disabled
+          </Button>
+          <Button size="sm" variant="secondary" disabled>
+            Disabled
+          </Button>
+          <Button size="sm" variant="tertiary" disabled>
+            Disabled
+          </Button>
+          <Button size="sm" variant="linkColor" disabled>
+            Disabled
+          </Button>
+          <Button size="sm" variant="linkGray" disabled>
+            Disabled
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Primary buttons destructive</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="sm" destructive>
+            Delete
+          </Button>
+          <Button size="md" destructive leftIcon={<Trash2 />}>
+            Delete
+          </Button>
+          <Button size="sm" destructive loading>
+            Processing
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Secondary buttons destructive</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="sm" variant="secondary" destructive>
+            Delete
+          </Button>
+          <Button size="md" variant="secondary" destructive leftIcon={<Trash2 />}>
+            Delete
+          </Button>
+          <Button size="sm" variant="secondary" destructive disabled>
+            Delete
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Tertiary buttons destructive</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="sm" variant="tertiary" destructive>
+            Delete
+          </Button>
+          <Button size="md" variant="tertiary" destructive leftIcon={<Trash2 />}>
+            Delete
+          </Button>
+          <Button size="sm" variant="tertiary" destructive disabled>
+            Delete
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Split buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="sm" variant="split">
+            Enabled
+          </Button>
+          <Button size="sm" variant="split" leftIcon={<Plus />}>
+            Enabled
+          </Button>
+          <Button size="sm" variant="split" iconOnly aria-label="Add">
+            <Plus />
+          </Button>
+        </div>
+      </section>
     </div>
   ),
   badge: (
