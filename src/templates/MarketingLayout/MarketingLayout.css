@@ -2,8 +2,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-top: 72px; /* offset fixed site header */
 }
 
 .marketing-layout__main {
   flex: 1;
+  min-width: 0;
 }
