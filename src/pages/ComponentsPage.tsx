@@ -880,7 +880,12 @@ const previews: Record<string, ReactNode> = {
       </AppShell>
     </div>
   ),
-  sidebar: <Sidebar compact />,
+  sidebar: (
+    <div className="sidebar-preview">
+      <Sidebar />
+      <Sidebar defaultCompact defaultActiveId="dashboard" defaultOpenIds={[]} />
+    </div>
+  ),
   'admin-topbar': <AdminTopBar title="Customers" />,
   'data-table': (
     <DataTable

@@ -1,6 +1,6 @@
 .app-shell {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: auto 1fr;
   gap: var(--spacing-12);
   min-height: calc(100vh - 24px);
   padding: var(--spacing-12);

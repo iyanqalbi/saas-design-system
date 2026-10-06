@@ -1,6 +1,6 @@
 .dashboard-preview {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: auto 1fr;
   gap: var(--spacing-12);
   padding: var(--spacing-12);
   background: linear-gradient(180deg, #efece8 0%, var(--color-wash) 40%, #f3f1ee 100%);

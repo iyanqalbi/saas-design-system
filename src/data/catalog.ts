@@ -384,7 +384,7 @@ export const catalog: CatalogEntry[] = [
     name: 'Sidebar',
     layer: 'Organism',
     category: 'Navigation',
-    description: 'Workspace navigation with grouped admin destinations.',
+    description: 'Collapsible workspace nav with nested destinations, counts, and icon-only rail.',
     tags: ['admin', 'nav'],
   },
   {

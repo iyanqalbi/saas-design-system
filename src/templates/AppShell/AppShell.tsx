@@ -21,7 +21,7 @@ export function AppShell({
 }: AppShellProps) {
   return (
     <div className={`app-shell ${className}`.trim()}>
-      <Sidebar className="app-shell__sidebar" />
+      <Sidebar className="app-shell__sidebar" defaultActiveId="dashboard" defaultOpenIds={[]} />
       <div className="app-shell__main">
         <div className="app-shell__top">
           <AdminTopBar title={title} crumbs={crumbs} />

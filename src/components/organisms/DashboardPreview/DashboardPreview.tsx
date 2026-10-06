@@ -44,7 +44,7 @@ export interface DashboardPreviewProps {
 export function DashboardPreview({ className = '' }: DashboardPreviewProps) {
   return (
     <div className={`dashboard-preview ${className}`.trim()}>
-      <Sidebar className="dashboard-preview__sidebar" />
+      <Sidebar className="dashboard-preview__sidebar" defaultActiveId="dashboard" defaultOpenIds={[]} />
       <div className="dashboard-preview__main">
         <AdminTopBar />
         <AlertBanner
