@@ -128,7 +128,8 @@ export const catalog: CatalogEntry[] = [
     name: 'Tabs',
     layer: 'Molecule',
     category: 'Navigation',
-    description: 'Underline, soft, solid, boxed, pills, and segmented tabs, with optional icons.',
+    description:
+      'Underline, soft, solid, boxed, pills, and segmented tabs — matching common SaaS tab patterns, with optional icons and badges.',
     tags: ['admin', 'nav'],
   },
   {

@@ -164,8 +164,8 @@
 .tabs-preview {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-20);
-  width: min(100%, 520px);
+  gap: var(--spacing-12);
+  width: min(100%, 640px);
 }
 
 .demo-stack {

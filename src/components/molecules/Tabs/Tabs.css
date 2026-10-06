@@ -52,11 +52,13 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  color: currentColor;
 }
 
 .tabs__icon svg {
   width: 18px;
   height: 18px;
+  stroke-width: 1.75;
 }
 
 .tabs__label {
@@ -112,20 +114,24 @@
   padding: 8px 16px 12px;
 }
 
-/* Underline */
+/* 1–2 · Underline (+ stacked layout) */
 .tabs--underline .tabs__list {
-  gap: var(--spacing-8);
+  gap: var(--spacing-24);
   border-bottom: 1px solid var(--color-border);
 }
 
 .tabs--underline .tabs__trigger {
   border-radius: 0;
-  padding: 0 4px 12px;
+  padding: 0 2px 14px;
   position: relative;
 }
 
+.tabs--underline.tabs--stacked .tabs__list {
+  gap: var(--spacing-16);
+}
+
 .tabs--underline.tabs--stacked .tabs__trigger {
-  padding: 8px 16px 12px;
+  padding: 8px 16px 14px;
 }
 
 .tabs--underline .tabs__trigger--active {
@@ -140,43 +146,42 @@
   bottom: -1px;
   height: 2px;
   background: var(--color-ink);
-  border-radius: 2px 2px 0 0;
 }
 
 .tabs--underline .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
   color: var(--color-ink);
 }
 
-/* Soft — tinted selected chip */
+/* 3 · Soft — minimal / color-only active */
 .tabs--soft .tabs__list {
-  gap: var(--spacing-4);
+  gap: var(--spacing-24);
 }
 
 .tabs--soft .tabs__trigger {
-  border-radius: var(--radius-inputs);
+  border-radius: 0;
   min-height: 36px;
-  padding: 0 12px;
+  padding: 0 2px;
 }
 
 .tabs--soft .tabs__trigger--active {
-  background: var(--color-wash);
   color: var(--color-ink);
+  background: transparent;
 }
 
 .tabs--soft .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
   color: var(--color-ink);
-  background: var(--color-wash);
+  background: transparent;
 }
 
-/* Solid — filled selected chip */
+/* 4 · Solid — discrete filled pill */
 .tabs--solid .tabs__list {
-  gap: var(--spacing-4);
+  gap: var(--spacing-8);
 }
 
 .tabs--solid .tabs__trigger {
-  border-radius: var(--radius-inputs);
-  min-height: 36px;
-  padding: 0 14px;
+  border-radius: var(--radius-buttons);
+  min-height: 40px;
+  padding: 0 16px;
 }
 
 .tabs--solid .tabs__trigger--active {
@@ -185,29 +190,31 @@
 }
 
 .tabs--solid .tabs__trigger--active .tabs__badge {
-  background: var(--color-white);
-  color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--color-white);
 }
 
 .tabs--solid .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
   color: var(--color-ink);
 }
 
-/* Boxed — equal cells with shared border */
+/* 5 · Boxed — bordered equal cells */
 .tabs--boxed .tabs__list {
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
   gap: 0;
-  border: 1px solid var(--color-soft);
-  border-radius: var(--radius-ghost);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-inputs);
   overflow: hidden;
+  background: var(--color-white);
 }
 
 .tabs--boxed .tabs__trigger {
-  flex: 1 1 0;
+  flex: 0 0 auto;
   border-radius: 0;
   min-height: 40px;
-  padding: 0 12px;
-  border-right: 1px solid var(--color-soft);
+  padding: 0 18px;
+  border-right: 1px solid var(--color-border);
 }
 
 .tabs--boxed .tabs__trigger:last-child {
@@ -220,8 +227,8 @@
 }
 
 .tabs--boxed .tabs__trigger--active .tabs__badge {
-  background: var(--color-white);
-  color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--color-white);
 }
 
 .tabs--boxed .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
@@ -233,50 +240,52 @@
   outline-offset: -3px;
 }
 
-/* Pills — filled thumb on a muted track */
+/* 6 · Pills — black thumb on wash capsule track */
 .tabs--pills .tabs__list {
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
   padding: 4px;
   gap: 0;
-  background: var(--color-border);
+  background: var(--color-wash);
   border-radius: var(--radius-badges);
 }
 
 .tabs--pills .tabs__trigger {
-  flex: 1 1 0;
+  flex: 0 0 auto;
   border-radius: var(--radius-badges);
-  min-height: 32px;
-  padding: 0 14px;
+  min-height: 36px;
+  padding: 0 16px;
 }
 
 .tabs--pills .tabs__trigger--active {
   background: var(--color-ink);
   color: var(--color-white);
+  box-shadow: none;
 }
 
 .tabs--pills .tabs__trigger--active .tabs__badge {
-  background: var(--color-white);
-  color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--color-white);
 }
 
 .tabs--pills .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
   color: var(--color-ink);
 }
 
-/* Segmented — white thumb on a muted track */
+/* 7 · Segmented — elevated white thumb on wash track */
 .tabs--segmented .tabs__list {
   width: fit-content;
   max-width: 100%;
   padding: 4px;
-  gap: 4px;
-  background: var(--color-border);
+  gap: 2px;
+  background: var(--color-wash);
   border-radius: var(--radius-badges);
 }
 
 .tabs--segmented .tabs__trigger {
   border-radius: var(--radius-badges);
-  min-height: 32px;
-  padding: 0 14px;
+  min-height: 36px;
+  padding: 0 16px;
 }
 
 .tabs--segmented .tabs__trigger--active {

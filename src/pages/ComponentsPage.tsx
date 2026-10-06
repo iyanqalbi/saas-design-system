@@ -361,46 +361,70 @@ function TabsDemo() {
 
   return (
     <div className="tabs-preview">
-      <Tabs ariaLabel="Category underline" items={categoryTabs} />
-      <Tabs ariaLabel="Category stacked" layout="stacked" items={categoryTabs} />
-      <Tabs ariaLabel="Category soft" variant="soft" items={categoryTabs} />
-      <Tabs ariaLabel="Category solid" variant="solid" items={categoryTabs} />
-      <Tabs ariaLabel="Category boxed" variant="boxed" items={labelTabs} />
-      <Tabs ariaLabel="Category pills" variant="pills" items={labelTabs} />
-      <Tabs ariaLabel="Category segmented" variant="segmented" items={labelTabs} />
-      <Tabs
-        ariaLabel="Customer sections"
-        items={[
-          {
-            id: 'overview',
-            label: 'Overview',
-            content: (
-              <Text as="p" variant="muted">
-                Plan usage, seats, and recent invoices.
-              </Text>
-            ),
-          },
-          {
-            id: 'members',
-            label: 'Members',
-            badge: '12',
-            content: (
-              <Text as="p" variant="muted">
-                Invite teammates and manage roles.
-              </Text>
-            ),
-          },
-          {
-            id: 'billing',
-            label: 'Billing',
-            content: (
-              <Text as="p" variant="muted">
-                Payment method and invoice history.
-              </Text>
-            ),
-          },
-        ]}
-      />
+      <div className="demo-panel">
+        <h4 className="demo-panel__title">Underline</h4>
+        <Tabs ariaLabel="Underline tabs" items={categoryTabs} />
+      </div>
+      <div className="demo-panel">
+        <h4 className="demo-panel__title">Underline stacked</h4>
+        <Tabs ariaLabel="Stacked underline tabs" layout="stacked" items={categoryTabs} />
+      </div>
+      <div className="demo-panel">
+        <h4 className="demo-panel__title">Soft</h4>
+        <Tabs ariaLabel="Soft tabs" variant="soft" items={categoryTabs} />
+      </div>
+      <div className="demo-panel">
+        <h4 className="demo-panel__title">Solid</h4>
+        <Tabs ariaLabel="Solid tabs" variant="solid" items={categoryTabs} />
+      </div>
+      <div className="demo-panel">
+        <h4 className="demo-panel__title">Boxed</h4>
+        <Tabs ariaLabel="Boxed tabs" variant="boxed" items={labelTabs} />
+      </div>
+      <div className="demo-panel">
+        <h4 className="demo-panel__title">Pills</h4>
+        <Tabs ariaLabel="Pills tabs" variant="pills" items={labelTabs} />
+      </div>
+      <div className="demo-panel">
+        <h4 className="demo-panel__title">Segmented</h4>
+        <Tabs ariaLabel="Segmented tabs" variant="segmented" items={labelTabs} />
+      </div>
+      <div className="demo-panel">
+        <h4 className="demo-panel__title">Underline · with badge</h4>
+        <Tabs
+          ariaLabel="Customer sections"
+          items={[
+            {
+              id: 'overview',
+              label: 'Overview',
+              content: (
+                <Text as="p" variant="muted">
+                  Plan usage, seats, and recent invoices.
+                </Text>
+              ),
+            },
+            {
+              id: 'members',
+              label: 'Members',
+              badge: '12',
+              content: (
+                <Text as="p" variant="muted">
+                  Invite teammates and manage roles.
+                </Text>
+              ),
+            },
+            {
+              id: 'billing',
+              label: 'Billing',
+              content: (
+                <Text as="p" variant="muted">
+                  Payment method and invoice history.
+                </Text>
+              ),
+            },
+          ]}
+        />
+      </div>
     </div>
   )
 }
