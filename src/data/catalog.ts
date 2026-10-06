@@ -16,7 +16,7 @@ export const catalog: CatalogEntry[] = [
     layer: 'Atom',
     category: 'Actions',
     description:
-      'Primary, secondary, tertiary, link, split, and destructive actions across xs–xl sizes, with icon and loading states.',
+      'Primary, secondary (soft), tertiary (outline), ghost, link, split, and destructive actions across xs–xl sizes.',
     tags: ['cta', 'form'],
   },
   {

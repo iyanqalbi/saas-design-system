@@ -113,16 +113,16 @@ export function LandingPage() {
           <ComponentCard
             name="Button"
             layer="Atom"
-            description="Contained, outlined, and texted actions with processing state."
+            description="Primary, secondary (soft), tertiary, and ghost actions with processing state."
             preview={
               <div className="preview-row">
-                <PreviewButton variant="contained" size="sm">
+                <PreviewButton variant="primary" size="sm">
                   Save
                 </PreviewButton>
-                <PreviewButton variant="outlined" size="sm">
+                <PreviewButton variant="secondary" size="sm">
                   Cancel
                 </PreviewButton>
-                <PreviewButton variant="texted" size="sm">
+                <PreviewButton variant="ghost" size="sm">
                   Publish
                 </PreviewButton>
               </div>

@@ -226,18 +226,17 @@
   cursor: progress;
 }
 
-/* ——— Secondary ——— */
+/* ——— Secondary — soft/tonal primary fill ——— */
 .btn--secondary {
-  --btn-bg: var(--color-white);
-  --btn-bg-hover: var(--color-wash);
-  --btn-bg-pressed: var(--color-border);
-  --btn-fg: var(--color-ink);
-  --btn-border: var(--color-border);
+  --btn-bg: var(--color-primary-soft);
+  --btn-bg-hover: var(--color-primary-soft-pressed);
+  --btn-bg-pressed: #d0d2ff;
+  --btn-fg: var(--color-primary);
+  --btn-border: transparent;
 }
 
 .btn--secondary:hover:not(:disabled):not([data-disabled]) {
   background: var(--btn-bg-hover);
-  border-color: var(--color-soft);
 }
 
 .btn--secondary:active:not(:disabled):not([data-disabled]) {
@@ -246,16 +245,16 @@
 
 .btn--secondary:disabled,
 .btn--secondary[data-disabled] {
-  background: var(--color-white);
+  background: var(--color-disabled-bg);
   color: var(--color-disabled-fg);
-  border-color: var(--color-disabled-bg);
+  border-color: transparent;
 }
 
 .btn--secondary.btn--destructive {
+  --btn-bg: #ffe8ec;
+  --btn-bg-hover: #ffd6de;
+  --btn-bg-pressed: #ffc4cf;
   --btn-fg: var(--color-danger-strong);
-  --btn-border: #f3b4c0;
-  --btn-bg-hover: #fff1f4;
-  --btn-bg-pressed: #ffe8ec;
 }
 
 .btn--secondary.btn--destructive:focus-visible {
@@ -263,23 +262,23 @@
 }
 
 .btn--secondary.btn--loading:disabled {
-  background: var(--color-white);
+  background: var(--btn-bg);
   color: var(--btn-fg);
-  border-color: var(--btn-border);
   cursor: progress;
 }
 
-/* ——— Tertiary ——— */
+/* ——— Tertiary — outlined ——— */
 .btn--tertiary {
-  --btn-bg: transparent;
+  --btn-bg: var(--color-white);
   --btn-bg-hover: var(--color-wash);
   --btn-bg-pressed: var(--color-border);
   --btn-fg: var(--color-ink);
-  --btn-border: transparent;
+  --btn-border: var(--color-border);
 }
 
 .btn--tertiary:hover:not(:disabled):not([data-disabled]) {
   background: var(--btn-bg-hover);
+  border-color: var(--color-soft);
 }
 
 .btn--tertiary:active:not(:disabled):not([data-disabled]) {
@@ -288,12 +287,14 @@
 
 .btn--tertiary:disabled,
 .btn--tertiary[data-disabled] {
-  background: transparent;
+  background: var(--color-white);
   color: var(--color-disabled-fg);
+  border-color: var(--color-disabled-bg);
 }
 
 .btn--tertiary.btn--destructive {
   --btn-fg: var(--color-danger-strong);
+  --btn-border: #f3b4c0;
   --btn-bg-hover: #fff1f4;
   --btn-bg-pressed: #ffe8ec;
 }
@@ -302,8 +303,48 @@
   outline-color: var(--color-danger);
 }
 
-.btn--tertiary.btn--loading:not(:disabled),
 .btn--tertiary.btn--loading:disabled {
+  background: var(--color-white);
+  color: var(--btn-fg);
+  border-color: var(--btn-border);
+  cursor: progress;
+}
+
+/* ——— Ghost — text/transparent ——— */
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-bg-hover: var(--color-wash);
+  --btn-bg-pressed: var(--color-border);
+  --btn-fg: var(--color-ink);
+  --btn-border: transparent;
+}
+
+.btn--ghost:hover:not(:disabled):not([data-disabled]) {
+  background: var(--btn-bg-hover);
+}
+
+.btn--ghost:active:not(:disabled):not([data-disabled]) {
+  background: var(--btn-bg-pressed);
+}
+
+.btn--ghost:disabled,
+.btn--ghost[data-disabled] {
+  background: transparent;
+  color: var(--color-disabled-fg);
+}
+
+.btn--ghost.btn--destructive {
+  --btn-fg: var(--color-danger-strong);
+  --btn-bg-hover: #fff1f4;
+  --btn-bg-pressed: #ffe8ec;
+}
+
+.btn--ghost.btn--destructive:focus-visible {
+  outline-color: var(--color-danger);
+}
+
+.btn--ghost.btn--loading:not(:disabled),
+.btn--ghost.btn--loading:disabled {
   background: var(--color-wash);
   color: var(--btn-fg);
   cursor: progress;
@@ -407,7 +448,8 @@
   border-radius: 12px;
 }
 
-.btn--icon-only.btn--tertiary:hover:not(:disabled) {
+.btn--icon-only.btn--tertiary:hover:not(:disabled),
+.btn--icon-only.btn--ghost:hover:not(:disabled) {
   background: var(--color-wash);
 }
 

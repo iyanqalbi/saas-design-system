@@ -6,22 +6,21 @@ export type ButtonVariant =
   | 'primary'
   | 'secondary'
   | 'tertiary'
+  | 'ghost'
   | 'linkColor'
   | 'linkGray'
   | 'split'
   /** @deprecated Use `primary` */
   | 'contained'
-  /** @deprecated Use `secondary` */
-  | 'outlined'
   /** @deprecated Use `tertiary` */
+  | 'outlined'
+  /** @deprecated Use `ghost` */
   | 'texted'
   /** @deprecated Use `primary` */
   | 'inverse'
-  /** @deprecated Use `tertiary` */
-  | 'ghost'
   /** @deprecated Use `primary` */
   | 'accent'
-  /** @deprecated Use `tertiary` */
+  /** @deprecated Use `ghost` */
   | 'subtle'
   /** @deprecated Use `linkColor` */
   | 'link'
@@ -32,6 +31,7 @@ type ResolvedVariant =
   | 'primary'
   | 'secondary'
   | 'tertiary'
+  | 'ghost'
   | 'linkColor'
   | 'linkGray'
   | 'split'
@@ -40,23 +40,23 @@ const VARIANT_MAP: Record<ButtonVariant, ResolvedVariant> = {
   primary: 'primary',
   secondary: 'secondary',
   tertiary: 'tertiary',
+  ghost: 'ghost',
   linkColor: 'linkColor',
   linkGray: 'linkGray',
   split: 'split',
   contained: 'primary',
-  outlined: 'secondary',
-  texted: 'tertiary',
+  outlined: 'tertiary',
+  texted: 'ghost',
   inverse: 'primary',
-  ghost: 'tertiary',
   accent: 'primary',
-  subtle: 'tertiary',
+  subtle: 'ghost',
   link: 'linkColor',
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   size?: ButtonSize
-  /** Danger/destructive tone for primary, secondary, and tertiary. */
+  /** Danger/destructive tone for primary, secondary, tertiary, and ghost. */
   destructive?: boolean
   leftIcon?: ReactNode
   rightIcon?: ReactNode

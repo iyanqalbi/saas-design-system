@@ -518,6 +518,27 @@ const previews: Record<string, ReactNode> = {
       </section>
 
       <section className="demo-panel">
+        <h4 className="demo-panel__title">Ghost buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="xs" variant="ghost">
+            Button xs
+          </Button>
+          <Button size="sm" variant="ghost">
+            Button sm
+          </Button>
+          <Button size="md" variant="ghost">
+            Button md
+          </Button>
+          <Button size="lg" variant="ghost">
+            Button lg
+          </Button>
+          <Button size="xl" variant="ghost">
+            Button xl
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
         <h4 className="demo-panel__title">Link color buttons</h4>
         <div className="demo-row demo-row--baseline">
           <Button size="xs" variant="linkColor">
@@ -562,7 +583,7 @@ const previews: Record<string, ReactNode> = {
       <section className="demo-panel">
         <h4 className="demo-panel__title">Icon leading buttons</h4>
         <div className="button-size-grid">
-          {(['primary', 'secondary', 'tertiary'] as const).map((variant) => (
+          {(['primary', 'secondary', 'tertiary', 'ghost'] as const).map((variant) => (
             <div key={variant} className="demo-row demo-row--baseline">
               {(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
                 <Button
@@ -581,19 +602,21 @@ const previews: Record<string, ReactNode> = {
 
       <section className="demo-panel">
         <h4 className="demo-panel__title">Icon trailing buttons</h4>
-        <div className="demo-row demo-row--baseline">
-          <Button size="sm" rightIcon={<ArrowRight />}>
-            Continue
-          </Button>
-          <Button size="sm" variant="secondary" rightIcon={<ArrowRight />}>
-            Continue
-          </Button>
-          <Button size="sm" variant="tertiary" rightIcon={<ArrowRight />}>
-            Continue
-          </Button>
-          <Button size="sm" variant="linkColor" rightIcon={<ArrowRight />}>
-            Continue
-          </Button>
+        <div className="button-size-grid">
+          {(['primary', 'secondary', 'tertiary', 'ghost'] as const).map((variant) => (
+            <div key={variant} className="demo-row demo-row--baseline">
+              {(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
+                <Button
+                  key={`${variant}-${size}`}
+                  size={size}
+                  variant={variant}
+                  rightIcon={<ArrowRight />}
+                >
+                  Button {size}
+                </Button>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -609,10 +632,13 @@ const previews: Record<string, ReactNode> = {
           <Button size="sm" variant="tertiary" iconOnly aria-label="Add">
             <Plus />
           </Button>
+          <Button size="sm" variant="ghost" iconOnly aria-label="Add">
+            <Plus />
+          </Button>
           <Button size="md" iconOnly aria-label="Add">
             <Plus />
           </Button>
-          <Button size="lg" variant="secondary" iconOnly aria-label="Add">
+          <Button size="lg" variant="tertiary" iconOnly aria-label="Add">
             <Plus />
           </Button>
         </div>
@@ -628,6 +654,9 @@ const previews: Record<string, ReactNode> = {
             Processing
           </Button>
           <Button size="sm" variant="tertiary" loading>
+            Processing
+          </Button>
+          <Button size="sm" variant="ghost" loading>
             Processing
           </Button>
           <Button size="sm" variant="split" loading>
@@ -646,6 +675,9 @@ const previews: Record<string, ReactNode> = {
             Disabled
           </Button>
           <Button size="sm" variant="tertiary" disabled>
+            Disabled
+          </Button>
+          <Button size="sm" variant="ghost" disabled>
             Disabled
           </Button>
           <Button size="sm" variant="linkColor" disabled>
@@ -697,6 +729,21 @@ const previews: Record<string, ReactNode> = {
             Delete
           </Button>
           <Button size="sm" variant="tertiary" destructive disabled>
+            Delete
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Ghost buttons destructive</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="sm" variant="ghost" destructive>
+            Delete
+          </Button>
+          <Button size="md" variant="ghost" destructive leftIcon={<Trash2 />}>
+            Delete
+          </Button>
+          <Button size="sm" variant="ghost" destructive disabled>
             Delete
           </Button>
         </div>
