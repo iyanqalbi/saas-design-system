@@ -1,10 +1,20 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import {
+  Bug,
   Copy,
   Download,
+  Eye,
+  FileText,
+  FlaskConical,
+  Folder,
+  Hash,
+  Mail,
+  Moon,
   MoreHorizontal,
   Pencil,
   Plus,
+  Rocket,
+  Search,
   Trash2,
   Inbox,
   Info,
@@ -16,6 +26,8 @@ import {
   Shirt,
   Music,
   Mic,
+  UserPlus,
+  Workflow,
 } from 'lucide-react'
 import { AmountDiff } from '../components/atoms/AmountDiff'
 import { Badge } from '../components/atoms/Badge'
@@ -23,8 +35,10 @@ import { Button } from '../components/atoms/Button'
 import { Avatar } from '../components/atoms/Avatar'
 import { Checkbox } from '../components/atoms/Checkbox'
 import { Divider } from '../components/atoms/Divider'
+import { FeaturedIcon } from '../components/atoms/FeaturedIcon'
 import { IconButton } from '../components/atoms/IconButton'
 import { Input } from '../components/atoms/Input'
+import { Kbd } from '../components/atoms/Kbd'
 import { Label } from '../components/atoms/Label'
 import { ProgressBar } from '../components/atoms/ProgressBar'
 import { Skeleton } from '../components/atoms/Skeleton'
@@ -37,6 +51,20 @@ import { Accordion } from '../components/molecules/Accordion'
 import { AlertBanner } from '../components/molecules/AlertBanner'
 import { AvatarGroup } from '../components/molecules/AvatarGroup'
 import { Breadcrumb } from '../components/molecules/Breadcrumb'
+import { ButtonGroup } from '../components/molecules/ButtonGroup'
+import { Carousel } from '../components/molecules/Carousel'
+import { ContextMenu } from '../components/molecules/ContextMenu'
+import { DocumentCard } from '../components/molecules/DocumentCard'
+import { IconStack } from '../components/molecules/IconStack'
+import { ProgressCell } from '../components/molecules/ProgressCell'
+import { RowActions } from '../components/molecules/RowActions'
+import { SectionHeader } from '../components/molecules/SectionHeader'
+import { TemplateCard } from '../components/molecules/TemplateCard'
+import { TreeView } from '../components/molecules/TreeView'
+import { TypeBadge } from '../components/molecules/TypeBadge'
+import { UpgradeCard } from '../components/molecules/UpgradeCard'
+import { UsageMeter } from '../components/molecules/UsageMeter'
+import { WorkspaceSwitcher } from '../components/molecules/WorkspaceSwitcher'
 import {
   Card,
   CardAction,
@@ -79,7 +107,10 @@ import { Tooltip } from '../components/molecules/Tooltip'
 import { UserChip } from '../components/molecules/UserChip'
 import { ActivityFeed } from '../components/organisms/ActivityFeed'
 import { AdminTopBar } from '../components/organisms/AdminTopBar'
+import { Calendar } from '../components/organisms/Calendar'
 import { ChartCard } from '../components/organisms/ChartCard'
+import { DashboardBoard } from '../components/organisms/DashboardBoard'
+import { LineChart } from '../components/organisms/LineChart'
 import { CommandPalette } from '../components/organisms/CommandPalette'
 import { DataTable } from '../components/organisms/DataTable'
 import { FilterBar } from '../components/organisms/FilterBar'
@@ -567,10 +598,279 @@ const previews: Record<string, ReactNode> = {
   ),
   'search-field': (
     <div className="demo-stack demo-stack--wide">
-      <SearchField placeholder="Search customers…" style={{ maxWidth: 280 }} />
+      <SearchField placeholder="Search customers…" shortcut="⌘F" style={{ maxWidth: 280 }} />
+      <SearchField placeholder="Jump to…" shortcut="/" style={{ maxWidth: 280 }} />
       <SearchField placeholder="Invalid query" invalid defaultValue="@@@" style={{ maxWidth: 280 }} />
-      <SearchField placeholder="Disabled" disabled defaultValue="Northwind" style={{ maxWidth: 280 }} />
     </div>
+  ),
+  kbd: (
+    <div className="demo-row">
+      <Kbd size="sm">⌘F</Kbd>
+      <Kbd>/</Kbd>
+      <Kbd>⌘K</Kbd>
+      <Kbd size="sm">Esc</Kbd>
+    </div>
+  ),
+  'type-badge': (
+    <div className="demo-row">
+      <TypeBadge icon={<Rocket size={14} />} tone="accent">
+        Feature
+      </TypeBadge>
+      <TypeBadge icon={<Bug size={14} />} tone="danger">
+        Bug
+      </TypeBadge>
+      <TypeBadge icon={<Search size={14} />} tone="info">
+        Review
+      </TypeBadge>
+      <TypeBadge icon={<FlaskConical size={14} />} tone="success">
+        Testing
+      </TypeBadge>
+    </div>
+  ),
+  'progress-cell': (
+    <div className="demo-stack demo-stack--wide" style={{ maxWidth: 220 }}>
+      <ProgressCell value={85} />
+      <ProgressCell value={55} />
+      <ProgressCell value={20} />
+    </div>
+  ),
+  'document-card': (
+    <DocumentCard
+      icon={<FileText />}
+      title="NDA Agreement"
+      description="Standard mutual NDA for vendor onboarding."
+      people={[{ name: 'Maya Chen' }, { name: 'Jordan Lee' }, { name: 'Priya Shah' }]}
+      peopleLabel="240+"
+      onShare={() => undefined}
+      onEdit={() => undefined}
+    />
+  ),
+  'template-card': (
+    <TemplateCard
+      icon={<Workflow />}
+      title="Email Support Router"
+      meta="Used 2 hours ago · Webhook"
+      status="Active"
+      statusTone="info"
+      integrations={[<Mail key="mail" size={14} />, <Hash key="hash" size={14} />]}
+      runsLabel="1,204 runs"
+    />
+  ),
+  'usage-meter': (
+    <div style={{ maxWidth: 240, width: '100%' }}>
+      <UsageMeter value={891} max={1000} label="Usage" onAction={() => undefined} />
+    </div>
+  ),
+  'upgrade-card': (
+    <UpgradeCard
+      title="Upgrade to Premium!"
+      description="Unlock advanced analytics, unlimited seats, and priority support."
+      onAction={() => undefined}
+      onDismiss={() => undefined}
+    />
+  ),
+  carousel: (
+    <Carousel title="Recent templates" className="demo-stack--wide">
+      <TemplateCard
+        icon={<Workflow />}
+        title="Email Support Router"
+        meta="Used 2 hours ago · Webhook"
+        status="Active"
+        integrations={[<Mail key="m" size={14} />]}
+        runsLabel="1,204 runs"
+      />
+      <TemplateCard
+        icon={<Workflow />}
+        title="Slack Digest"
+        meta="Used yesterday · Schedule"
+        status="Paused"
+        statusTone="neutral"
+        integrations={[<Hash key="s" size={14} />]}
+        runsLabel="482 runs"
+      />
+      <TemplateCard
+        icon={<Workflow />}
+        title="Invoice Sync"
+        meta="Used 3 days ago · Webhook"
+        status="Active"
+        integrations={[<FileText key="f" size={14} />]}
+        runsLabel="96 runs"
+      />
+    </Carousel>
+  ),
+  'section-header': (
+    <SectionHeader
+      title="Your Contacts"
+      description="Shared folders and contract packs."
+      meta={<Badge>12</Badge>}
+      actions={
+        <>
+          <SearchField placeholder="Search…" size="sm" style={{ width: 160 }} />
+          <Button size="sm" variant="ghost" leftIcon={<SlidersHorizontal size={14} />}>
+            Filter
+          </Button>
+        </>
+      }
+    />
+  ),
+  'workspace-switcher': (
+    <div className="demo-stack" style={{ maxWidth: 240 }}>
+      <WorkspaceSwitcher name="Lunor" subtitle="Contracts workspace" mark={<Moon size={16} />} onClick={() => undefined} />
+      <WorkspaceSwitcher name="Northwind Labs" subtitle="Billing" />
+    </div>
+  ),
+  'tree-view': (
+    <TreeView
+      defaultOpenIds={['company']}
+      activeId="nda"
+      onCreate={() => undefined}
+      items={[
+        {
+          id: 'company',
+          label: 'Company contracts',
+          icon: <Folder size={14} />,
+          children: [
+            { id: 'nda', label: 'NDA Agreement', icon: <FileText size={14} /> },
+            { id: 'msa', label: 'Master Service', icon: <FileText size={14} /> },
+          ],
+        },
+        {
+          id: 'onboarding',
+          label: 'Onboarding templates',
+          icon: <Folder size={14} />,
+          children: [{ id: 'welcome', label: 'Welcome pack', icon: <FileText size={14} /> }],
+        },
+      ]}
+    />
+  ),
+  'line-chart': (
+    <LineChart
+      title="Signed over time"
+      rangeControl={
+        <Select
+          label="Range"
+          defaultValue="jan-jun"
+          options={[
+            { value: 'jan-jun', label: 'Jan - Jun' },
+            { value: 'jul-dec', label: 'Jul - Dec' },
+          ]}
+        />
+      }
+      series={[
+        { id: 'signed', label: 'Signed', tone: 'primary' },
+        { id: 'sent', label: 'Sent', tone: 'muted', dashed: true },
+      ]}
+      points={[
+        { label: 'Jan', values: [40, 28] },
+        { label: 'Feb', values: [55, 36] },
+        { label: 'Mar', values: [48, 42] },
+        { label: 'Apr', values: [72, 50] },
+        { label: 'May', values: [68, 58] },
+        { label: 'Jun', values: [90, 64] },
+      ]}
+    />
+  ),
+  'featured-icon': (
+    <div className="demo-row">
+      <FeaturedIcon size="sm" tone="neutral">
+        <FileText />
+      </FeaturedIcon>
+      <FeaturedIcon size="md" tone="accent">
+        <Rocket />
+      </FeaturedIcon>
+      <FeaturedIcon size="lg" tone="success" shape="circle">
+        <Workflow />
+      </FeaturedIcon>
+      <FeaturedIcon size="xl" tone="warning">
+        <Folder />
+      </FeaturedIcon>
+      <FeaturedIcon size="md" tone="danger">
+        <Bug />
+      </FeaturedIcon>
+    </div>
+  ),
+  'button-group': (
+    <div className="demo-stack">
+      <ButtonGroup size="sm">
+        <Button size="sm" variant="outlined" leftIcon={<UserPlus size={14} />}>
+          New Member
+        </Button>
+        <Button size="sm" variant="outlined">
+          New Project
+        </Button>
+        <Button size="sm" leftIcon={<Plus size={14} />}>
+          New Task
+        </Button>
+      </ButtonGroup>
+      <ButtonGroup attached size="sm">
+        <Button size="sm" variant="outlined">
+          Day
+        </Button>
+        <Button size="sm" variant="outlined">
+          Week
+        </Button>
+        <Button size="sm" variant="outlined">
+          Month
+        </Button>
+      </ButtonGroup>
+    </div>
+  ),
+  'row-actions': (
+    <RowActions
+      onView={() => undefined}
+      onEdit={() => undefined}
+      onDelete={() => undefined}
+      moreItems={[
+        { id: 'duplicate', label: 'Duplicate', icon: <Copy />, onSelect: () => undefined },
+        { id: 'export', label: 'Export', icon: <Download />, onSelect: () => undefined },
+      ]}
+    />
+  ),
+  'icon-stack': (
+    <div className="demo-stack">
+      <IconStack
+        size="sm"
+        items={[
+          { id: 'mail', icon: <Mail size={14} />, label: 'Mail' },
+          { id: 'hash', icon: <Hash size={14} />, label: 'Slack' },
+          { id: 'file', icon: <FileText size={14} />, label: 'Docs' },
+        ]}
+      />
+      <IconStack
+        size="md"
+        max={3}
+        items={[
+          { id: 'mail', icon: <Mail size={14} />, label: 'Mail' },
+          { id: 'hash', icon: <Hash size={14} />, label: 'Slack' },
+          { id: 'file', icon: <FileText size={14} />, label: 'Docs' },
+          { id: 'folder', icon: <Folder size={14} />, label: 'Drive' },
+          { id: 'users', icon: <Users size={14} />, label: 'Teams' },
+        ]}
+      />
+    </div>
+  ),
+  'context-menu': (
+    <ContextMenu
+      items={[
+        { id: 'view', label: 'View', icon: <Eye />, onSelect: () => undefined },
+        { id: 'edit', label: 'Edit', icon: <Pencil />, onSelect: () => undefined },
+        { id: 'sep', label: '', separator: true },
+        { id: 'delete', label: 'Delete', icon: <Trash2 />, danger: true, onSelect: () => undefined },
+      ]}
+    >
+      <div
+        style={{
+          width: 220,
+          padding: 16,
+          borderRadius: 12,
+          background: 'var(--color-wash)',
+          color: 'var(--color-muted)',
+          fontSize: 13,
+        }}
+      >
+        Right-click this area
+      </div>
+    </ContextMenu>
   ),
   'stat-metric': <StatMetric label="Active seats" value="1,284" delta="+86" />,
   'form-field': (
@@ -882,33 +1182,117 @@ const previews: Record<string, ReactNode> = {
   ),
   sidebar: (
     <div className="sidebar-preview">
-      <Sidebar />
+      <Sidebar
+        brand={
+          <WorkspaceSwitcher
+            name="Lunor"
+            subtitle="Contracts"
+            mark={<Moon size={16} />}
+            onClick={() => undefined}
+          />
+        }
+        header={<SearchField placeholder="Search…" shortcut="/" size="sm" />}
+        afterNav={
+          <TreeView
+            createLabel="Create folder"
+            onCreate={() => undefined}
+            items={[
+              {
+                id: 'company',
+                label: 'Company contracts',
+                icon: <Folder size={14} />,
+                children: [{ id: 'nda', label: 'NDA Agreement', icon: <FileText size={14} /> }],
+              },
+            ]}
+          />
+        }
+        footer={
+          <>
+            <UsageMeter value={891} max={1000} onAction={() => undefined} />
+            <UserChip name="Maya Chen" role="Admin" onClick={() => undefined} />
+          </>
+        }
+      />
       <Sidebar defaultCompact defaultActiveId="dashboard" defaultOpenIds={[]} />
     </div>
   ),
   'admin-topbar': <AdminTopBar title="Customers" />,
   'data-table': (
-    <DataTable
-      rows={[
-        {
-          id: '1',
-          customer: 'Northwind',
-          email: 'ops@northwind.io',
-          plan: 'Growth',
-          amount: '$890',
-          status: 'Paid',
-          statusTone: 'success',
-        },
-        {
-          id: '2',
-          customer: 'Harbor',
-          email: 'finance@harbor.co',
-          plan: 'Starter',
-          amount: '$120',
-          status: 'Open',
-          statusTone: 'warning',
-        },
+    <div className="demo-stack demo-stack--wide">
+      <DataTable
+        rows={[
+          {
+            id: '1',
+            customer: 'Northwind',
+            email: 'ops@northwind.io',
+            plan: 'Growth',
+            amount: '$890',
+            status: 'Paid',
+            statusTone: 'success',
+          },
+          {
+            id: '2',
+            customer: 'Harbor',
+            email: 'finance@harbor.co',
+            plan: 'Starter',
+            amount: '$120',
+            status: 'Open',
+            statusTone: 'warning',
+          },
+        ]}
+      />
+      <DataTable
+        variant="tasks"
+        title="All tasks"
+        subtitle="Current sprint"
+        rows={[
+          {
+            id: 't1',
+            name: 'Refactor login flow',
+            people: [{ name: 'Maya Chen' }, { name: 'Jordan Lee' }],
+            type: 'Feature',
+            typeIcon: <Rocket size={14} />,
+            typeTone: 'accent',
+            timeline: 'Jun 24 – Jul 3',
+            priority: 'High',
+            priorityTone: 'danger',
+            progress: 72,
+            onView: () => undefined,
+            onEdit: () => undefined,
+          },
+          {
+            id: 't2',
+            name: 'Fix avatar stacking',
+            people: [{ name: 'Priya Shah' }],
+            type: 'Bug',
+            typeIcon: <Bug size={14} />,
+            typeTone: 'danger',
+            timeline: 'Jun 28 – Jul 1',
+            priority: 'Medium',
+            priorityTone: 'warning',
+            progress: 40,
+            onView: () => undefined,
+            onDelete: () => undefined,
+          },
+        ]}
+      />
+    </div>
+  ),
+  calendar: (
+    <Calendar
+      className="demo-stack--wide"
+      events={[
+        { id: '1', title: 'Sprint review', date: '2026-10-08', tone: 'accent' },
+        { id: '2', title: 'Design sync', date: '2026-10-08', tone: 'success' },
+        { id: '3', title: 'Launch', date: '2026-10-15', tone: 'warning' },
+        { id: '4', title: 'Retro', date: '2026-10-22', tone: 'neutral' },
       ]}
+      defaultMonth={new Date(2026, 9, 1)}
+      actions={
+        <Button size="sm" variant="outlined" leftIcon={<Plus size={14} />}>
+          Add event
+        </Button>
+      }
     />
   ),
   'stats-row': <StatsRow />,
@@ -919,6 +1303,11 @@ const previews: Record<string, ReactNode> = {
       <Text as="span" variant="muted">
         Full shell on Home
       </Text>
+    </div>
+  ),
+  'dashboard-board': (
+    <div className="demo-stack--wide" style={{ width: '100%', overflow: 'auto' }}>
+      <DashboardBoard />
     </div>
   ),
   introduction: (

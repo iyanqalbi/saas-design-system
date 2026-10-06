@@ -1,0 +1,77 @@
+.featured-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.featured-icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+.featured-icon--sm {
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+}
+
+.featured-icon--md {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.featured-icon--lg {
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+}
+
+.featured-icon--xl {
+  width: 56px;
+  height: 56px;
+  font-size: 28px;
+}
+
+.featured-icon--rounded {
+  border-radius: var(--radius-buttons);
+}
+
+.featured-icon--square {
+  border-radius: var(--radius-inputs);
+}
+
+.featured-icon--circle {
+  border-radius: var(--radius-avatars);
+}
+
+.featured-icon--neutral {
+  background: var(--color-wash);
+  color: var(--color-ink);
+}
+
+.featured-icon--accent {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.featured-icon--success {
+  background: #eaf7ef;
+  color: #1f7a45;
+}
+
+.featured-icon--warning {
+  background: #fff4e5;
+  color: #9a5b00;
+}
+
+.featured-icon--danger {
+  background: #ffe8ec;
+  color: var(--color-danger-strong);
+}
+
+.featured-icon--info {
+  background: #f3f6ff;
+  color: #2a4a9b;
+}

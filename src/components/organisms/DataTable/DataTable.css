@@ -6,11 +6,23 @@
 
 .data-table__header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--spacing-12);
   padding: var(--spacing-16) var(--spacing-20);
   border-bottom: 1px solid var(--color-border);
+}
+
+.data-table__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.data-table__heading h3,
+.data-table__heading p {
+  margin: 0;
 }
 
 .data-table__scroll {
@@ -23,18 +35,24 @@
   min-width: 560px;
 }
 
+.data-table--tasks table {
+  min-width: 920px;
+}
+
 .data-table th,
 .data-table td {
   padding: 14px 20px;
   text-align: left;
   font-size: var(--text-body);
   border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
 }
 
 .data-table th {
   color: var(--color-muted);
   font-weight: var(--font-weight-medium);
   background: var(--color-wash);
+  white-space: nowrap;
 }
 
 .data-table tr:last-child td {
@@ -47,6 +65,13 @@
   gap: 2px;
 }
 
-.data-table__email {
+.data-table__email,
+.data-table__timeline {
   font-size: 12px !important;
+  white-space: nowrap;
+}
+
+.data-table--tasks td:last-child {
+  width: 1%;
+  white-space: nowrap;
 }

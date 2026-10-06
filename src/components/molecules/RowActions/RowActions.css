@@ -1,0 +1,13 @@
+.row-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.row-actions .icon-btn {
+  color: var(--color-muted);
+}
+
+.row-actions .icon-btn:hover:not(:disabled) {
+  color: var(--color-ink);
+}

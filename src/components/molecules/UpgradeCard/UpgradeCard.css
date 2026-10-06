@@ -1,0 +1,27 @@
+.upgrade-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  padding: var(--spacing-16);
+  background: var(--surface-card);
+  border-radius: var(--radius-cards);
+  box-shadow: var(--shadow-subtle);
+}
+
+.upgrade-card__dismiss {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.upgrade-card__title,
+.upgrade-card__description {
+  margin: 0;
+  padding-right: var(--spacing-24);
+}
+
+.upgrade-card__description {
+  font-size: var(--text-caption) !important;
+  margin-bottom: var(--spacing-4);
+}

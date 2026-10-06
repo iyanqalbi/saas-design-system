@@ -1,0 +1,30 @@
+.usage-meter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  padding: var(--spacing-12);
+  background: var(--color-wash);
+  border-radius: var(--radius-cards);
+}
+
+.usage-meter__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-8);
+}
+
+.usage-meter__label,
+.usage-meter__count,
+.usage-meter__hint {
+  margin: 0;
+}
+
+.usage-meter__label,
+.usage-meter__hint {
+  font-size: var(--text-caption) !important;
+}
+
+.usage-meter__count {
+  font-variant-numeric: tabular-nums;
+}

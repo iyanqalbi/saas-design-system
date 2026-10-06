@@ -1,6 +1,6 @@
 import './ProgressBar.css'
 
-export type ProgressBarTone = 'ink' | 'accent' | 'success' | 'warning'
+export type ProgressBarTone = 'ink' | 'accent' | 'success' | 'warning' | 'danger'
 
 export interface ProgressBarProps {
   value: number

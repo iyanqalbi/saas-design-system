@@ -64,3 +64,7 @@
 .progress__fill--warning {
   background: #c47a00;
 }
+
+.progress__fill--danger {
+  background: var(--color-danger);
+}

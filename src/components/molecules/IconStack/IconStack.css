@@ -1,0 +1,71 @@
+.icon-stack {
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon-stack__item,
+.icon-stack__overflow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-avatars);
+  background: var(--color-white);
+  box-shadow: 0 0 0 1.5px var(--color-white);
+  color: var(--color-muted);
+  overflow: hidden;
+}
+
+.icon-stack__item {
+  margin-left: -6px;
+  background: var(--color-wash);
+}
+
+.icon-stack__item:first-child {
+  margin-left: 0;
+}
+
+.icon-stack__overflow {
+  margin-left: -6px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-ink);
+  background: var(--color-wash);
+}
+
+.icon-stack__item svg,
+.icon-stack__item img {
+  width: 14px;
+  height: 14px;
+}
+
+.icon-stack--sm .icon-stack__item,
+.icon-stack--sm .icon-stack__overflow {
+  width: 22px;
+  height: 22px;
+  font-size: 9px;
+}
+
+.icon-stack--sm .icon-stack__item svg,
+.icon-stack--sm .icon-stack__item img {
+  width: 12px;
+  height: 12px;
+}
+
+.icon-stack--md .icon-stack__item,
+.icon-stack--md .icon-stack__overflow {
+  width: 26px;
+  height: 26px;
+  font-size: 10px;
+}
+
+.icon-stack--lg .icon-stack__item,
+.icon-stack--lg .icon-stack__overflow {
+  width: 32px;
+  height: 32px;
+  font-size: 11px;
+}
+
+.icon-stack--lg .icon-stack__item svg,
+.icon-stack--lg .icon-stack__item img {
+  width: 16px;
+  height: 16px;
+}

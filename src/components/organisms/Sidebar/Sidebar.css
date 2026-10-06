@@ -25,6 +25,32 @@
   padding-inline: var(--spacing-8);
 }
 
+.sidebar__brand > :not(.sidebar__collapse) {
+  min-width: 0;
+  flex: 1;
+}
+
+.sidebar__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.sidebar__after-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.sidebar__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  margin-top: auto;
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--color-border);
+}
+
 .sidebar--compact .sidebar__brand {
   justify-content: center;
   padding-inline: 0;

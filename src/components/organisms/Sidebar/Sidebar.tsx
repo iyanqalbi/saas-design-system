@@ -29,7 +29,7 @@ type SidebarItem = {
   children?: SidebarChild[]
 }
 
-const items: SidebarItem[] = [
+const defaultItems: SidebarItem[] = [
   { id: 'dashboard', label: 'Dashboard', icon: <Home /> },
   {
     id: 'audience',
@@ -77,6 +77,16 @@ export interface SidebarProps {
   defaultActiveId?: string
   defaultOpenIds?: string[]
   onCompactChange?: (compact: boolean) => void
+  /** Replaces the default brand mark in the header. */
+  brand?: ReactNode
+  /** Content below the brand (search, workspace switcher, etc.). */
+  header?: ReactNode
+  /** Content below navigation (folders, lists). */
+  afterNav?: ReactNode
+  /** Sticky bottom area (usage meter, upgrade card, user chip). */
+  footer?: ReactNode
+  /** Hide the floating collapse control. */
+  hideCollapse?: boolean
 }
 
 export function Sidebar({
@@ -86,6 +96,11 @@ export function Sidebar({
   defaultActiveId = 'refunds',
   defaultOpenIds = ['income'],
   onCompactChange,
+  brand,
+  header,
+  afterNav,
+  footer,
+  hideCollapse = false,
 }: SidebarProps) {
   const [uncontrolledCompact, setUncontrolledCompact] = useState(defaultCompact)
   const isCompactControlled = compactProp !== undefined
@@ -107,19 +122,23 @@ export function Sidebar({
   return (
     <aside className={`sidebar ${compact ? 'sidebar--compact' : ''} ${className}`.trim()}>
       <div className="sidebar__brand">
-        <span className="sidebar__mark" aria-hidden="true" />
-        <button
-          type="button"
-          className="sidebar__collapse"
-          aria-label={compact ? 'Expand sidebar' : 'Collapse sidebar'}
-          onClick={() => setCompact(!compact)}
-        >
-          {compact ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
-        </button>
+        {brand ?? <span className="sidebar__mark" aria-hidden="true" />}
+        {!hideCollapse ? (
+          <button
+            type="button"
+            className="sidebar__collapse"
+            aria-label={compact ? 'Expand sidebar' : 'Collapse sidebar'}
+            onClick={() => setCompact(!compact)}
+          >
+            {compact ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+          </button>
+        ) : null}
       </div>
 
+      {header && !compact ? <div className="sidebar__header">{header}</div> : null}
+
       <nav className="sidebar__nav" aria-label="Workspace">
-        {items.map((item) => {
+        {defaultItems.map((item) => {
           const hasChildren = Boolean(item.children?.length)
           const open = !compact && hasChildren && openIds.includes(item.id)
           const childActive = item.children?.some((child) => child.id === activeId)
@@ -199,6 +218,10 @@ export function Sidebar({
           )
         })}
       </nav>
+
+      {afterNav && !compact ? <div className="sidebar__after-nav">{afterNav}</div> : null}
+
+      {footer && !compact ? <div className="sidebar__footer">{footer}</div> : null}
     </aside>
   )
 }

@@ -37,6 +37,33 @@
   padding-left: 44px;
 }
 
+.search-field--with-shortcut.search-field--sm .search-field__input {
+  padding-right: 42px;
+}
+
+.search-field--with-shortcut.search-field--md .search-field__input {
+  padding-right: 48px;
+}
+
+.search-field--with-shortcut.search-field--lg .search-field__input {
+  padding-right: 52px;
+}
+
+.search-field__shortcut {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.search-field--lg .search-field__shortcut {
+  right: 12px;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
