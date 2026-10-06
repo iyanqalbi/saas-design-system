@@ -1,5 +1,5 @@
 /**
- * Design tokens — quiet white gallery with indigo primary actions
+ * Design tokens — soft wash canvas with indigo primary actions
  */
 :root {
   /* Brand / actions — matches Button contained */
@@ -10,45 +10,45 @@
   --color-primary-soft-pressed: #dddfff;
 
   /* Danger */
-  --color-rausch: #ff385c;
-  --color-rausch-600: #e00b41;
+  --color-danger: #ed3b5b;
+  --color-danger-strong: #d10f45;
 
-  --color-hof: #222222;
-  --color-foggy: #6a6a6a;
-  --color-grey-500: #c1c1c1;
-  --color-bebe: #ebebeb;
-  --color-deco: #dddddd;
-  --color-faint: #f7f7f7;
+  --color-ink: #1c1c1c;
+  --color-muted: #656565;
+  --color-grey-500: #bdbdbd;
+  --color-border: #e8e8e8;
+  --color-soft: #d9d9d9;
+  --color-wash: #f5f5f5;
   --color-white: #ffffff;
   --color-disabled-bg: #e8e8e8;
   --color-disabled-fg: #a0a0a0;
 
   /* Surfaces */
-  --surface-canvas: #f7f7f7;
+  --surface-canvas: #f5f5f5;
   --surface-card: #ffffff;
-  --surface-muted: #dddddd;
-  --surface-inverse: #222222;
+  --surface-muted: #d9d9d9;
+  --surface-inverse: #1c1c1c;
 
-  /* Typography — DM Sans as Airbnb Cereal substitute */
-  --font-sans: 'DM Sans', 'Circular', ui-sans-serif, system-ui, sans-serif;
+  /* Typography — product scale (15 body / 24–32 headings), not gallery Minor Second */
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
 
-  --text-caption: 11px;
-  --leading-caption: 1.18;
-  --text-body: 14px;
-  --leading-body: 1.43;
-  --text-ui: 16px;
-  --leading-ui: 1.25;
-  --text-subheading: 20px;
-  --leading-subheading: 1.2;
-  --tracking-subheading: -0.18px;
-  --text-heading-sm: 22px;
-  --leading-heading-sm: 1.18;
-  --tracking-heading-sm: -0.44px;
-  --text-heading: 28px;
-  --leading-heading: 1.43;
-  --text-display: 48px;
-  --leading-display: 1.1;
-  --tracking-display: -0.03em;
+  --text-caption: 12px;
+  --leading-caption: 1.33;
+  --text-body: 15px;
+  --leading-body: 1.5;
+  --text-ui: 15px;
+  --leading-ui: 1.4;
+  --text-subheading: 18px;
+  --leading-subheading: 1.3;
+  --tracking-subheading: -0.01em;
+  --text-heading-sm: 24px;
+  --leading-heading-sm: 1.25;
+  --tracking-heading-sm: -0.015em;
+  --text-heading: 32px;
+  --leading-heading: 1.25;
+  --text-display: 40px;
+  --leading-display: 1.12;
+  --tracking-display: -0.02em;
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -71,20 +71,20 @@
   --spacing-80: 80px;
 
   /* Layout */
-  --page-max-width: 1440px;
-  --section-gap: 48px;
-  --card-padding: 12px;
+  --page-max-width: 1280px;
+  --section-gap: 56px;
+  --card-padding: 16px;
   --element-gap: 12px;
   --page-padding: 40px;
 
-  /* Radius */
+  /* Radius — rounded admin (not pill CTAs) */
   --radius-inputs: 8px;
   --radius-ghost: 8px;
   --radius-cards: 12px;
   --radius-badges: 9999px;
-  --radius-buttons: 9999px;
+  --radius-buttons: 10px;
   --radius-avatars: 9999px;
-  --radius-search: 9999px;
+  --radius-search: 10px;
 
   /* Shadows */
   --shadow-subtle: rgba(0, 0, 0, 0.02) 0px 0px 0px 1px,

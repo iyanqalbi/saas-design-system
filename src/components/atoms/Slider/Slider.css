@@ -15,7 +15,7 @@
 .slider__label,
 .slider__value {
   font-weight: var(--font-weight-medium);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .slider__value {
@@ -60,7 +60,7 @@
   position: absolute;
   inset-inline: 0;
   border-radius: var(--radius-badges);
-  background: var(--color-bebe);
+  background: var(--color-border);
   pointer-events: none;
 }
 
@@ -79,7 +79,7 @@
 .slider__fill {
   height: 100%;
   border-radius: inherit;
-  background: var(--color-hof);
+  background: var(--color-ink);
 }
 
 .slider__input {
@@ -129,7 +129,7 @@
   appearance: none;
   border-radius: var(--radius-avatars);
   background: var(--color-white);
-  border: 2px solid var(--color-hof);
+  border: 2px solid var(--color-ink);
   box-shadow: var(--shadow-subtle);
   transition: transform var(--duration-fast) var(--ease-out);
 }
@@ -155,7 +155,7 @@
 .slider__input::-moz-range-thumb {
   border-radius: var(--radius-avatars);
   background: var(--color-white);
-  border: 2px solid var(--color-hof);
+  border: 2px solid var(--color-ink);
   box-shadow: var(--shadow-subtle);
 }
 

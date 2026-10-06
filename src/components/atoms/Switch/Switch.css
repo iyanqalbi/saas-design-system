@@ -17,7 +17,7 @@
 
 .switch__label {
   font-weight: var(--font-weight-medium);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .switch--sm .switch__label {
@@ -33,7 +33,7 @@
 }
 
 .switch__description {
-  color: var(--color-foggy);
+  color: var(--color-muted);
   line-height: 1.4;
 }
 
@@ -60,7 +60,7 @@
 .switch__track {
   display: block;
   border-radius: var(--radius-badges);
-  background: var(--color-deco);
+  background: var(--color-soft);
   transition: background var(--duration-fast) var(--ease-out);
 }
 
@@ -106,7 +106,7 @@
 }
 
 .switch__input:checked + .switch__track {
-  background: var(--color-hof);
+  background: var(--color-ink);
 }
 
 .switch--sm .switch__input:checked + .switch__track .switch__thumb {
@@ -122,7 +122,7 @@
 }
 
 .switch__input:focus-visible + .switch__track {
-  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-hof);
+  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-ink);
 }
 
 .switch--disabled {

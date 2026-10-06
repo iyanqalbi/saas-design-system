@@ -12,9 +12,9 @@
 }
 
 .amount-diff--danger {
-  color: var(--color-rausch-600);
+  color: var(--color-danger-strong);
 }
 
 .amount-diff--neutral {
-  color: var(--color-foggy);
+  color: var(--color-muted);
 }

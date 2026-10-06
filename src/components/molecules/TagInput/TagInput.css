@@ -8,7 +8,7 @@
 .tag-input__label {
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .tag-input__control {
@@ -16,7 +16,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 6px;
-  border: 1px solid var(--color-bebe);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-inputs);
   background: var(--color-white);
   transition:
@@ -40,8 +40,8 @@
 }
 
 .tag-input__control:focus-within {
-  border-color: var(--color-hof);
-  box-shadow: 0 0 0 1px var(--color-hof);
+  border-color: var(--color-ink);
+  box-shadow: 0 0 0 1px var(--color-ink);
 }
 
 .tag-input__chip {
@@ -50,14 +50,14 @@
   gap: 4px;
   padding: 0 8px;
   border-radius: var(--radius-badges);
-  background: var(--color-faint);
-  color: var(--color-hof);
+  background: var(--color-wash);
+  color: var(--color-ink);
   font-weight: var(--font-weight-medium);
 }
 
 .tag-input--sm .tag-input__chip {
   min-height: 20px;
-  font-size: 11px;
+  font-size: var(--text-caption);
 }
 
 .tag-input--md .tag-input__chip {
@@ -79,14 +79,14 @@
   border: none;
   border-radius: var(--radius-avatars);
   background: transparent;
-  color: var(--color-foggy);
+  color: var(--color-muted);
   cursor: pointer;
   padding: 0;
 }
 
 .tag-input__remove:hover {
-  background: var(--color-bebe);
-  color: var(--color-hof);
+  background: var(--color-border);
+  color: var(--color-ink);
 }
 
 .tag-input__field {
@@ -95,7 +95,7 @@
   border: none;
   outline: none;
   background: transparent;
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .tag-input--sm .tag-input__field {
@@ -115,12 +115,12 @@
 }
 
 .tag-input--invalid .tag-input__control {
-  border-color: var(--color-rausch);
+  border-color: var(--color-danger);
 }
 
 .tag-input--invalid .tag-input__control:focus-within {
-  border-color: var(--color-rausch);
-  box-shadow: 0 0 0 1px var(--color-rausch);
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 1px var(--color-danger);
 }
 
 .tag-input--disabled {
@@ -128,7 +128,7 @@
 }
 
 .tag-input--disabled .tag-input__control {
-  background: var(--color-faint);
+  background: var(--color-wash);
   cursor: not-allowed;
 }
 

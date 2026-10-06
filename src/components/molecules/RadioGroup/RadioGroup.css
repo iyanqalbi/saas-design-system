@@ -9,7 +9,7 @@
   margin-bottom: 10px;
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .radio-group__list {
@@ -23,7 +23,7 @@
   align-items: flex-start;
   gap: 10px;
   padding: 12px;
-  border: 1px solid var(--color-bebe);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-cards);
   background: var(--color-white);
   cursor: pointer;
@@ -33,13 +33,13 @@
 }
 
 .radio-group__item:hover:not(.radio-group__item--disabled) {
-  border-color: var(--color-deco);
-  background: var(--color-faint);
+  border-color: var(--color-soft);
+  background: var(--color-wash);
 }
 
 .radio-group__item--checked {
-  border-color: var(--color-hof);
-  box-shadow: 0 0 0 1px var(--color-hof);
+  border-color: var(--color-ink);
+  box-shadow: 0 0 0 1px var(--color-ink);
 }
 
 .radio-group__item--disabled {
@@ -57,7 +57,7 @@
   width: 18px;
   height: 18px;
   margin-top: 1px;
-  border: 1.5px solid var(--color-foggy);
+  border: 1.5px solid var(--color-muted);
   border-radius: var(--radius-avatars);
   background: var(--color-white);
   flex-shrink: 0;
@@ -69,13 +69,13 @@
   position: absolute;
   inset: 3px;
   border-radius: inherit;
-  background: var(--color-hof);
+  background: var(--color-ink);
   transform: scale(0);
   transition: transform var(--duration-fast) var(--ease-out);
 }
 
 .radio-group__input:checked + .radio-group__control {
-  border-color: var(--color-hof);
+  border-color: var(--color-ink);
 }
 
 .radio-group__input:checked + .radio-group__control::after {
@@ -83,7 +83,7 @@
 }
 
 .radio-group__input:focus-visible + .radio-group__control {
-  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-hof);
+  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-ink);
 }
 
 .radio-group__copy {
@@ -96,11 +96,11 @@
 .radio-group__label {
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .radio-group__description {
   font-size: 13px;
-  color: var(--color-foggy);
+  color: var(--color-muted);
   line-height: 1.4;
 }

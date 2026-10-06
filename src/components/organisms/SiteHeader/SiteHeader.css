@@ -4,7 +4,7 @@
   z-index: 40;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-bebe);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .site-header__inner {
@@ -44,15 +44,15 @@
 .site-header__link {
   padding: 8px 14px;
   border-radius: var(--radius-badges);
-  color: var(--color-foggy);
+  color: var(--color-muted);
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
 }
 
 .site-header__link:hover,
 .site-header__link--active {
-  color: var(--color-hof);
-  background: var(--color-faint);
+  color: var(--color-ink);
+  background: var(--color-wash);
 }
 
 .site-header__actions {
@@ -79,7 +79,7 @@
 
 .site-header__drawer-link {
   padding: 12px 0;
-  border-bottom: 1px solid var(--color-bebe);
+  border-bottom: 1px solid var(--color-border);
   font-weight: var(--font-weight-medium);
 }
 

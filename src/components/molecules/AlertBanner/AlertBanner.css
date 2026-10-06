@@ -54,9 +54,9 @@
 
 .alert--danger {
   background: #ffe8ec;
-  color: var(--color-rausch-600);
+  color: var(--color-danger-strong);
 }
 
 .alert--danger .alert__icon {
-  color: var(--color-rausch);
+  color: var(--color-danger);
 }

@@ -919,8 +919,8 @@ const previews: Record<string, ReactNode> = {
   introduction: (
     <div className="demo-stack demo-stack--wide">
       <Text as="p" variant="muted">
-        Admin and dashboard building blocks organized like a product catalog. Tokens follow a quiet
-        gallery system — Hof ink, Faint canvas, indigo primary.
+        Admin and dashboard building blocks organized like a product catalog. Tokens use ink on a soft
+        wash canvas, with indigo as the primary action color.
       </Text>
     </div>
   ),
@@ -928,10 +928,10 @@ const previews: Record<string, ReactNode> = {
     <div className="token-swatches token-swatches--preview">
       {[
         ['Primary', '#5b5ff7'],
-        ['Hof', '#222222'],
-        ['Foggy', '#6a6a6a'],
-        ['Bebe', '#ebebeb'],
-        ['Faint', '#f7f7f7'],
+        ['Ink', '#1c1c1c'],
+        ['Muted', '#656565'],
+        ['Border', '#e8e8e8'],
+        ['Wash', '#f5f5f5'],
         ['White', '#ffffff'],
       ].map(([name, value]) => (
         <div key={name} className="token-swatch">
@@ -949,7 +949,7 @@ const previews: Record<string, ReactNode> = {
   typography: (
     <div className="demo-stack demo-stack--wide">
       <Text as="p" variant="body">
-        DM Sans · 14px body · 22px section titles · 12px cards · pill controls
+        DM Sans · 15px body · 24px section titles · 16px cards · rounded controls
       </Text>
       <div className="demo-row">
         <Skeleton width={120} height={12} />
@@ -998,7 +998,7 @@ const extraMeta: Record<
 > = {
   introduction: {
     name: 'Introduction',
-    description: 'How the kit is organized and what the gallery system is for.',
+    description: 'How the kit is organized and what the token system is for.',
     layer: 'Docs',
     category: 'Documentation',
     tags: ['start'],

@@ -1,6 +1,6 @@
 # SaasDS
 
-Website and React component kit for SaaS admin templates — structured with [Atomic Design](https://atomicdesign.bradfrost.com/) and styled with [Refero gallery tokens](https://styles.refero.design/style/c2325884-4391-4688-85cd-e143f5107517) (quiet white canvas + Rausch accent).
+Website and React component kit for SaaS admin templates — structured with [Atomic Design](https://atomicdesign.bradfrost.com/) and quiet indigo-forward design tokens.
 
 ## Pages
 

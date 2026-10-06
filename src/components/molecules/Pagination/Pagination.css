@@ -32,7 +32,7 @@
   border: none;
   border-radius: var(--radius-buttons);
   background: transparent;
-  color: var(--color-foggy);
+  color: var(--color-muted);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
@@ -59,12 +59,12 @@
 }
 
 .pagination__page:hover {
-  background: var(--color-faint);
-  color: var(--color-hof);
+  background: var(--color-wash);
+  color: var(--color-ink);
 }
 
 .pagination__page--active {
-  background: var(--color-hof);
+  background: var(--color-ink);
   color: var(--color-white);
 }
 
@@ -79,7 +79,7 @@
 }
 
 .pagination--sm .pagination__ellipsis {
-  font-size: 11px !important;
+  font-size: var(--text-caption) !important;
 }
 
 .pagination--lg .pagination__ellipsis {

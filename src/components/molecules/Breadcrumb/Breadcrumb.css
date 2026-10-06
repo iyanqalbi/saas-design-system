@@ -20,15 +20,15 @@
 }
 
 .breadcrumb__link {
-  color: var(--color-foggy);
+  color: var(--color-muted);
   font-weight: var(--font-weight-medium);
 }
 
 .breadcrumb__link:hover {
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .breadcrumb__current {
-  color: var(--color-hof);
+  color: var(--color-ink);
   font-weight: var(--font-weight-medium);
 }

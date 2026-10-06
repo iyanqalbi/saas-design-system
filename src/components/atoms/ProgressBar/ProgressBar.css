@@ -15,19 +15,19 @@
 .progress__label {
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .progress__value {
   font-size: 12px;
   font-weight: var(--font-weight-medium);
-  color: var(--color-foggy);
+  color: var(--color-muted);
 }
 
 .progress__track {
   width: 100%;
   overflow: hidden;
-  background: var(--color-bebe);
+  background: var(--color-border);
   border-radius: var(--radius-badges);
 }
 
@@ -49,8 +49,8 @@
   transition: width var(--duration-base) var(--ease-out);
 }
 
-.progress__fill--hof {
-  background: var(--color-hof);
+.progress__fill--ink {
+  background: var(--color-ink);
 }
 
 .progress__fill--accent {

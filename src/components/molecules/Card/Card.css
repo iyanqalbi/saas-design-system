@@ -18,14 +18,14 @@
   margin: 0;
   font-size: var(--text-body);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-hof);
+  color: var(--color-ink);
   line-height: var(--leading-body);
 }
 
 .card__description {
   margin: 4px 0 0;
   font-size: var(--text-body);
-  color: var(--color-foggy);
+  color: var(--color-muted);
   line-height: var(--leading-body);
 }
 

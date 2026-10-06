@@ -11,7 +11,7 @@ import './TemplatesPage.css'
 
 const includes = [
   'Vite + React + TypeScript starter',
-  'Refero-aligned design tokens (CSS variables)',
+  'CSS design tokens (variables)',
   'Atomic folder structure (atoms / molecules / organisms)',
   'Sample Button, Badge, and StatMetric components',
   'DM Sans typography wiring',

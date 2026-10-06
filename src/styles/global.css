@@ -17,7 +17,7 @@ body {
   font-size: var(--text-body);
   font-weight: var(--font-weight-regular);
   line-height: var(--leading-body);
-  color: var(--color-hof);
+  color: var(--color-ink);
   background: var(--surface-canvas);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -48,7 +48,7 @@ svg {
 
 ::selection {
   background: color-mix(in srgb, var(--color-primary) 22%, white);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .page-shell {

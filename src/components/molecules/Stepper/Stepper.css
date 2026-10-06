@@ -29,18 +29,18 @@
   justify-content: center;
   font-size: 12px;
   font-weight: var(--font-weight-semibold);
-  background: var(--color-faint);
-  color: var(--color-foggy);
+  background: var(--color-wash);
+  color: var(--color-muted);
   z-index: 1;
 }
 
 .stepper__item--current .stepper__indicator {
-  background: var(--color-hof);
+  background: var(--color-ink);
   color: var(--color-white);
 }
 
 .stepper__item--complete .stepper__indicator {
-  background: var(--color-hof);
+  background: var(--color-ink);
   color: var(--color-white);
 }
 
@@ -54,16 +54,16 @@
 .stepper__label {
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .stepper__item--upcoming .stepper__label {
-  color: var(--color-foggy);
+  color: var(--color-muted);
 }
 
 .stepper__description {
   font-size: 13px;
-  color: var(--color-foggy);
+  color: var(--color-muted);
 }
 
 .stepper__connector {
@@ -72,11 +72,11 @@
   top: 28px;
   bottom: 0;
   width: 2px;
-  background: var(--color-bebe);
+  background: var(--color-border);
 }
 
 .stepper__item--complete .stepper__connector {
-  background: var(--color-hof);
+  background: var(--color-ink);
 }
 
 @media (min-width: 720px) {

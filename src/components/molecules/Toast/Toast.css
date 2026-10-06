@@ -41,7 +41,7 @@
 }
 
 .toast--danger .toast__icon {
-  color: var(--color-rausch);
+  color: var(--color-danger);
 }
 
 .toast-viewport {

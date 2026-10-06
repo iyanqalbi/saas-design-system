@@ -46,7 +46,7 @@
   justify-content: space-between;
   gap: var(--spacing-12);
   padding: var(--spacing-20);
-  border-bottom: 1px solid var(--color-bebe);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .dialog__description {
@@ -67,7 +67,7 @@
   flex-wrap: wrap;
   gap: var(--spacing-8);
   padding: var(--spacing-16) var(--spacing-20);
-  border-top: 1px solid var(--color-bebe);
+  border-top: 1px solid var(--color-border);
 }
 
 @keyframes dialog-fade {

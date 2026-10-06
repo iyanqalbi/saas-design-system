@@ -4,15 +4,15 @@
   justify-content: center;
   overflow: hidden;
   border-radius: var(--radius-avatars);
-  background: var(--color-bebe);
-  color: var(--color-hof);
+  background: var(--color-border);
+  color: var(--color-ink);
   flex-shrink: 0;
 }
 
 .avatar--sm {
   width: 28px;
   height: 28px;
-  font-size: 11px;
+  font-size: var(--text-caption);
 }
 
 .avatar--md {
@@ -24,7 +24,7 @@
 .avatar--lg {
   width: 48px;
   height: 48px;
-  font-size: 14px;
+  font-size: var(--text-body);
 }
 
 .avatar__img {

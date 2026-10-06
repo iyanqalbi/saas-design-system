@@ -133,12 +133,15 @@ function DocsGroup({
             const Icon = item.icon ? iconMap[item.icon] : null
             const active = item.id === activeId
 
+            const soon = item.previewIds.length === 0
+
             return (
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`docs-sidebar__item ${active ? 'docs-sidebar__item--active' : ''}`}
+                className={`docs-sidebar__item ${active ? 'docs-sidebar__item--active' : ''} ${soon ? 'docs-sidebar__item--soon' : ''}`.trim()}
                 aria-current={active ? 'page' : undefined}
+                aria-label={soon ? `${item.label}, soon` : undefined}
                 onClick={(event) => {
                   event.preventDefault()
                   onSelect(item)
@@ -149,7 +152,12 @@ function DocsGroup({
                     <Icon size={16} strokeWidth={1.8} />
                   </span>
                 ) : null}
-                <span>{item.label}</span>
+                <span className="docs-sidebar__label">{item.label}</span>
+                {soon ? (
+                  <span className="docs-sidebar__soon" aria-hidden="true">
+                    Soon
+                  </span>
+                ) : null}
               </a>
             )
           })}

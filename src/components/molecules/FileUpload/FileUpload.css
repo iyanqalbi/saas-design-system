@@ -11,9 +11,9 @@
   align-items: center;
   gap: 8px;
   padding: 24px 16px;
-  border: 1.5px dashed var(--color-bebe);
+  border: 1.5px dashed var(--color-border);
   border-radius: var(--radius-cards);
-  background: var(--color-faint);
+  background: var(--color-wash);
   text-align: center;
   transition:
     border-color var(--duration-fast) var(--ease-out),
@@ -21,7 +21,7 @@
 }
 
 .file-upload__dropzone--active {
-  border-color: var(--color-hof);
+  border-color: var(--color-ink);
   background: var(--color-white);
 }
 
@@ -33,7 +33,7 @@
   height: 40px;
   border-radius: var(--radius-avatars);
   background: var(--color-white);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .file-upload__input {
@@ -61,7 +61,7 @@
   padding: 10px 12px;
   background: var(--color-white);
   border-radius: var(--radius-inputs);
-  border: 1px solid var(--color-bebe);
+  border: 1px solid var(--color-border);
 }
 
 .file-upload__size {

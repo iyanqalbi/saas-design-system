@@ -52,6 +52,6 @@
   display: flex;
   justify-content: space-between;
   gap: 4px;
-  font-size: 11px;
-  color: var(--color-foggy);
+  font-size: var(--text-caption);
+  color: var(--color-muted);
 }

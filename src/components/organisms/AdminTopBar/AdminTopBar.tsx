@@ -31,13 +31,15 @@ export function AdminTopBar({
       </div>
       <div className="admin-topbar__right">
         <SearchField placeholder="Search customers, invoices…" className="admin-topbar__search" />
-        <IconButton label="Notifications" tone="subtle">
-          <Bell size={16} />
-        </IconButton>
-        <IconButton label="Help" tone="subtle">
-          <HelpCircle size={16} />
-        </IconButton>
-        <UserChip name="Maya Chen" role="Admin" onClick={() => undefined} />
+        <div className="admin-topbar__actions">
+          <IconButton label="Notifications" tone="subtle">
+            <Bell size={16} />
+          </IconButton>
+          <IconButton label="Help" tone="subtle">
+            <HelpCircle size={16} />
+          </IconButton>
+          <UserChip name="Maya Chen" role="Admin" onClick={() => undefined} />
+        </div>
       </div>
     </div>
   )

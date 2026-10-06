@@ -27,8 +27,8 @@
 }
 
 .badge--soft.badge--neutral {
-  background: var(--color-faint);
-  color: var(--color-hof);
+  background: var(--color-wash);
+  color: var(--color-ink);
 }
 
 .badge--soft.badge--success {
@@ -43,7 +43,7 @@
 
 .badge--soft.badge--danger {
   background: #ffe8ec;
-  color: var(--color-rausch-600);
+  color: var(--color-danger-strong);
 }
 
 .badge--soft.badge--accent {
@@ -53,6 +53,6 @@
 
 .badge:not(.badge--soft) {
   background: var(--color-white);
-  color: var(--color-hof);
+  color: var(--color-ink);
   box-shadow: var(--shadow-subtle);
 }

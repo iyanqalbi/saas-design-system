@@ -22,8 +22,8 @@
   justify-content: center;
   margin-left: -8px;
   border-radius: var(--radius-avatars);
-  background: var(--color-faint);
-  color: var(--color-hof);
+  background: var(--color-wash);
+  color: var(--color-ink);
   font-weight: var(--font-weight-semibold);
   box-shadow: 0 0 0 2px var(--color-white);
 }
@@ -31,7 +31,7 @@
 .avatar-group__overflow--sm {
   width: 28px;
   height: 28px;
-  font-size: 11px;
+  font-size: var(--text-caption);
 }
 
 .avatar-group__overflow--md {
@@ -43,5 +43,5 @@
 .avatar-group__overflow--lg {
   width: 48px;
   height: 48px;
-  font-size: 14px;
+  font-size: var(--text-body);
 }

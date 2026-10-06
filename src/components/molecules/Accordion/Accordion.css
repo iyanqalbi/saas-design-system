@@ -8,7 +8,7 @@
 }
 
 .accordion__item + .accordion__item {
-  border-top: 1px solid var(--color-bebe);
+  border-top: 1px solid var(--color-border);
 }
 
 .accordion__trigger {
@@ -21,7 +21,7 @@
   padding: 0 16px;
   border: none;
   background: transparent;
-  color: var(--color-hof);
+  color: var(--color-ink);
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   text-align: left;
@@ -29,11 +29,11 @@
 }
 
 .accordion__trigger:hover {
-  background: var(--color-faint);
+  background: var(--color-wash);
 }
 
 .accordion__chevron {
-  color: var(--color-foggy);
+  color: var(--color-muted);
   transition: transform var(--duration-fast) var(--ease-out);
   flex-shrink: 0;
 }
@@ -44,7 +44,7 @@
 
 .accordion__panel {
   padding: 0 16px 16px;
-  color: var(--color-foggy);
+  color: var(--color-muted);
   font-size: var(--text-body);
   line-height: var(--leading-body);
   animation: accordion-in var(--duration-fast) var(--ease-out);

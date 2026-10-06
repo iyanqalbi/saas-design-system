@@ -15,7 +15,7 @@
   padding: var(--spacing-24);
   background:
     radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) 8%, transparent), transparent 40%),
-    var(--color-faint);
+    var(--color-wash);
 }
 
 .component-card__meta {
@@ -39,7 +39,7 @@
   margin-top: var(--spacing-4);
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .component-card__link:hover {

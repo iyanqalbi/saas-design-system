@@ -42,7 +42,7 @@
   width: 40px;
   height: 40px;
   border-radius: var(--radius-buttons);
-  background: var(--color-faint);
+  background: var(--color-wash);
 }
 
 .template-card__list {
@@ -58,7 +58,7 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  color: var(--color-hof);
+  color: var(--color-ink);
   font-size: var(--text-body);
 }
 
@@ -72,11 +72,11 @@
   margin: 0;
   padding: var(--spacing-16);
   border-radius: var(--radius-inputs);
-  background: var(--color-faint);
+  background: var(--color-wash);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 13px;
   line-height: 1.55;
-  color: var(--color-hof);
+  color: var(--color-ink);
   overflow-x: auto;
 }
 

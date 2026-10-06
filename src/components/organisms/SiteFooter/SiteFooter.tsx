@@ -65,7 +65,7 @@ export function SiteFooter() {
 
       <div className="site-footer__bottom page-shell">
         <Text as="p" variant="muted">
-          © {new Date().getFullYear()} SaasDS. Tokens inspired by Refero gallery style.
+          © {new Date().getFullYear()} SaasDS.
         </Text>
         <div className="site-footer__social">
           <a href="https://github.com/iyanqalbi/saas-design-system" aria-label="Repository">

@@ -11,7 +11,7 @@
   background:
     radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in srgb, var(--color-primary) 14%, transparent), transparent 55%),
     radial-gradient(ellipse 40% 40% at 90% 20%, rgba(34, 34, 34, 0.05), transparent 50%),
-    linear-gradient(180deg, #ffffff 0%, var(--color-faint) 55%, #f0eeeb 100%);
+    linear-gradient(180deg, #ffffff 0%, var(--color-wash) 55%, #f0eeeb 100%);
   pointer-events: none;
 }
 
@@ -41,7 +41,7 @@
   font-weight: var(--font-weight-bold) !important;
   line-height: 1.1 !important;
   letter-spacing: -0.03em !important;
-  color: var(--color-hof);
+  color: var(--color-ink);
   text-transform: none;
 }
 
@@ -126,8 +126,8 @@
   width: 40px;
   height: 40px;
   border-radius: var(--radius-buttons);
-  background: var(--color-faint);
-  color: var(--color-hof);
+  background: var(--color-wash);
+  color: var(--color-ink);
   margin-bottom: var(--spacing-4);
 }
 

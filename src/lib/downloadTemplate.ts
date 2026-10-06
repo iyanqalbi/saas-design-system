@@ -8,7 +8,7 @@ Quiet React admin starter built with Atomic Design.
 
 ## Stack
 - React + TypeScript + Vite
-- CSS design tokens (Refero gallery style)
+- CSS design tokens
 - Atoms → Molecules → Organisms
 
 ## Getting started
@@ -84,8 +84,8 @@ createRoot(document.getElementById('root')!).render(
   return (
     <div style={{ fontFamily: 'var(--font-sans)', padding: 40, background: 'var(--surface-canvas)', minHeight: '100vh' }}>
       <div style={{ width: 28, height: 28, borderRadius: 8, background: 'var(--color-primary)', marginBottom: 16 }} />
-      <h1 style={{ margin: '0 0 8px', fontSize: 28, fontWeight: 700 }}>SaasDS Admin Template</h1>
-      <p style={{ margin: 0, color: 'var(--color-foggy)', maxWidth: 480 }}>
+      <h1 style={{ margin: '0 0 8px', fontSize: 32, fontWeight: 700 }}>SaasDS Admin Template</h1>
+      <p style={{ margin: 0, color: 'var(--color-muted)', maxWidth: 480 }}>
         Drop in atoms, molecules, and organisms from the SaasDS kit to assemble your next SaaS dashboard.
       </p>
     </div>
@@ -96,26 +96,26 @@ createRoot(document.getElementById('root')!).render(
   --color-primary: #5b5ff7;
   --color-primary-hover: #7c7ef8;
   --color-primary-pressed: #1f2494;
-  --color-rausch: #ff385c;
-  --color-rausch-600: #e00b41;
-  --color-hof: #222222;
-  --color-foggy: #6a6a6a;
-  --color-grey-500: #c1c1c1;
-  --color-bebe: #ebebeb;
-  --color-deco: #dddddd;
-  --color-faint: #f7f7f7;
+  --color-danger: #ed3b5b;
+  --color-danger-strong: #d10f45;
+  --color-ink: #1c1c1c;
+  --color-muted: #656565;
+  --color-grey-500: #bdbdbd;
+  --color-border: #e8e8e8;
+  --color-soft: #d9d9d9;
+  --color-wash: #f5f5f5;
   --color-white: #ffffff;
-  --surface-canvas: #f7f7f7;
+  --surface-canvas: #f5f5f5;
   --surface-card: #ffffff;
   --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
   --radius-cards: 12px;
-  --radius-buttons: 9999px;
+  --radius-buttons: 10px;
 }
 `,
   'src/styles/global.css': `body {
   margin: 0;
   font-family: var(--font-sans);
-  color: var(--color-hof);
+  color: var(--color-ink);
   background: var(--surface-canvas);
 }
 `,
@@ -129,8 +129,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const styles: Record<Variant, React.CSSProperties> = {
-  inverse: { background: '#222', color: '#fff', border: 'none' },
-  ghost: { background: 'transparent', color: '#222', border: '1px solid #222' },
+  inverse: { background: '#1c1c1c', color: '#fff', border: 'none' },
+  ghost: { background: 'transparent', color: '#1c1c1c', border: '1px solid #1c1c1c' },
   accent: { background: '#5b5ff7', color: '#fff', border: 'none' },
 }
 
@@ -144,7 +144,7 @@ export function Button({ variant = 'inverse', children, style, ...props }: Butto
         justifyContent: 'center',
         minHeight: 40,
         padding: '0 16px',
-        borderRadius: variant === 'accent' ? 9999 : 8,
+        borderRadius: 10,
         fontWeight: 500,
         cursor: 'pointer',
         ...styles[variant],
@@ -165,8 +165,8 @@ export function Button({ variant = 'inverse', children, style, ...props }: Butto
         height: 24,
         padding: '0 12px',
         borderRadius: 9999,
-        background: '#f7f7f7',
-        fontSize: 11,
+        background: '#f5f5f5',
+        fontSize: 12,
         fontWeight: 600,
       }}
     >
@@ -197,8 +197,8 @@ export function StatMetric({
         gap: 8,
       }}
     >
-      <p style={{ margin: 0, color: '#6a6a6a', fontSize: 14 }}>{label}</p>
-      <p style={{ margin: 0, fontSize: 22, fontWeight: 500, letterSpacing: '-0.02em' }}>{value}</p>
+      <p style={{ margin: 0, color: '#656565', fontSize: 15 }}>{label}</p>
+      <p style={{ margin: 0, fontSize: 24, fontWeight: 600, letterSpacing: '-0.015em' }}>{value}</p>
       {delta ? <Badge>{delta}</Badge> : null}
     </article>
   )

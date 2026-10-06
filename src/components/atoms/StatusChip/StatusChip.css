@@ -45,8 +45,8 @@
 }
 
 .status-chip--neutral {
-  background: var(--color-faint);
-  color: var(--color-hof);
+  background: var(--color-wash);
+  color: var(--color-ink);
 }
 
 .status-chip--success {
@@ -61,7 +61,7 @@
 
 .status-chip--danger {
   background: #ffe8ec;
-  color: var(--color-rausch-600);
+  color: var(--color-danger-strong);
 }
 
 .status-chip--info {
@@ -71,5 +71,5 @@
 
 .status-chip--accent {
   background: #ffe8ec;
-  color: var(--color-rausch);
+  color: var(--color-danger);
 }

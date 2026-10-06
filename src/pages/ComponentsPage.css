@@ -17,7 +17,7 @@
   width: min(300px, 88vw);
   overflow: auto;
   background: var(--surface-canvas);
-  border-right: 1px solid var(--color-bebe);
+  border-right: 1px solid var(--color-border);
   box-shadow: 12px 0 32px rgba(34, 34, 34, 0.06);
 }
 
@@ -33,10 +33,10 @@
   align-self: flex-start;
   min-height: 36px;
   padding: 0 14px;
-  border: 1px solid var(--color-bebe);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-badges);
   background: var(--color-white);
-  color: var(--color-hof);
+  color: var(--color-ink);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
@@ -96,7 +96,7 @@
   justify-content: center;
   min-height: 140px;
   padding: var(--spacing-20);
-  background: var(--color-faint);
+  background: var(--color-wash);
   border-radius: var(--radius-cards);
   overflow: auto;
 }
@@ -117,7 +117,7 @@
 .token-swatch__chip {
   height: 48px;
   border-radius: var(--radius-inputs);
-  border: 1px solid var(--color-bebe);
+  border: 1px solid var(--color-border);
 }
 
 .demo-row {
@@ -163,7 +163,7 @@
 .button-matrix__state {
   font-size: var(--text-caption);
   font-weight: var(--font-weight-medium);
-  color: var(--color-foggy);
+  color: var(--color-muted);
   line-height: 1.2;
 }
 
@@ -226,7 +226,7 @@
     width: auto;
     height: calc(100vh - 72px);
     overflow: auto;
-    border-right: 1px solid color-mix(in srgb, var(--color-bebe) 80%, transparent);
+    border-right: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
     box-shadow: none;
   }
 

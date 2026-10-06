@@ -44,7 +44,7 @@
   justify-content: space-between;
   gap: 12px;
   padding: 14px 16px;
-  border-bottom: 1px solid var(--color-bebe);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .notifications-menu__list {
@@ -62,7 +62,7 @@
   width: 100%;
   padding: 12px 16px;
   border: none;
-  border-bottom: 1px solid var(--color-bebe);
+  border-bottom: 1px solid var(--color-border);
   background: transparent;
   text-align: left;
   cursor: pointer;
@@ -70,7 +70,7 @@
 
 .notifications-menu__item:hover,
 .notifications-menu__item--unread {
-  background: var(--color-faint);
+  background: var(--color-wash);
 }
 
 .notifications-menu__dot {
@@ -103,16 +103,16 @@
   width: 100%;
   min-height: 44px;
   border: none;
-  border-top: 1px solid var(--color-bebe);
+  border-top: 1px solid var(--color-border);
   background: var(--color-white);
-  color: var(--color-hof);
+  color: var(--color-ink);
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
 
 .notifications-menu__footer:hover {
-  background: var(--color-faint);
+  background: var(--color-wash);
 }
 
 @keyframes notifications-in {

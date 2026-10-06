@@ -1,6 +1,6 @@
 import './ProgressBar.css'
 
-export type ProgressBarTone = 'hof' | 'accent' | 'success' | 'warning'
+export type ProgressBarTone = 'ink' | 'accent' | 'success' | 'warning'
 
 export interface ProgressBarProps {
   value: number
@@ -17,7 +17,7 @@ export function ProgressBar({
   max = 100,
   label,
   showValue = true,
-  tone = 'hof',
+  tone = 'ink',
   size = 'md',
   className = '',
 }: ProgressBarProps) {

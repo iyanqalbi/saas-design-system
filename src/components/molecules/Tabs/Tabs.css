@@ -26,7 +26,7 @@
   padding: 0 14px;
   border: none;
   background: transparent;
-  color: var(--color-foggy);
+  color: var(--color-muted);
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   white-space: nowrap;
@@ -43,7 +43,7 @@
 }
 
 .tabs__trigger:focus-visible {
-  outline: 2px solid var(--color-hof);
+  outline: 2px solid var(--color-ink);
   outline-offset: 2px;
 }
 
@@ -71,18 +71,18 @@
   height: 20px;
   padding: 0 6px;
   border-radius: var(--radius-badges);
-  background: var(--color-faint);
-  color: var(--color-hof);
+  background: var(--color-wash);
+  color: var(--color-ink);
   font-size: var(--text-caption);
   font-weight: var(--font-weight-semibold);
 }
 
 .tabs__trigger--active .tabs__badge {
-  background: var(--color-bebe);
+  background: var(--color-border);
 }
 
 .tabs__panel {
-  color: var(--color-hof);
+  color: var(--color-ink);
   font-size: var(--text-body);
   line-height: var(--leading-body);
   animation: tabs-panel-in var(--duration-base) var(--ease-out);
@@ -115,7 +115,7 @@
 /* Underline */
 .tabs--underline .tabs__list {
   gap: var(--spacing-8);
-  border-bottom: 1px solid var(--color-bebe);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .tabs--underline .tabs__trigger {
@@ -129,7 +129,7 @@
 }
 
 .tabs--underline .tabs__trigger--active {
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .tabs--underline .tabs__trigger--active::after {
@@ -139,12 +139,12 @@
   right: 0;
   bottom: -1px;
   height: 2px;
-  background: var(--color-hof);
+  background: var(--color-ink);
   border-radius: 2px 2px 0 0;
 }
 
 .tabs--underline .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 /* Soft — tinted selected chip */
@@ -159,13 +159,13 @@
 }
 
 .tabs--soft .tabs__trigger--active {
-  background: var(--color-faint);
-  color: var(--color-hof);
+  background: var(--color-wash);
+  color: var(--color-ink);
 }
 
 .tabs--soft .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-hof);
-  background: var(--color-faint);
+  color: var(--color-ink);
+  background: var(--color-wash);
 }
 
 /* Solid — filled selected chip */
@@ -180,24 +180,24 @@
 }
 
 .tabs--solid .tabs__trigger--active {
-  background: var(--color-hof);
+  background: var(--color-ink);
   color: var(--color-white);
 }
 
 .tabs--solid .tabs__trigger--active .tabs__badge {
   background: var(--color-white);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .tabs--solid .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 /* Boxed — equal cells with shared border */
 .tabs--boxed .tabs__list {
   width: 100%;
   gap: 0;
-  border: 1px solid var(--color-deco);
+  border: 1px solid var(--color-soft);
   border-radius: var(--radius-ghost);
   overflow: hidden;
 }
@@ -207,7 +207,7 @@
   border-radius: 0;
   min-height: 40px;
   padding: 0 12px;
-  border-right: 1px solid var(--color-deco);
+  border-right: 1px solid var(--color-soft);
 }
 
 .tabs--boxed .tabs__trigger:last-child {
@@ -215,18 +215,18 @@
 }
 
 .tabs--boxed .tabs__trigger--active {
-  background: var(--color-hof);
+  background: var(--color-ink);
   color: var(--color-white);
 }
 
 .tabs--boxed .tabs__trigger--active .tabs__badge {
   background: var(--color-white);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .tabs--boxed .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-hof);
-  background: var(--color-faint);
+  color: var(--color-ink);
+  background: var(--color-wash);
 }
 
 .tabs--boxed .tabs__trigger:focus-visible {
@@ -238,7 +238,7 @@
   width: 100%;
   padding: 4px;
   gap: 0;
-  background: var(--color-bebe);
+  background: var(--color-border);
   border-radius: var(--radius-badges);
 }
 
@@ -250,17 +250,17 @@
 }
 
 .tabs--pills .tabs__trigger--active {
-  background: var(--color-hof);
+  background: var(--color-ink);
   color: var(--color-white);
 }
 
 .tabs--pills .tabs__trigger--active .tabs__badge {
   background: var(--color-white);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .tabs--pills .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 /* Segmented — white thumb on a muted track */
@@ -269,7 +269,7 @@
   max-width: 100%;
   padding: 4px;
   gap: 4px;
-  background: var(--color-bebe);
+  background: var(--color-border);
   border-radius: var(--radius-badges);
 }
 
@@ -281,10 +281,10 @@
 
 .tabs--segmented .tabs__trigger--active {
   background: var(--color-white);
-  color: var(--color-hof);
+  color: var(--color-ink);
   box-shadow: var(--shadow-subtle);
 }
 
 .tabs--segmented .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-hof);
+  color: var(--color-ink);
 }

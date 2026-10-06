@@ -47,13 +47,13 @@
   width: 40px;
   height: 40px;
   border-radius: var(--radius-avatars);
-  background: var(--color-faint);
-  color: var(--color-hof);
+  background: var(--color-wash);
+  color: var(--color-ink);
 }
 
 .confirm-modal__icon--danger {
   background: #ffe8ec;
-  color: var(--color-rausch);
+  color: var(--color-danger);
 }
 
 .confirm-modal__content {

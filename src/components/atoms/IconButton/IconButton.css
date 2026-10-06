@@ -5,7 +5,7 @@
   border: none;
   border-radius: var(--radius-buttons);
   cursor: pointer;
-  color: var(--color-hof);
+  color: var(--color-ink);
   transition: background var(--duration-fast) var(--ease-out);
 }
 
@@ -35,11 +35,11 @@
 }
 
 .icon-btn--subtle {
-  background: var(--color-faint);
+  background: var(--color-wash);
 }
 
 .icon-btn--subtle:hover:not(:disabled) {
-  background: var(--color-bebe);
+  background: var(--color-border);
 }
 
 .icon-btn--white {
@@ -48,7 +48,7 @@
 }
 
 .icon-btn--white:hover:not(:disabled) {
-  background: var(--color-faint);
+  background: var(--color-wash);
 }
 
 .icon-btn--ghost {
@@ -56,7 +56,7 @@
 }
 
 .icon-btn--ghost:hover:not(:disabled) {
-  background: var(--color-faint);
+  background: var(--color-wash);
 }
 
 .icon-btn:disabled {

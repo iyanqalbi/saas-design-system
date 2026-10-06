@@ -38,7 +38,7 @@
   border: none;
   border-radius: var(--radius-inputs);
   background: transparent;
-  color: var(--color-hof);
+  color: var(--color-ink);
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   text-align: left;
@@ -47,11 +47,11 @@
 
 .dropdown__item--active,
 .dropdown__item:hover:not(:disabled) {
-  background: var(--color-faint);
+  background: var(--color-wash);
 }
 
 .dropdown__item--danger {
-  color: var(--color-rausch-600);
+  color: var(--color-danger-strong);
 }
 
 .dropdown__item:disabled {
@@ -72,7 +72,7 @@
 .dropdown__separator {
   height: 1px;
   margin: 6px 4px;
-  background: var(--color-bebe);
+  background: var(--color-border);
 }
 
 @keyframes dropdown-in {

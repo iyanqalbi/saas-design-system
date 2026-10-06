@@ -14,7 +14,7 @@
 }
 
 .user-chip--interactive:hover {
-  background: var(--color-faint);
+  background: var(--color-wash);
 }
 
 .user-chip__meta {
@@ -29,6 +29,6 @@
 }
 
 .user-chip__caret {
-  color: var(--color-foggy);
+  color: var(--color-muted);
   flex-shrink: 0;
 }

@@ -27,7 +27,7 @@ export function LandingPage() {
             SaasDS
           </Text>
           <Text as="h1" variant="heading" className="hero__title animate-rise delay-1">
-            React admin templates with quiet gallery craft.
+            React admin templates with quiet product craft.
           </Text>
           <Text as="p" variant="muted" className="hero__lede animate-rise delay-2">
             A quiet component kit for SaaS dashboards — indigo for primary actions. Built with

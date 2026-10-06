@@ -40,7 +40,7 @@ export const catalog: CatalogEntry[] = [
     name: 'Input',
     layer: 'Atom',
     category: 'Forms',
-    description: 'Quiet text field with hairline borders, Hof focus ring, and sm/md/lg sizes.',
+    description: 'Quiet text field with hairline borders, ink focus ring, and sm/md/lg sizes.',
     tags: ['form'],
   },
   {

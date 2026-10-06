@@ -10,7 +10,7 @@
   justify-content: space-between;
   gap: var(--spacing-12);
   padding: var(--spacing-16) var(--spacing-20);
-  border-bottom: 1px solid var(--color-bebe);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .data-table__scroll {
@@ -28,13 +28,13 @@
   padding: 14px 20px;
   text-align: left;
   font-size: var(--text-body);
-  border-bottom: 1px solid var(--color-bebe);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .data-table th {
-  color: var(--color-foggy);
+  color: var(--color-muted);
   font-weight: var(--font-weight-medium);
-  background: var(--color-faint);
+  background: var(--color-wash);
 }
 
 .data-table tr:last-child td {

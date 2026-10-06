@@ -14,7 +14,7 @@
 .form-field__label {
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
-  color: var(--color-hof);
+  color: var(--color-ink);
 }
 
 .form-field__optional {
@@ -28,5 +28,5 @@
 
 .form-field__error {
   margin: 0;
-  color: var(--color-rausch-600);
+  color: var(--color-danger-strong);
 }

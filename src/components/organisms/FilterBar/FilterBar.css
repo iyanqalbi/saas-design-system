@@ -20,7 +20,7 @@
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--color-foggy);
+  color: var(--color-muted);
   pointer-events: none;
   z-index: 1;
 }

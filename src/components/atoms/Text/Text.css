@@ -17,7 +17,7 @@
 
 .text--headingSm {
   font-size: var(--text-heading-sm);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
   line-height: var(--leading-heading-sm);
   letter-spacing: var(--tracking-heading-sm);
 }
@@ -63,5 +63,5 @@
   font-size: var(--text-body);
   font-weight: var(--font-weight-regular);
   line-height: var(--leading-body);
-  color: var(--color-foggy);
+  color: var(--color-muted);
 }

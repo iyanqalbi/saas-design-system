@@ -21,7 +21,7 @@
 
 .stat-metric__icon {
   display: inline-flex;
-  color: var(--color-foggy);
+  color: var(--color-muted);
 }
 
 .stat-metric__icon svg {
