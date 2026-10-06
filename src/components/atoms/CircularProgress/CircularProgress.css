@@ -1,0 +1,71 @@
+.circular-progress {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-progress__svg {
+  display: block;
+  transform: rotate(-90deg);
+}
+
+.circular-progress__track,
+.circular-progress__fill {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.circular-progress__track {
+  stroke: var(--color-wash);
+}
+
+.circular-progress__fill {
+  transition: stroke-dashoffset var(--duration-base, 200ms) var(--ease-out, ease);
+}
+
+.circular-progress__fill--ink {
+  stroke: var(--color-ink);
+}
+
+.circular-progress__fill--accent {
+  stroke: var(--color-primary);
+}
+
+.circular-progress__fill--success {
+  stroke: #1f7a45;
+}
+
+.circular-progress__fill--warning {
+  stroke: #c47a00;
+}
+
+.circular-progress__fill--danger {
+  stroke: var(--color-danger);
+}
+
+.circular-progress__value {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-ink);
+  line-height: 1;
+}
+
+.circular-progress--sm .circular-progress__value {
+  font-size: 10px;
+}
+
+.circular-progress--md .circular-progress__value {
+  font-size: var(--text-caption);
+}
+
+.circular-progress--lg .circular-progress__value {
+  font-size: 14px;
+}
+
+.circular-progress--xl .circular-progress__value {
+  font-size: var(--text-ui);
+}

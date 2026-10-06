@@ -1,0 +1,29 @@
+.arabic-text {
+  margin: 0;
+  font-family:
+    'Noto Naskh Arabic',
+    'Amiri',
+    'Traditional Arabic',
+    'Times New Roman',
+    serif;
+  color: var(--color-ink);
+  line-height: 1.8;
+  text-align: center;
+  letter-spacing: 0;
+}
+
+.arabic-text--sm {
+  font-size: 18px;
+}
+
+.arabic-text--md {
+  font-size: 22px;
+}
+
+.arabic-text--lg {
+  font-size: 28px;
+}
+
+.arabic-text--xl {
+  font-size: 34px;
+}

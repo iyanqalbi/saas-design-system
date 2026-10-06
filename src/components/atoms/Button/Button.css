@@ -267,6 +267,47 @@
   cursor: progress;
 }
 
+/* ——— Secondary gray — soft/tonal neutral fill ——— */
+.btn--secondaryGray {
+  --btn-bg: var(--color-wash);
+  --btn-bg-hover: var(--color-border);
+  --btn-bg-pressed: var(--color-soft);
+  --btn-fg: var(--color-muted);
+  --btn-border: transparent;
+}
+
+.btn--secondaryGray:hover:not(:disabled):not([data-disabled]) {
+  background: var(--btn-bg-hover);
+}
+
+.btn--secondaryGray:active:not(:disabled):not([data-disabled]) {
+  background: var(--btn-bg-pressed);
+}
+
+.btn--secondaryGray:disabled,
+.btn--secondaryGray[data-disabled] {
+  background: var(--color-disabled-bg);
+  color: var(--color-disabled-fg);
+  border-color: transparent;
+}
+
+.btn--secondaryGray.btn--destructive {
+  --btn-bg: #ffe8ec;
+  --btn-bg-hover: #ffd6de;
+  --btn-bg-pressed: #ffc4cf;
+  --btn-fg: var(--color-danger-strong);
+}
+
+.btn--secondaryGray.btn--destructive:focus-visible {
+  outline-color: var(--color-danger);
+}
+
+.btn--secondaryGray.btn--loading:disabled {
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  cursor: progress;
+}
+
 /* ——— Tertiary — outlined ——— */
 .btn--tertiary {
   --btn-bg: var(--color-white);

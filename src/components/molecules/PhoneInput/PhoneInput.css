@@ -1,0 +1,58 @@
+.phone-input {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+.phone-input__country {
+  flex: 0 0 auto;
+  min-width: 96px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-inputs);
+  background: var(--color-white);
+  color: var(--color-ink);
+  padding: 0 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  outline: none;
+  cursor: pointer;
+}
+
+.phone-input--sm .phone-input__country {
+  min-height: 32px;
+  font-size: 12px;
+}
+
+.phone-input--md .phone-input__country {
+  min-height: 40px;
+}
+
+.phone-input--lg .phone-input__country {
+  min-height: 48px;
+  font-size: var(--text-body);
+}
+
+.phone-input__country:hover:not(:disabled) {
+  border-color: var(--color-soft);
+}
+
+.phone-input__country:focus {
+  border-color: var(--color-ink);
+  box-shadow: 0 0 0 1px var(--color-ink);
+}
+
+.phone-input__country:disabled {
+  background: var(--color-wash);
+  color: var(--color-grey-500);
+  cursor: not-allowed;
+}
+
+.phone-input--invalid .phone-input__country {
+  border-color: var(--color-danger);
+}
+
+.phone-input .input {
+  flex: 1 1 auto;
+}

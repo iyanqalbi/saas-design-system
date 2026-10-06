@@ -5,13 +5,16 @@ import { IconButton } from '../../atoms/IconButton'
 import { Text } from '../../atoms/Text'
 import './Drawer.css'
 
+export type DrawerSide = 'right' | 'left' | 'bottom'
+
 export interface DrawerProps {
   open: boolean
   title: string
   description?: string
   children: ReactNode
   footer?: ReactNode
-  side?: 'right' | 'left'
+  /** `bottom` is the mobile sheet pattern. */
+  side?: DrawerSide
   onClose: () => void
   className?: string
 }
@@ -42,10 +45,13 @@ export function Drawer({
 
   if (!open || typeof document === 'undefined') return null
 
+  const isBottom = side === 'bottom'
+
   return createPortal(
     <div className={`drawer drawer--${side} ${className}`.trim()} role="presentation">
       <button type="button" className="drawer__backdrop" aria-label="Close drawer" onClick={onClose} />
       <aside className="drawer__panel" role="dialog" aria-modal="true" aria-label={title}>
+        {isBottom ? <div className="drawer__handle" aria-hidden="true" /> : null}
         <header className="drawer__header">
           <div>
             <Text as="h2" variant="headingSm">

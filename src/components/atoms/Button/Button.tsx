@@ -5,6 +5,7 @@ import './Button.css'
 export type ButtonVariant =
   | 'primary'
   | 'secondary'
+  | 'secondaryGray'
   | 'tertiary'
   | 'ghost'
   | 'linkColor'
@@ -30,6 +31,7 @@ export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 type ResolvedVariant =
   | 'primary'
   | 'secondary'
+  | 'secondaryGray'
   | 'tertiary'
   | 'ghost'
   | 'linkColor'
@@ -39,6 +41,7 @@ type ResolvedVariant =
 const VARIANT_MAP: Record<ButtonVariant, ResolvedVariant> = {
   primary: 'primary',
   secondary: 'secondary',
+  secondaryGray: 'secondaryGray',
   tertiary: 'tertiary',
   ghost: 'ghost',
   linkColor: 'linkColor',
@@ -56,7 +59,7 @@ const VARIANT_MAP: Record<ButtonVariant, ResolvedVariant> = {
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   size?: ButtonSize
-  /** Danger/destructive tone for primary, secondary, tertiary, and ghost. */
+  /** Danger/destructive tone for primary, secondary, secondaryGray, tertiary, and ghost. */
   destructive?: boolean
   leftIcon?: ReactNode
   rightIcon?: ReactNode

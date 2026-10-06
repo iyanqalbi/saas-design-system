@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import {
+  ArrowLeft,
   ArrowRight,
   Bug,
-  Circle,
   Copy,
   Download,
   Eye,
@@ -20,6 +20,7 @@ import {
   Trash2,
   Inbox,
   Info,
+  Home,
   LayoutDashboard,
   Settings,
   Users,
@@ -32,17 +33,21 @@ import {
   Workflow,
 } from 'lucide-react'
 import { AmountDiff } from '../components/atoms/AmountDiff'
+import { ArabicText } from '../components/atoms/ArabicText'
 import { Badge } from '../components/atoms/Badge'
 import { Button } from '../components/atoms/Button'
 import { Avatar } from '../components/atoms/Avatar'
 import { Checkbox } from '../components/atoms/Checkbox'
+import { CircularProgress } from '../components/atoms/CircularProgress'
 import { Divider } from '../components/atoms/Divider'
 import { FeaturedIcon } from '../components/atoms/FeaturedIcon'
 import { IconButton } from '../components/atoms/IconButton'
 import { Input } from '../components/atoms/Input'
 import { Kbd } from '../components/atoms/Kbd'
 import { Label } from '../components/atoms/Label'
+import { MapMarker } from '../components/atoms/MapMarker'
 import { ProgressBar } from '../components/atoms/ProgressBar'
+import { RoleBadge } from '../components/atoms/RoleBadge'
 import { Skeleton } from '../components/atoms/Skeleton'
 import { Slider } from '../components/atoms/Slider'
 import { StatusChip } from '../components/atoms/StatusChip'
@@ -52,13 +57,20 @@ import { Textarea } from '../components/atoms/Textarea'
 import { Accordion } from '../components/molecules/Accordion'
 import { AlertBanner } from '../components/molecules/AlertBanner'
 import { AvatarGroup } from '../components/molecules/AvatarGroup'
+import { BottomNav } from '../components/molecules/BottomNav'
 import { Breadcrumb } from '../components/molecules/Breadcrumb'
 import { ButtonGroup } from '../components/molecules/ButtonGroup'
 import { Carousel } from '../components/molecules/Carousel'
 import { ContextMenu } from '../components/molecules/ContextMenu'
+import { DoaContent } from '../components/molecules/DoaContent'
 import { DocumentCard } from '../components/molecules/DocumentCard'
 import { IconStack } from '../components/molecules/IconStack'
+import { OtpInput } from '../components/molecules/OtpInput'
+import { PasswordInput } from '../components/molecules/PasswordInput'
+import { PhoneInput } from '../components/molecules/PhoneInput'
 import { ProgressCell } from '../components/molecules/ProgressCell'
+import { QrScanner } from '../components/molecules/QrScanner'
+import { RoomControls } from '../components/molecules/RoomControls'
 import { RowActions } from '../components/molecules/RowActions'
 import { SectionHeader } from '../components/molecules/SectionHeader'
 import { TemplateCard } from '../components/molecules/TemplateCard'
@@ -66,6 +78,7 @@ import { TreeView } from '../components/molecules/TreeView'
 import { TypeBadge } from '../components/molecules/TypeBadge'
 import { UpgradeCard } from '../components/molecules/UpgradeCard'
 import { UsageMeter } from '../components/molecules/UsageMeter'
+import { VideoTile } from '../components/molecules/VideoTile'
 import { WorkspaceSwitcher } from '../components/molecules/WorkspaceSwitcher'
 import {
   Card,
@@ -113,6 +126,7 @@ import { Calendar } from '../components/organisms/Calendar'
 import { ChartCard } from '../components/organisms/ChartCard'
 import { DashboardBoard } from '../components/organisms/DashboardBoard'
 import { LineChart } from '../components/organisms/LineChart'
+import { MapView } from '../components/organisms/MapView'
 import { CommandPalette } from '../components/organisms/CommandPalette'
 import { DataTable } from '../components/organisms/DataTable'
 import { FilterBar } from '../components/organisms/FilterBar'
@@ -213,23 +227,29 @@ function PaginationDemo() {
 }
 
 function DrawerDemo() {
-  const [open, setOpen] = useState(false)
+  const [sideOpen, setSideOpen] = useState(false)
+  const [bottomOpen, setBottomOpen] = useState(false)
   return (
     <div className="demo-stack">
-      <Button size="sm" variant="inverse" onClick={() => setOpen(true)}>
-        Open customer drawer
-      </Button>
+      <div className="demo-row">
+        <Button size="sm" variant="inverse" onClick={() => setSideOpen(true)}>
+          Open customer drawer
+        </Button>
+        <Button size="sm" variant="secondary" onClick={() => setBottomOpen(true)}>
+          Open bottom drawer
+        </Button>
+      </div>
       <Drawer
-        open={open}
+        open={sideOpen}
         title="Northwind Labs"
         description="Growth plan · 48 seats"
-        onClose={() => setOpen(false)}
+        onClose={() => setSideOpen(false)}
         footer={
           <>
-            <Button variant="ghost" onClick={() => setOpen(false)}>
+            <Button variant="ghost" onClick={() => setSideOpen(false)}>
               Close
             </Button>
-            <Button variant="inverse" onClick={() => setOpen(false)}>
+            <Button variant="inverse" onClick={() => setSideOpen(false)}>
               Save changes
             </Button>
           </>
@@ -239,6 +259,27 @@ function DrawerDemo() {
         <FormField id="drawer-owner" label="Owner email" defaultValue="ops@northwind.io" />
         <Text as="p" variant="muted">
           Update billing owner and seat allocation without leaving the customers list.
+        </Text>
+      </Drawer>
+      <Drawer
+        open={bottomOpen}
+        side="bottom"
+        title="Filter results"
+        description="Mobile sheet for quick filters"
+        onClose={() => setBottomOpen(false)}
+        footer={
+          <>
+            <Button variant="ghost" onClick={() => setBottomOpen(false)}>
+              Reset
+            </Button>
+            <Button onClick={() => setBottomOpen(false)}>Apply</Button>
+          </>
+        }
+      >
+        <FormField id="drawer-bottom-status" label="Status" defaultValue="Active" />
+        <FormField id="drawer-bottom-owner" label="Owner" defaultValue="Ops team" />
+        <Text as="p" variant="muted">
+          Bottom drawers keep actions thumb-reachable on mobile web.
         </Text>
       </Drawer>
     </div>
@@ -461,6 +502,66 @@ function TableDemo() {
   )
 }
 
+function OtpInputDemo() {
+  const [value, setValue] = useState('')
+  return (
+    <div className="demo-stack">
+      <OtpInput value={value} onChange={setValue} />
+      <OtpInput value="4821" length={4} size="sm" />
+      <OtpInput value="12" invalid />
+    </div>
+  )
+}
+
+function PhoneInputDemo() {
+  const [country, setCountry] = useState('ID')
+  return (
+    <div className="demo-stack demo-stack--wide" style={{ maxWidth: 360 }}>
+      <PhoneInput countryCode={country} onCountryChange={setCountry} />
+      <PhoneInput countryCode="SG" defaultValue="91234567" size="sm" />
+      <PhoneInput invalid defaultValue="abc" />
+    </div>
+  )
+}
+
+function BottomNavDemo() {
+  const [tab, setTab] = useState('home')
+  return (
+    <BottomNav
+      value={tab}
+      onChange={setTab}
+      items={[
+        { id: 'home', label: 'Home', icon: <Home /> },
+        { id: 'search', label: 'Search', icon: <Search /> },
+        { id: 'inbox', label: 'Inbox', icon: <Inbox />, badge: 3 },
+        { id: 'profile', label: 'Profile', icon: <Users /> },
+      ]}
+    />
+  )
+}
+
+function RoomControlsDemo() {
+  const [micOn, setMicOn] = useState(true)
+  const [cameraOn, setCameraOn] = useState(true)
+  const [sharing, setSharing] = useState(false)
+  return (
+    <div className="demo-stack">
+      <div className="demo-row" style={{ width: '100%' }}>
+        <VideoTile name="Alya Putri" speaking muted={!micOn} cameraOff={!cameraOn} local />
+        <VideoTile name="Raka Wijaya" muted cameraOff />
+      </div>
+      <RoomControls
+        micOn={micOn}
+        cameraOn={cameraOn}
+        screenSharing={sharing}
+        onToggleMic={() => setMicOn((v) => !v)}
+        onToggleCamera={() => setCameraOn((v) => !v)}
+        onToggleScreen={() => setSharing((v) => !v)}
+      />
+    </div>
+  )
+}
+
 const previews: Record<string, ReactNode> = {
   button: (
     <div className="demo-stack demo-stack--button">
@@ -491,6 +592,27 @@ const previews: Record<string, ReactNode> = {
             Button lg
           </Button>
           <Button size="xl" variant="secondary">
+            Button xl
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Secondary gray buttons</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="xs" variant="secondaryGray">
+            Button xs
+          </Button>
+          <Button size="sm" variant="secondaryGray">
+            Button sm
+          </Button>
+          <Button size="md" variant="secondaryGray">
+            Button md
+          </Button>
+          <Button size="lg" variant="secondaryGray">
+            Button lg
+          </Button>
+          <Button size="xl" variant="secondaryGray">
             Button xl
           </Button>
         </div>
@@ -583,14 +705,14 @@ const previews: Record<string, ReactNode> = {
       <section className="demo-panel">
         <h4 className="demo-panel__title">Icon leading buttons</h4>
         <div className="button-size-grid">
-          {(['primary', 'secondary', 'tertiary', 'ghost'] as const).map((variant) => (
+          {(['primary', 'secondary', 'secondaryGray', 'tertiary', 'ghost'] as const).map((variant) => (
             <div key={variant} className="demo-row demo-row--baseline">
               {(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
                 <Button
                   key={`${variant}-${size}`}
                   size={size}
                   variant={variant}
-                  leftIcon={<Circle strokeWidth={2} />}
+                  leftIcon={<ArrowLeft />}
                 >
                   Button {size}
                 </Button>
@@ -603,7 +725,7 @@ const previews: Record<string, ReactNode> = {
       <section className="demo-panel">
         <h4 className="demo-panel__title">Icon trailing buttons</h4>
         <div className="button-size-grid">
-          {(['primary', 'secondary', 'tertiary', 'ghost'] as const).map((variant) => (
+          {(['primary', 'secondary', 'secondaryGray', 'tertiary', 'ghost'] as const).map((variant) => (
             <div key={variant} className="demo-row demo-row--baseline">
               {(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
                 <Button
@@ -627,6 +749,9 @@ const previews: Record<string, ReactNode> = {
             <Plus />
           </Button>
           <Button size="sm" variant="secondary" iconOnly aria-label="Add">
+            <Plus />
+          </Button>
+          <Button size="sm" variant="secondaryGray" iconOnly aria-label="Add">
             <Plus />
           </Button>
           <Button size="sm" variant="tertiary" iconOnly aria-label="Add">
@@ -653,6 +778,9 @@ const previews: Record<string, ReactNode> = {
           <Button size="sm" variant="secondary" loading>
             Processing
           </Button>
+          <Button size="sm" variant="secondaryGray" loading>
+            Processing
+          </Button>
           <Button size="sm" variant="tertiary" loading>
             Processing
           </Button>
@@ -672,6 +800,9 @@ const previews: Record<string, ReactNode> = {
             Disabled
           </Button>
           <Button size="sm" variant="secondary" disabled>
+            Disabled
+          </Button>
+          <Button size="sm" variant="secondaryGray" disabled>
             Disabled
           </Button>
           <Button size="sm" variant="tertiary" disabled>
@@ -714,6 +845,21 @@ const previews: Record<string, ReactNode> = {
             Delete
           </Button>
           <Button size="sm" variant="secondary" destructive disabled>
+            Delete
+          </Button>
+        </div>
+      </section>
+
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Secondary gray buttons destructive</h4>
+        <div className="demo-row demo-row--baseline">
+          <Button size="sm" variant="secondaryGray" destructive>
+            Delete
+          </Button>
+          <Button size="md" variant="secondaryGray" destructive leftIcon={<Trash2 />}>
+            Delete
+          </Button>
+          <Button size="sm" variant="secondaryGray" destructive disabled>
             Delete
           </Button>
         </div>
@@ -1648,6 +1794,84 @@ const previews: Record<string, ReactNode> = {
       <SiteHeader />
     </div>
   ),
+  'circular-progress': (
+    <div className="demo-row demo-row--baseline">
+      <CircularProgress value={32} size="sm" />
+      <CircularProgress value={64} size="md" />
+      <CircularProgress value={88} size="lg" tone="success" />
+      <CircularProgress value={45} size="xl" tone="warning" />
+    </div>
+  ),
+  'role-badge': (
+    <div className="demo-row">
+      <RoleBadge role="owner" />
+      <RoleBadge role="admin" />
+      <RoleBadge role="editor" />
+      <RoleBadge role="member" />
+      <RoleBadge role="viewer" />
+      <RoleBadge role="guest" size="sm" />
+    </div>
+  ),
+  'password-input': (
+    <div className="demo-stack demo-stack--wide" style={{ maxWidth: 320 }}>
+      <PasswordInput placeholder="Password" />
+      <PasswordInput placeholder="Invalid password" invalid defaultValue="123" />
+      <PasswordInput placeholder="Disabled" disabled defaultValue="••••••••" />
+    </div>
+  ),
+  'phone-input': <PhoneInputDemo />,
+  'otp-input': <OtpInputDemo />,
+  'arabic-text': (
+    <div className="demo-stack demo-stack--wide">
+      <ArabicText size="md">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</ArabicText>
+      <ArabicText>رَبِّ زِدْنِي عِلْمًا</ArabicText>
+    </div>
+  ),
+  'doa-content': (
+    <DoaContent
+      title="Doa sebelum makan"
+      source="HR. Abu Dawud"
+      arabic="اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ"
+      latin="Allahumma barik lana fima razaqtana waqina 'adzaban-nar."
+      translation="Ya Allah, berkahilah kami pada rezeki yang telah Engkau berikan kepada kami, dan peliharalah kami dari azab neraka."
+    />
+  ),
+  'bottom-nav': <BottomNavDemo />,
+  'map-marker': (
+    <div className="demo-row demo-row--baseline">
+      <MapMarker label="Office" />
+      <MapMarker label="Masjid" tone="success" active />
+      <MapMarker label="Alert" tone="danger" />
+      <MapMarker tone="neutral" />
+    </div>
+  ),
+  'map-view': (
+    <MapView title="Jakarta Selatan" subtitle="3 nearby locations" style={{ maxWidth: 560 }}>
+      <MapMarker label="HQ" style={{ left: '38%', top: '42%' }} active />
+      <MapMarker label="Hub" tone="success" style={{ left: '64%', top: '28%' }} />
+      <MapMarker tone="danger" style={{ left: '52%', top: '62%' }} />
+    </MapView>
+  ),
+  'qr-scanner': (
+    <div className="demo-row">
+      <QrScanner state="scanning" />
+      <QrScanner
+        state="success"
+        footer={
+          <Button size="sm" variant="secondary">
+            Open result
+          </Button>
+        }
+      />
+    </div>
+  ),
+  'video-tile': (
+    <div className="demo-row" style={{ width: '100%', maxWidth: 520 }}>
+      <VideoTile name="Alya Putri" speaking local />
+      <VideoTile name="Raka Wijaya" muted cameraOff />
+    </div>
+  ),
+  'room-controls': <RoomControlsDemo />,
 }
 
 const extraMeta: Record<

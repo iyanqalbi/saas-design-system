@@ -1,0 +1,46 @@
+.room-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-white);
+  box-shadow: var(--shadow-subtle, 0 1px 2px rgb(0 0 0 / 6%));
+}
+
+.room-controls__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-wash);
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+.room-controls__btn:hover {
+  background: var(--color-border);
+}
+
+.room-controls__btn--off {
+  background: #ffe8ec;
+  color: var(--color-danger-strong);
+}
+
+.room-controls__btn--active {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.room-controls__btn--danger {
+  background: var(--color-danger);
+  color: var(--color-white);
+}
+
+.room-controls__btn--danger:hover {
+  background: var(--color-danger-strong);
+}

@@ -1,0 +1,50 @@
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-badges);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.role-badge--sm {
+  height: 20px;
+  padding: 0 8px;
+  font-size: 10px;
+}
+
+.role-badge--md {
+  height: 24px;
+  padding: 0 10px;
+  font-size: var(--text-caption);
+}
+
+.role-badge--admin {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.role-badge--owner {
+  background: #efe8ff;
+  color: #5b3cc4;
+}
+
+.role-badge--editor {
+  background: #eaf7ef;
+  color: #1f7a45;
+}
+
+.role-badge--member {
+  background: var(--color-wash);
+  color: var(--color-muted);
+}
+
+.role-badge--viewer {
+  background: #e8f2ff;
+  color: #1f5fbf;
+}
+
+.role-badge--guest {
+  background: #fff4e5;
+  color: #9a5b00;
+}

@@ -36,6 +36,39 @@
   animation: drawer-in-left var(--duration-base) var(--ease-out);
 }
 
+.drawer--bottom .drawer__panel {
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-height: min(88vh, 640px);
+  border-radius: 16px 16px 0 0;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  animation: drawer-in-bottom var(--duration-base) var(--ease-out);
+}
+
+.drawer__handle {
+  width: 40px;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: 999px;
+  background: var(--color-soft);
+  flex-shrink: 0;
+}
+
+.drawer--bottom .drawer__header {
+  padding-top: 12px;
+}
+
+.drawer--bottom .drawer__footer {
+  justify-content: stretch;
+}
+
+.drawer--bottom .drawer__footer > * {
+  flex: 1;
+}
+
 .drawer__header {
   display: flex;
   align-items: flex-start;
@@ -90,5 +123,14 @@
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes drawer-in-bottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
