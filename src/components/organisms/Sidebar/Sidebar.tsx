@@ -107,9 +107,7 @@ export function Sidebar({
   return (
     <aside className={`sidebar ${compact ? 'sidebar--compact' : ''} ${className}`.trim()}>
       <div className="sidebar__brand">
-        <span className="sidebar__mark" aria-hidden="true">
-          <span className="sidebar__mark-ring" />
-        </span>
+        <span className="sidebar__mark" aria-hidden="true" />
         <button
           type="button"
           className="sidebar__collapse"
