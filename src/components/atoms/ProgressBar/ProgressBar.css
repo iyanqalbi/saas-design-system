@@ -54,7 +54,7 @@
 }
 
 .progress__fill--accent {
-  background: var(--color-rausch);
+  background: var(--color-primary);
 }
 
 .progress__fill--success {

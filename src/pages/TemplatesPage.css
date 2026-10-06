@@ -65,7 +65,7 @@
 .template-card__list svg {
   flex-shrink: 0;
   margin-top: 2px;
-  color: var(--color-rausch);
+  color: var(--color-primary);
 }
 
 .template-card__code {

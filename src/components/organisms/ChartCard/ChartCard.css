@@ -32,11 +32,11 @@
 }
 
 .chart-card__area {
-  fill: color-mix(in srgb, var(--color-rausch) 12%, white);
+  fill: color-mix(in srgb, var(--color-primary) 12%, white);
 }
 
 .chart-card__line {
-  stroke: var(--color-rausch);
+  stroke: var(--color-primary);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -44,7 +44,7 @@
 
 .chart-card__dot {
   fill: var(--color-white);
-  stroke: var(--color-rausch);
+  stroke: var(--color-primary);
   stroke-width: 2;
 }
 

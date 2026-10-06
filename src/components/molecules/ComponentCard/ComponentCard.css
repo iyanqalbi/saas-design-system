@@ -14,7 +14,7 @@
   min-height: 160px;
   padding: var(--spacing-24);
   background:
-    radial-gradient(circle at top right, rgba(255, 56, 92, 0.06), transparent 40%),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) 8%, transparent), transparent 40%),
     var(--color-faint);
 }
 
@@ -43,5 +43,5 @@
 }
 
 .component-card__link:hover {
-  color: var(--color-rausch);
+  color: var(--color-primary);
 }

@@ -9,23 +9,23 @@ const columns = [
     links: [
       { label: 'Components', to: '/components' },
       { label: 'Templates', to: '/templates' },
-      { label: 'Design tokens', to: '/components#tokens' },
+      { label: 'Design tokens', to: '/components#theming' },
     ],
   },
   {
     title: 'Atomic design',
     links: [
-      { label: 'Atoms', to: '/components#atoms' },
-      { label: 'Molecules', to: '/components#molecules' },
-      { label: 'Organisms', to: '/components#organisms' },
+      { label: 'Buttons', to: '/components#buttons' },
+      { label: 'Tabs', to: '/components#tabs' },
+      { label: 'Sidebar', to: '/components#sidebar-navigations' },
     ],
   },
   {
     title: 'Admin kit',
     links: [
-      { label: 'Sidebar', to: '/components#sidebar' },
-      { label: 'Data table', to: '/components#data-table' },
-      { label: 'Stat metrics', to: '/components#stats' },
+      { label: 'Sidebar', to: '/components#sidebar-navigations' },
+      { label: 'Data table', to: '/components#tables' },
+      { label: 'Stat metrics', to: '/components#metrics' },
     ],
   },
 ]

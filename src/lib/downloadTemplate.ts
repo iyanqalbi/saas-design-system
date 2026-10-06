@@ -83,7 +83,7 @@ createRoot(document.getElementById('root')!).render(
   'src/App.tsx': `export default function App() {
   return (
     <div style={{ fontFamily: 'var(--font-sans)', padding: 40, background: 'var(--surface-canvas)', minHeight: '100vh' }}>
-      <div style={{ width: 28, height: 28, borderRadius: 8, background: 'var(--color-rausch)', marginBottom: 16 }} />
+      <div style={{ width: 28, height: 28, borderRadius: 8, background: 'var(--color-primary)', marginBottom: 16 }} />
       <h1 style={{ margin: '0 0 8px', fontSize: 28, fontWeight: 700 }}>SaasDS Admin Template</h1>
       <p style={{ margin: 0, color: 'var(--color-foggy)', maxWidth: 480 }}>
         Drop in atoms, molecules, and organisms from the SaasDS kit to assemble your next SaaS dashboard.
@@ -93,6 +93,9 @@ createRoot(document.getElementById('root')!).render(
 }
 `,
   'src/styles/tokens.css': `:root {
+  --color-primary: #5b5ff7;
+  --color-primary-hover: #7c7ef8;
+  --color-primary-pressed: #1f2494;
   --color-rausch: #ff385c;
   --color-rausch-600: #e00b41;
   --color-hof: #222222;
@@ -128,7 +131,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const styles: Record<Variant, React.CSSProperties> = {
   inverse: { background: '#222', color: '#fff', border: 'none' },
   ghost: { background: 'transparent', color: '#222', border: '1px solid #222' },
-  accent: { background: '#ff385c', color: '#fff', border: 'none' },
+  accent: { background: '#5b5ff7', color: '#fff', border: 'none' },
 }
 
 export function Button({ variant = 'inverse', children, style, ...props }: ButtonProps) {

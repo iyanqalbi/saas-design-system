@@ -15,7 +15,7 @@
   height: 16px;
   padding: 0 4px;
   border-radius: var(--radius-badges);
-  background: var(--color-rausch);
+  background: var(--color-primary);
   color: var(--color-white);
   font-size: 10px;
   font-weight: var(--font-weight-semibold);
@@ -78,7 +78,7 @@
   height: 8px;
   margin-top: 6px;
   border-radius: var(--radius-avatars);
-  background: var(--color-rausch);
+  background: var(--color-primary);
   flex-shrink: 0;
 }
 

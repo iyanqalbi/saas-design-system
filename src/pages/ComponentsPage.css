@@ -1,91 +1,69 @@
-.components-hero {
-  padding: var(--spacing-40) 0 var(--spacing-24);
+.components-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: calc(100vh - 72px);
+}
+
+.components-nav {
+  display: none;
+  background: var(--surface-canvas);
+}
+
+.components-nav--open {
+  display: block;
+  position: fixed;
+  inset: 72px auto 0 0;
+  z-index: 30;
+  width: min(300px, 88vw);
+  overflow: auto;
+  background: var(--surface-canvas);
+  border-right: 1px solid var(--color-bebe);
+  box-shadow: 12px 0 32px rgba(34, 34, 34, 0.06);
+}
+
+.components-nav__backdrop {
+  position: fixed;
+  inset: 72px 0 0;
+  z-index: 20;
+  border: none;
+  background: rgba(34, 34, 34, 0.2);
+}
+
+.components-nav__open {
+  align-self: flex-start;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--color-bebe);
+  border-radius: var(--radius-badges);
+  background: var(--color-white);
+  color: var(--color-hof);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+
+.components-stage {
+  min-width: 0;
+  padding: var(--spacing-24) var(--page-padding) var(--spacing-48);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-20);
+}
+
+.components-stage__top {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-12);
   max-width: 720px;
 }
 
-.components-hero__lede {
-  max-width: 54ch;
-  font-size: var(--text-ui) !important;
-}
-
-.tokens-panel {
-  background: var(--surface-card);
-  border-radius: var(--radius-cards);
-  padding: var(--spacing-24);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-20);
-  margin-bottom: var(--spacing-32);
-}
-
-.token-swatches {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-12);
-}
-
-.token-swatch {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.token-swatch__chip {
-  height: 48px;
-  border-radius: var(--radius-inputs);
-  border: 1px solid var(--color-bebe);
-}
-
-.token-notes {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-16);
-}
-
-.components-toolbar {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-12);
-  margin-bottom: var(--spacing-24);
-}
-
-.components-toolbar__search {
-  max-width: 360px;
-}
-
-.components-toolbar__filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.filter-chip {
-  min-height: 36px;
-  padding: 0 14px;
-  border: none;
-  border-radius: var(--radius-badges);
-  background: var(--color-white);
-  color: var(--color-foggy);
-  font-weight: var(--font-weight-medium);
-  cursor: pointer;
-}
-
-.filter-chip--active,
-.filter-chip:hover {
-  background: var(--color-hof);
-  color: var(--color-white);
+.components-empty {
+  min-height: 320px;
 }
 
 .components-list {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-16);
-  padding-bottom: var(--spacing-48);
 }
 
 .catalog-item {
@@ -121,6 +99,25 @@
   background: var(--color-faint);
   border-radius: var(--radius-cards);
   overflow: auto;
+}
+
+.token-swatches {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-12);
+  width: min(100%, 560px);
+}
+
+.token-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.token-swatch__chip {
+  height: 48px;
+  border-radius: var(--radius-inputs);
+  border: 1px solid var(--color-bebe);
 }
 
 .demo-row {
@@ -192,17 +189,54 @@
   grid-template-columns: 200px 1fr;
 }
 
+.site-chrome-preview {
+  width: min(100%, 720px);
+  max-height: 280px;
+  overflow: auto;
+  border-radius: var(--radius-cards);
+  background: var(--surface-canvas);
+}
+
+.site-chrome-preview .site-header {
+  position: relative;
+}
+
+.site-chrome-preview .site-footer {
+  padding-block: var(--spacing-24);
+}
+
 @media (min-width: 720px) {
   .token-swatches {
     grid-template-columns: repeat(6, 1fr);
   }
 }
 
-@media (min-width: 900px) {
-  .components-toolbar {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+@media (min-width: 960px) {
+  .components-layout {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+
+  .components-nav,
+  .components-nav--open {
+    display: block;
+    position: sticky;
+    top: 72px;
+    inset: auto;
+    z-index: 1;
+    width: auto;
+    height: calc(100vh - 72px);
+    overflow: auto;
+    border-right: 1px solid color-mix(in srgb, var(--color-bebe) 80%, transparent);
+    box-shadow: none;
+  }
+
+  .components-nav__backdrop,
+  .components-nav__open {
+    display: none;
+  }
+
+  .components-stage {
+    padding: var(--spacing-32) var(--spacing-40) var(--spacing-64);
   }
 
   .catalog-item {

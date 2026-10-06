@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import {
   Copy,
   Download,
@@ -83,18 +83,20 @@ import { ChartCard } from '../components/organisms/ChartCard'
 import { CommandPalette } from '../components/organisms/CommandPalette'
 import { DataTable } from '../components/organisms/DataTable'
 import { FilterBar } from '../components/organisms/FilterBar'
+import { DocsSidebar } from '../components/organisms/DocsSidebar'
 import { NotificationsMenu } from '../components/organisms/NotificationsMenu'
 import { PageHeader } from '../components/organisms/PageHeader'
 import { Sidebar } from '../components/organisms/Sidebar'
+import { SiteFooter } from '../components/organisms/SiteFooter'
+import { SiteHeader } from '../components/organisms/SiteHeader'
 import { SkeletonLayout } from '../components/organisms/SkeletonLayout'
 import { StatsRow } from '../components/organisms/StatsRow'
 import { AppShell } from '../templates/AppShell'
 import { catalog } from '../data/catalog'
-import type { ComponentLayer } from '../data/catalog'
+import { docsNavItems, resolveDocsNavId, type DocsNavItem } from '../data/docsNav'
 import { MarketingLayout } from '../templates/MarketingLayout'
+import { useLocation, useNavigate } from 'react-router-dom'
 import './ComponentsPage.css'
-
-const filters: Array<'All' | ComponentLayer> = ['All', 'Atom', 'Molecule', 'Organism']
 
 function ConfirmModalDemo() {
   const [open, setOpen] = useState(false)
@@ -914,137 +916,253 @@ const previews: Record<string, ReactNode> = {
       </Text>
     </div>
   ),
+  introduction: (
+    <div className="demo-stack demo-stack--wide">
+      <Text as="p" variant="muted">
+        Admin and dashboard building blocks organized like a product catalog. Tokens follow a quiet
+        gallery system — Hof ink, Faint canvas, indigo primary.
+      </Text>
+    </div>
+  ),
+  tokens: (
+    <div className="token-swatches token-swatches--preview">
+      {[
+        ['Primary', '#5b5ff7'],
+        ['Hof', '#222222'],
+        ['Foggy', '#6a6a6a'],
+        ['Bebe', '#ebebeb'],
+        ['Faint', '#f7f7f7'],
+        ['White', '#ffffff'],
+      ].map(([name, value]) => (
+        <div key={name} className="token-swatch">
+          <span className="token-swatch__chip" style={{ background: value }} />
+          <Text as="p" variant="bodyMedium">
+            {name}
+          </Text>
+          <Text as="p" variant="muted">
+            {value}
+          </Text>
+        </div>
+      ))}
+    </div>
+  ),
+  typography: (
+    <div className="demo-stack demo-stack--wide">
+      <Text as="p" variant="body">
+        DM Sans · 14px body · 22px section titles · 12px cards · pill controls
+      </Text>
+      <div className="demo-row">
+        <Skeleton width={120} height={12} />
+        <Skeleton width={80} height={24} radius="pill" />
+        <Skeleton width={40} height={40} radius="pill" />
+      </div>
+    </div>
+  ),
+  'icon-button': (
+    <div className="demo-row">
+      <IconButton label="Add" size="sm">
+        <Plus size={14} />
+      </IconButton>
+      <IconButton label="Edit" size="md">
+        <Pencil size={16} />
+      </IconButton>
+      <IconButton label="More" size="sm" tone="ghost">
+        <MoreHorizontal size={16} />
+      </IconButton>
+    </div>
+  ),
+  breadcrumb: (
+    <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'Components' }, { label: 'Breadcrumbs' }]} />
+  ),
+  divider: (
+    <div className="demo-stack demo-stack--wide">
+      <Divider />
+      <Divider label="Type & shape" />
+    </div>
+  ),
+  'site-footer': (
+    <div className="site-chrome-preview">
+      <SiteFooter />
+    </div>
+  ),
+  'site-header': (
+    <div className="site-chrome-preview">
+      <SiteHeader />
+    </div>
+  ),
+}
+
+const extraMeta: Record<
+  string,
+  { name: string; description: string; layer: string; category: string; tags: string[] }
+> = {
+  introduction: {
+    name: 'Introduction',
+    description: 'How the kit is organized and what the gallery system is for.',
+    layer: 'Docs',
+    category: 'Documentation',
+    tags: ['start'],
+  },
+  tokens: {
+    name: 'Theming',
+    description: 'Color tokens for ink, canvas, and primary actions.',
+    layer: 'Docs',
+    category: 'Documentation',
+    tags: ['tokens'],
+  },
+  typography: {
+    name: 'Typography',
+    description: 'Type scale used across admin surfaces and marketing pages.',
+    layer: 'Docs',
+    category: 'Documentation',
+    tags: ['type'],
+  },
+  'icon-button': {
+    name: 'IconButton',
+    description: 'Compact icon-only actions for toolbars and row utilities.',
+    layer: 'Atom',
+    category: 'Actions',
+    tags: ['actions'],
+  },
+  breadcrumb: {
+    name: 'Breadcrumb',
+    description: 'Path trail for nested admin pages.',
+    layer: 'Molecule',
+    category: 'Navigation',
+    tags: ['nav'],
+  },
+  divider: {
+    name: 'Divider',
+    description: 'Hairline and labeled separators for stacked content.',
+    layer: 'Atom',
+    category: 'Layout',
+    tags: ['layout'],
+  },
+  'site-footer': {
+    name: 'SiteFooter',
+    description: 'Marketing footer with product, atomic, and kit links.',
+    layer: 'Organism',
+    category: 'Marketing',
+    tags: ['layout'],
+  },
+  'site-header': {
+    name: 'SiteHeader',
+    description: 'Marketing header with catalog navigation and download actions.',
+    layer: 'Organism',
+    category: 'Marketing',
+    tags: ['nav'],
+  },
+}
+
+function previewMeta(id: string) {
+  const entry = catalog.find((item) => item.id === id)
+  if (entry) return entry
+  return extraMeta[id]
 }
 
 export function ComponentsPage() {
-  const [layer, setLayer] = useState<(typeof filters)[number]>('All')
+  const location = useLocation()
+  const navigate = useNavigate()
   const [query, setQuery] = useState('')
+  const [navOpen, setNavOpen] = useState(false)
+  const [activeId, setActiveId] = useState(() => resolveDocsNavId(location.hash))
 
-  const items = useMemo(() => {
-    return catalog.filter((entry) => {
-      const matchesLayer = layer === 'All' || entry.layer === layer
-      const haystack = `${entry.name} ${entry.description} ${entry.tags.join(' ')}`.toLowerCase()
-      const matchesQuery = haystack.includes(query.toLowerCase().trim())
-      return matchesLayer && matchesQuery
-    })
-  }, [layer, query])
+  const activeItem = useMemo(
+    () => docsNavItems.find((item) => item.id === activeId) ?? docsNavItems[0],
+    [activeId],
+  )
+
+  const selectItem = (item: DocsNavItem) => {
+    setActiveId(item.id)
+    setNavOpen(false)
+    navigate({ pathname: '/components', hash: `#${item.id}` }, { replace: true })
+  }
+
+  useEffect(() => {
+    setActiveId(resolveDocsNavId(location.hash))
+  }, [location.hash])
 
   return (
     <MarketingLayout>
-      <section className="components-hero page-shell">
-        <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'Components' }]} />
-        <Text as="h1" variant="heading" className="animate-rise">
-          Component catalog
-        </Text>
-        <Text as="p" variant="muted" className="components-hero__lede animate-rise delay-1">
-          Admin and dashboard building blocks organized by atomic design layers. Tokens follow the
-          Refero quiet-gallery system — Hof ink, Faint canvas, Rausch accent.
-        </Text>
-      </section>
+      <div className="components-layout">
+        <aside className={`components-nav ${navOpen ? 'components-nav--open' : ''}`}>
+          <DocsSidebar
+            query={query}
+            onQueryChange={setQuery}
+            activeId={activeId}
+            onSelect={selectItem}
+          />
+        </aside>
 
-      <section id="tokens" className="page-shell tokens-panel animate-rise delay-2">
-        <Text as="h2" variant="headingSm">
-          Design tokens
-        </Text>
-        <div className="token-swatches">
-          {[
-            ['Rausch', '#ff385c'],
-            ['Hof', '#222222'],
-            ['Foggy', '#6a6a6a'],
-            ['Bebe', '#ebebeb'],
-            ['Faint', '#f7f7f7'],
-            ['White', '#ffffff'],
-          ].map(([name, value]) => (
-            <div key={name} className="token-swatch">
-              <span className="token-swatch__chip" style={{ background: value }} />
-              <Text as="p" variant="bodyMedium">
-                {name}
-              </Text>
-              <Text as="p" variant="muted">
-                {value}
-              </Text>
-            </div>
-          ))}
-        </div>
-        <Divider label="Type & shape" />
-        <div className="token-notes">
-          <Text as="p" variant="body">
-            DM Sans · 14px body · 22px section titles · 12px cards · pill controls
-          </Text>
-          <div className="demo-row">
-            <Skeleton width={120} height={12} />
-            <Skeleton width={80} height={24} radius="pill" />
-            <Skeleton width={40} height={40} radius="pill" />
-          </div>
-        </div>
-      </section>
+        {navOpen ? (
+          <button
+            type="button"
+            className="components-nav__backdrop"
+            aria-label="Close catalog navigation"
+            onClick={() => setNavOpen(false)}
+          />
+        ) : null}
 
-      <section className="page-shell components-toolbar">
-        <SearchField
-          placeholder="Filter components…"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          className="components-toolbar__search"
-        />
-        <div className="components-toolbar__filters" role="tablist" aria-label="Layer filter">
-          {filters.map((item) => (
+        <section className="components-stage">
+          <div className="components-stage__top">
             <button
-              key={item}
               type="button"
-              role="tab"
-              aria-selected={layer === item}
-              className={`filter-chip ${layer === item ? 'filter-chip--active' : ''}`}
-              onClick={() => setLayer(item)}
+              className="components-nav__open"
+              onClick={() => setNavOpen(true)}
             >
-              {item}
+              Browse catalog
             </button>
-          ))}
-        </div>
-      </section>
+            <Breadcrumb
+              items={[
+                { label: 'Home', to: '/' },
+                { label: 'Components', to: '/components#introduction' },
+                { label: activeItem.label },
+              ]}
+            />
+            <Text as="h1" variant="heading" className="animate-rise">
+              {activeItem.label}
+            </Text>
+          </div>
 
-      <section id="atoms" className="page-shell components-list">
-        {items.length === 0 ? (
-          <Text as="p" variant="muted">
-            No components match that filter.
-          </Text>
-        ) : (
-          items.map((entry) => (
-            <article
-              key={entry.id}
-              id={entry.id}
-              className="catalog-item"
-              data-layer={entry.layer.toLowerCase()}
-            >
-              <div className="catalog-item__meta">
-                <div className="catalog-item__title-row">
-                  <Text as="h2" variant="subheading">
-                    {entry.name}
-                  </Text>
-                  <Badge tone={entry.layer === 'Organism' ? 'accent' : 'neutral'}>{entry.layer}</Badge>
-                </div>
-                <Text as="p" variant="muted">
-                  {entry.description}
-                </Text>
-                <div className="catalog-item__tags">
-                  <Badge soft>{entry.category}</Badge>
-                  {entry.tags.map((tag) => (
-                    <Badge key={tag} soft>
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-              <div className="catalog-item__preview">{previews[entry.id]}</div>
-            </article>
-          ))
-        )}
-      </section>
-
-      <div id="molecules" />
-      <div id="organisms" />
-      <div id="sidebar" />
-      <div id="data-table" />
-      <div id="stats" />
+          {activeItem.previewIds.length === 0 ? (
+            <div className="components-empty" />
+          ) : (
+            <div className="components-list">
+              {activeItem.previewIds.map((id) => {
+                const meta = previewMeta(id)
+                return (
+                  <article key={id} id={id} className="catalog-item">
+                    {meta ? (
+                      <div className="catalog-item__meta">
+                        <div className="catalog-item__title-row">
+                          <Text as="h2" variant="subheading">
+                            {meta.name}
+                          </Text>
+                          <Badge tone={meta.layer === 'Organism' ? 'accent' : 'neutral'}>
+                            {meta.layer}
+                          </Badge>
+                        </div>
+                        <Text as="p" variant="muted">
+                          {meta.description}
+                        </Text>
+                        <div className="catalog-item__tags">
+                          <Badge soft>{meta.category}</Badge>
+                          {meta.tags.map((tag) => (
+                            <Badge key={tag} soft>
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
+                    <div className="catalog-item__preview">{previews[id]}</div>
+                  </article>
+                )
+              })}
+            </div>
+          )}
+        </section>
+      </div>
     </MarketingLayout>
   )
 }

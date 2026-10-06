@@ -47,8 +47,8 @@
 }
 
 .badge--soft.badge--accent {
-  background: #ffe8ec;
-  color: var(--color-rausch);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
 }
 
 .badge:not(.badge--soft) {

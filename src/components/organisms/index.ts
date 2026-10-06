@@ -1,6 +1,7 @@
 export * from './SiteHeader'
 export * from './SiteFooter'
 export * from './Sidebar'
+export * from './DocsSidebar'
 export * from './AdminTopBar'
 export * from './DataTable'
 export * from './StatsRow'

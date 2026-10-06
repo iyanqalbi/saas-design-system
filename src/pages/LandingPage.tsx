@@ -30,7 +30,7 @@ export function LandingPage() {
             React admin templates with quiet gallery craft.
           </Text>
           <Text as="p" variant="muted" className="hero__lede animate-rise delay-2">
-            A monochrome component kit for SaaS dashboards — coral only when it counts. Built with
+            A quiet component kit for SaaS dashboards — indigo for primary actions. Built with
             atomic design so your portal scales without visual noise.
           </Text>
           <div className="hero__actions animate-rise delay-3">

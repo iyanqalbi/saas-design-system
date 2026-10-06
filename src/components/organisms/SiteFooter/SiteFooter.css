@@ -28,7 +28,7 @@
   width: 24px;
   height: 24px;
   border-radius: 7px;
-  background: var(--color-rausch);
+  background: var(--color-primary);
 }
 
 .site-footer__column ul {

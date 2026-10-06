@@ -1,12 +1,18 @@
 /**
- * Design tokens — adapted from Refero style
- * https://styles.refero.design/style/c2325884-4391-4688-85cd-e143f5107517
- * Quiet white gallery wall with one coral-red bookmark
+ * Design tokens — quiet white gallery with indigo primary actions
  */
 :root {
-  /* Colors */
+  /* Brand / actions — matches Button contained */
+  --color-primary: #5b5ff7;
+  --color-primary-hover: #7c7ef8;
+  --color-primary-pressed: #1f2494;
+  --color-primary-soft: #eeeeff;
+  --color-primary-soft-pressed: #dddfff;
+
+  /* Danger */
   --color-rausch: #ff385c;
   --color-rausch-600: #e00b41;
+
   --color-hof: #222222;
   --color-foggy: #6a6a6a;
   --color-grey-500: #c1c1c1;
@@ -14,13 +20,6 @@
   --color-deco: #dddddd;
   --color-faint: #f7f7f7;
   --color-white: #ffffff;
-
-  /* Primary action (Button) */
-  --color-primary: #5b5ff7;
-  --color-primary-hover: #7c7ef8;
-  --color-primary-pressed: #1f2494;
-  --color-primary-soft: #eeeeff;
-  --color-primary-soft-pressed: #dddfff;
   --color-disabled-bg: #e8e8e8;
   --color-disabled-fg: #a0a0a0;
 
