@@ -18,12 +18,6 @@
 }
 
 .tabs__trigger {
-  --tabs-fg: #6b7280;
-  --tabs-fg-active: #111111;
-  --tabs-fill: #111111;
-  --tabs-track: #f3f4f6;
-  --tabs-line: #e5e7eb;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +26,7 @@
   padding: 0 14px;
   border: none;
   background: transparent;
-  color: var(--tabs-fg);
+  color: var(--color-muted);
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   white-space: nowrap;
@@ -49,7 +43,7 @@
 }
 
 .tabs__trigger:focus-visible {
-  outline: 2px solid var(--tabs-fg-active);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -79,14 +73,15 @@
   height: 20px;
   padding: 0 6px;
   border-radius: var(--radius-badges);
-  background: var(--tabs-track);
-  color: var(--tabs-fg-active);
+  background: var(--color-wash);
+  color: var(--color-ink);
   font-size: var(--text-caption);
   font-weight: var(--font-weight-semibold);
 }
 
 .tabs__trigger--active .tabs__badge {
-  background: var(--tabs-line);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
 }
 
 .tabs__panel {
@@ -123,7 +118,7 @@
 /* 1–2 · Underline (+ stacked layout) */
 .tabs--underline .tabs__list {
   gap: var(--spacing-24);
-  border-bottom: 1px solid var(--tabs-line);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .tabs--underline .tabs__trigger {
@@ -141,7 +136,7 @@
 }
 
 .tabs--underline .tabs__trigger--active {
-  color: var(--tabs-fg-active);
+  color: var(--color-primary);
 }
 
 .tabs--underline .tabs__trigger--active::after {
@@ -151,14 +146,14 @@
   right: 0;
   bottom: -1px;
   height: 2px;
-  background: var(--tabs-fill);
+  background: var(--color-primary);
 }
 
 .tabs--underline .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--tabs-fg-active);
+  color: var(--color-ink);
 }
 
-/* 3 · Soft — wash chip on active */
+/* 3 · Soft — primary soft chip on active */
 .tabs--soft .tabs__list {
   gap: var(--spacing-8);
 }
@@ -170,16 +165,16 @@
 }
 
 .tabs--soft .tabs__trigger--active {
-  color: var(--tabs-fg-active);
-  background: var(--tabs-track);
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
 }
 
 .tabs--soft .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--tabs-fg-active);
-  background: transparent;
+  color: var(--color-ink);
+  background: var(--color-wash);
 }
 
-/* 4 · Solid — discrete filled chip */
+/* 4 · Solid — primary filled chip */
 .tabs--solid .tabs__list {
   gap: var(--spacing-8);
 }
@@ -191,25 +186,25 @@
 }
 
 .tabs--solid .tabs__trigger--active {
-  background: var(--tabs-fill);
+  background: var(--color-primary);
   color: var(--color-white);
 }
 
 .tabs--solid .tabs__trigger--active .tabs__badge {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.2);
   color: var(--color-white);
 }
 
 .tabs--solid .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--tabs-fg-active);
+  color: var(--color-ink);
 }
 
-/* 5 · Boxed — bordered equal cells */
+/* 5 · Boxed — bordered cells, primary active fill */
 .tabs--boxed .tabs__list {
   width: fit-content;
   max-width: 100%;
   gap: 0;
-  border: 1px solid var(--tabs-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-inputs);
   overflow: hidden;
   background: var(--color-white);
@@ -220,7 +215,7 @@
   border-radius: 0;
   min-height: 40px;
   padding: 0 18px;
-  border-right: 1px solid var(--tabs-line);
+  border-right: 1px solid var(--color-border);
 }
 
 .tabs--boxed .tabs__trigger:last-child {
@@ -228,31 +223,31 @@
 }
 
 .tabs--boxed .tabs__trigger--active {
-  background: var(--tabs-fill);
+  background: var(--color-primary);
   color: var(--color-white);
 }
 
 .tabs--boxed .tabs__trigger--active .tabs__badge {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.2);
   color: var(--color-white);
 }
 
 .tabs--boxed .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--tabs-fg-active);
-  background: var(--tabs-track);
+  color: var(--color-ink);
+  background: var(--color-wash);
 }
 
 .tabs--boxed .tabs__trigger:focus-visible {
   outline-offset: -3px;
 }
 
-/* 6 · Pills — black thumb on light capsule track */
+/* 6 · Pills — primary thumb on wash track */
 .tabs--pills .tabs__list {
   width: fit-content;
   max-width: 100%;
   padding: 4px;
   gap: 0;
-  background: var(--tabs-track);
+  background: var(--color-wash);
   border-radius: var(--radius-badges);
 }
 
@@ -264,27 +259,27 @@
 }
 
 .tabs--pills .tabs__trigger--active {
-  background: var(--tabs-fill);
+  background: var(--color-primary);
   color: var(--color-white);
   box-shadow: none;
 }
 
 .tabs--pills .tabs__trigger--active .tabs__badge {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.2);
   color: var(--color-white);
 }
 
 .tabs--pills .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--tabs-fg-active);
+  color: var(--color-ink);
 }
 
-/* 7 · Segmented — elevated white thumb on light track */
+/* 7 · Segmented — elevated white thumb, primary active text */
 .tabs--segmented .tabs__list {
   width: fit-content;
   max-width: 100%;
   padding: 4px;
   gap: 2px;
-  background: var(--tabs-track);
+  background: var(--color-wash);
   border-radius: var(--radius-badges);
 }
 
@@ -296,10 +291,10 @@
 
 .tabs--segmented .tabs__trigger--active {
   background: var(--color-white);
-  color: var(--tabs-fg-active);
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.1);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-subtle);
 }
 
 .tabs--segmented .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--tabs-fg-active);
+  color: var(--color-ink);
 }
