@@ -18,6 +18,12 @@
 }
 
 .tabs__trigger {
+  --tabs-fg: #6b7280;
+  --tabs-fg-active: #111111;
+  --tabs-fill: #111111;
+  --tabs-track: #f3f4f6;
+  --tabs-line: #e5e7eb;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +32,7 @@
   padding: 0 14px;
   border: none;
   background: transparent;
-  color: var(--color-muted);
+  color: var(--tabs-fg);
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   white-space: nowrap;
@@ -43,7 +49,7 @@
 }
 
 .tabs__trigger:focus-visible {
-  outline: 2px solid var(--color-ink);
+  outline: 2px solid var(--tabs-fg-active);
   outline-offset: 2px;
 }
 
@@ -73,14 +79,14 @@
   height: 20px;
   padding: 0 6px;
   border-radius: var(--radius-badges);
-  background: var(--color-wash);
-  color: var(--color-ink);
+  background: var(--tabs-track);
+  color: var(--tabs-fg-active);
   font-size: var(--text-caption);
   font-weight: var(--font-weight-semibold);
 }
 
 .tabs__trigger--active .tabs__badge {
-  background: var(--color-border);
+  background: var(--tabs-line);
 }
 
 .tabs__panel {
@@ -117,7 +123,7 @@
 /* 1–2 · Underline (+ stacked layout) */
 .tabs--underline .tabs__list {
   gap: var(--spacing-24);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--tabs-line);
 }
 
 .tabs--underline .tabs__trigger {
@@ -135,7 +141,7 @@
 }
 
 .tabs--underline .tabs__trigger--active {
-  color: var(--color-ink);
+  color: var(--tabs-fg-active);
 }
 
 .tabs--underline .tabs__trigger--active::after {
@@ -145,35 +151,35 @@
   right: 0;
   bottom: -1px;
   height: 2px;
-  background: var(--color-ink);
+  background: var(--tabs-fill);
 }
 
 .tabs--underline .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-ink);
+  color: var(--tabs-fg-active);
 }
 
-/* 3 · Soft — minimal / color-only active */
+/* 3 · Soft — wash chip on active */
 .tabs--soft .tabs__list {
-  gap: var(--spacing-24);
+  gap: var(--spacing-8);
 }
 
 .tabs--soft .tabs__trigger {
-  border-radius: 0;
-  min-height: 36px;
-  padding: 0 2px;
+  border-radius: var(--radius-inputs);
+  min-height: 40px;
+  padding: 0 14px;
 }
 
 .tabs--soft .tabs__trigger--active {
-  color: var(--color-ink);
-  background: transparent;
+  color: var(--tabs-fg-active);
+  background: var(--tabs-track);
 }
 
 .tabs--soft .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-ink);
+  color: var(--tabs-fg-active);
   background: transparent;
 }
 
-/* 4 · Solid — discrete filled pill */
+/* 4 · Solid — discrete filled chip */
 .tabs--solid .tabs__list {
   gap: var(--spacing-8);
 }
@@ -185,7 +191,7 @@
 }
 
 .tabs--solid .tabs__trigger--active {
-  background: var(--color-ink);
+  background: var(--tabs-fill);
   color: var(--color-white);
 }
 
@@ -195,7 +201,7 @@
 }
 
 .tabs--solid .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-ink);
+  color: var(--tabs-fg-active);
 }
 
 /* 5 · Boxed — bordered equal cells */
@@ -203,7 +209,7 @@
   width: fit-content;
   max-width: 100%;
   gap: 0;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--tabs-line);
   border-radius: var(--radius-inputs);
   overflow: hidden;
   background: var(--color-white);
@@ -214,7 +220,7 @@
   border-radius: 0;
   min-height: 40px;
   padding: 0 18px;
-  border-right: 1px solid var(--color-border);
+  border-right: 1px solid var(--tabs-line);
 }
 
 .tabs--boxed .tabs__trigger:last-child {
@@ -222,7 +228,7 @@
 }
 
 .tabs--boxed .tabs__trigger--active {
-  background: var(--color-ink);
+  background: var(--tabs-fill);
   color: var(--color-white);
 }
 
@@ -232,21 +238,21 @@
 }
 
 .tabs--boxed .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-ink);
-  background: var(--color-wash);
+  color: var(--tabs-fg-active);
+  background: var(--tabs-track);
 }
 
 .tabs--boxed .tabs__trigger:focus-visible {
   outline-offset: -3px;
 }
 
-/* 6 · Pills — black thumb on wash capsule track */
+/* 6 · Pills — black thumb on light capsule track */
 .tabs--pills .tabs__list {
   width: fit-content;
   max-width: 100%;
   padding: 4px;
   gap: 0;
-  background: var(--color-wash);
+  background: var(--tabs-track);
   border-radius: var(--radius-badges);
 }
 
@@ -258,7 +264,7 @@
 }
 
 .tabs--pills .tabs__trigger--active {
-  background: var(--color-ink);
+  background: var(--tabs-fill);
   color: var(--color-white);
   box-shadow: none;
 }
@@ -269,16 +275,16 @@
 }
 
 .tabs--pills .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-ink);
+  color: var(--tabs-fg-active);
 }
 
-/* 7 · Segmented — elevated white thumb on wash track */
+/* 7 · Segmented — elevated white thumb on light track */
 .tabs--segmented .tabs__list {
   width: fit-content;
   max-width: 100%;
   padding: 4px;
   gap: 2px;
-  background: var(--color-wash);
+  background: var(--tabs-track);
   border-radius: var(--radius-badges);
 }
 
@@ -290,10 +296,10 @@
 
 .tabs--segmented .tabs__trigger--active {
   background: var(--color-white);
-  color: var(--color-ink);
-  box-shadow: var(--shadow-subtle);
+  color: var(--tabs-fg-active);
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.1);
 }
 
 .tabs--segmented .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
-  color: var(--color-ink);
+  color: var(--tabs-fg-active);
 }
