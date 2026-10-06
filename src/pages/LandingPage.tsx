@@ -113,16 +113,16 @@ export function LandingPage() {
           <ComponentCard
             name="Button"
             layer="Atom"
-            description="Inverse, ghost, and accent actions with gallery radii."
+            description="Contained, outlined, and texted actions with processing state."
             preview={
               <div className="preview-row">
-                <PreviewButton variant="inverse" size="sm">
+                <PreviewButton variant="contained" size="sm">
                   Save
                 </PreviewButton>
-                <PreviewButton variant="ghost" size="sm">
+                <PreviewButton variant="outlined" size="sm">
                   Cancel
                 </PreviewButton>
-                <PreviewButton variant="accent" size="sm">
+                <PreviewButton variant="texted" size="sm">
                   Publish
                 </PreviewButton>
               </div>

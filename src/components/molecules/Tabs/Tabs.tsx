@@ -6,14 +6,23 @@ import {
 } from 'react'
 import './Tabs.css'
 
-export type TabsVariant = 'underline' | 'segmented'
+export type TabsVariant =
+  | 'underline'
+  | 'soft'
+  | 'solid'
+  | 'boxed'
+  | 'pills'
+  | 'segmented'
+
+export type TabsLayout = 'inline' | 'stacked'
 
 export interface TabItem {
   id: string
   label: string
-  content: ReactNode
+  content?: ReactNode
   disabled?: boolean
   badge?: string
+  icon?: ReactNode
 }
 
 export interface TabsProps {
@@ -22,6 +31,7 @@ export interface TabsProps {
   value?: string
   onValueChange?: (value: string) => void
   variant?: TabsVariant
+  layout?: TabsLayout
   ariaLabel?: string
   className?: string
 }
@@ -32,6 +42,7 @@ export function Tabs({
   value,
   onValueChange,
   variant = 'underline',
+  layout = 'inline',
   ariaLabel = 'Tabs',
   className = '',
 }: TabsProps) {
@@ -47,6 +58,10 @@ export function Tabs({
     onValueChange?.(nextId)
   }
 
+  function focusTab(list: HTMLDivElement, id: string) {
+    list.querySelector<HTMLButtonElement>(`#${CSS.escape(getTabId(reactId, id))}`)?.focus()
+  }
+
   function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     const enabled = items.filter((item) => !item.disabled)
     const currentIndex = enabled.findIndex((item) => item.id === activeId)
@@ -58,30 +73,34 @@ export function Tabs({
       const next = enabled[(currentIndex + delta + enabled.length) % enabled.length]
       if (next) {
         selectTab(next.id)
-        const button = event.currentTarget.querySelector<HTMLButtonElement>(
-          `#${getTabId(reactId, next.id)}`,
-        )
-        button?.focus()
+        focusTab(event.currentTarget, next.id)
       }
     }
 
     if (event.key === 'Home') {
       event.preventDefault()
       const first = enabled[0]
-      if (first) selectTab(first.id)
+      if (first) {
+        selectTab(first.id)
+        focusTab(event.currentTarget, first.id)
+      }
     }
 
     if (event.key === 'End') {
       event.preventDefault()
       const last = enabled[enabled.length - 1]
-      if (last) selectTab(last.id)
+      if (last) {
+        selectTab(last.id)
+        focusTab(event.currentTarget, last.id)
+      }
     }
   }
 
   const activeItem = items.find((item) => item.id === activeId) ?? items.find((item) => !item.disabled)
+  const hasPanel = activeItem?.content != null && activeItem.content !== false
 
   return (
-    <div className={`tabs tabs--${variant} ${className}`.trim()}>
+    <div className={`tabs tabs--${variant} tabs--${layout} ${className}`.trim()}>
       <div
         className="tabs__list"
         role="tablist"
@@ -97,12 +116,17 @@ export function Tabs({
               role="tab"
               id={getTabId(reactId, item.id)}
               aria-selected={selected}
-              aria-controls={getPanelId(reactId, item.id)}
+              aria-controls={hasPanel ? getPanelId(reactId, item.id) : undefined}
               tabIndex={selected ? 0 : -1}
               disabled={item.disabled}
               className={`tabs__trigger ${selected ? 'tabs__trigger--active' : ''}`}
               onClick={() => selectTab(item.id)}
             >
+              {item.icon ? (
+                <span className="tabs__icon" aria-hidden="true">
+                  {item.icon}
+                </span>
+              ) : null}
               <span className="tabs__label">{item.label}</span>
               {item.badge ? <span className="tabs__badge">{item.badge}</span> : null}
             </button>
@@ -110,7 +134,7 @@ export function Tabs({
         })}
       </div>
 
-      {activeItem ? (
+      {hasPanel && activeItem ? (
         <div
           role="tabpanel"
           id={getPanelId(reactId, activeItem.id)}
@@ -125,9 +149,9 @@ export function Tabs({
 }
 
 function getTabId(scope: string, id: string) {
-  return `${scope}-tab-${id}`
+  return `${scope}-tab-${id}`.replace(/:/g, '')
 }
 
 function getPanelId(scope: string, id: string) {
-  return `${scope}-panel-${id}`
+  return `${scope}-panel-${id}`.replace(/:/g, '')
 }

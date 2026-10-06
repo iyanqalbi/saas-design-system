@@ -135,7 +135,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-20);
-  width: min(100%, 420px);
+  width: min(100%, 520px);
 }
 
 .demo-stack {
@@ -148,6 +148,31 @@
 
 .demo-stack--wide {
   width: min(100%, 440px);
+}
+
+.demo-stack--button {
+  width: min(100%, 560px);
+}
+
+.button-matrix {
+  display: grid;
+  grid-template-columns: 72px repeat(4, minmax(0, 1fr));
+  gap: 10px 8px;
+  align-items: center;
+  justify-items: start;
+}
+
+.button-matrix__label,
+.button-matrix__state {
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-foggy);
+  line-height: 1.2;
+}
+
+.button-matrix__label {
+  justify-self: center;
+  text-align: center;
 }
 
 .filter-bar-select {

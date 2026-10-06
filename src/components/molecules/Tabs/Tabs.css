@@ -47,6 +47,18 @@
   outline-offset: 2px;
 }
 
+.tabs__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tabs__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
 .tabs__label {
   line-height: 1;
 }
@@ -87,7 +99,20 @@
   }
 }
 
-/* Underline — Refero gallery nav signature */
+@media (prefers-reduced-motion: reduce) {
+  .tabs__panel {
+    animation: none;
+  }
+}
+
+.tabs--stacked .tabs__trigger {
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+  padding: 8px 16px 12px;
+}
+
+/* Underline */
 .tabs--underline .tabs__list {
   gap: var(--spacing-8);
   border-bottom: 1px solid var(--color-bebe);
@@ -97,6 +122,10 @@
   border-radius: 0;
   padding: 0 4px 12px;
   position: relative;
+}
+
+.tabs--underline.tabs--stacked .tabs__trigger {
+  padding: 8px 16px 12px;
 }
 
 .tabs--underline .tabs__trigger--active {
@@ -118,13 +147,129 @@
   color: var(--color-hof);
 }
 
-/* Segmented — admin filter / settings pattern */
+/* Soft — tinted selected chip */
+.tabs--soft .tabs__list {
+  gap: var(--spacing-4);
+}
+
+.tabs--soft .tabs__trigger {
+  border-radius: var(--radius-inputs);
+  min-height: 36px;
+  padding: 0 12px;
+}
+
+.tabs--soft .tabs__trigger--active {
+  background: var(--color-faint);
+  color: var(--color-hof);
+}
+
+.tabs--soft .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
+  color: var(--color-hof);
+  background: var(--color-faint);
+}
+
+/* Solid — filled selected chip */
+.tabs--solid .tabs__list {
+  gap: var(--spacing-4);
+}
+
+.tabs--solid .tabs__trigger {
+  border-radius: var(--radius-inputs);
+  min-height: 36px;
+  padding: 0 14px;
+}
+
+.tabs--solid .tabs__trigger--active {
+  background: var(--color-hof);
+  color: var(--color-white);
+}
+
+.tabs--solid .tabs__trigger--active .tabs__badge {
+  background: var(--color-white);
+  color: var(--color-hof);
+}
+
+.tabs--solid .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
+  color: var(--color-hof);
+}
+
+/* Boxed — equal cells with shared border */
+.tabs--boxed .tabs__list {
+  width: 100%;
+  gap: 0;
+  border: 1px solid var(--color-deco);
+  border-radius: var(--radius-ghost);
+  overflow: hidden;
+}
+
+.tabs--boxed .tabs__trigger {
+  flex: 1 1 0;
+  border-radius: 0;
+  min-height: 40px;
+  padding: 0 12px;
+  border-right: 1px solid var(--color-deco);
+}
+
+.tabs--boxed .tabs__trigger:last-child {
+  border-right: none;
+}
+
+.tabs--boxed .tabs__trigger--active {
+  background: var(--color-hof);
+  color: var(--color-white);
+}
+
+.tabs--boxed .tabs__trigger--active .tabs__badge {
+  background: var(--color-white);
+  color: var(--color-hof);
+}
+
+.tabs--boxed .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
+  color: var(--color-hof);
+  background: var(--color-faint);
+}
+
+.tabs--boxed .tabs__trigger:focus-visible {
+  outline-offset: -3px;
+}
+
+/* Pills — filled thumb on a muted track */
+.tabs--pills .tabs__list {
+  width: 100%;
+  padding: 4px;
+  gap: 0;
+  background: var(--color-bebe);
+  border-radius: var(--radius-badges);
+}
+
+.tabs--pills .tabs__trigger {
+  flex: 1 1 0;
+  border-radius: var(--radius-badges);
+  min-height: 32px;
+  padding: 0 14px;
+}
+
+.tabs--pills .tabs__trigger--active {
+  background: var(--color-hof);
+  color: var(--color-white);
+}
+
+.tabs--pills .tabs__trigger--active .tabs__badge {
+  background: var(--color-white);
+  color: var(--color-hof);
+}
+
+.tabs--pills .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
+  color: var(--color-hof);
+}
+
+/* Segmented — white thumb on a muted track */
 .tabs--segmented .tabs__list {
   width: fit-content;
   max-width: 100%;
   padding: 4px;
   gap: 4px;
-  background: var(--color-faint);
+  background: var(--color-bebe);
   border-radius: var(--radius-badges);
 }
 

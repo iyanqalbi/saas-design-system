@@ -4,6 +4,7 @@ import {
   Download,
   MoreHorizontal,
   Pencil,
+  Plus,
   Trash2,
   Inbox,
   Info,
@@ -11,6 +12,10 @@ import {
   Settings,
   Users,
   SlidersHorizontal,
+  BookOpen,
+  Shirt,
+  Music,
+  Mic,
 } from 'lucide-react'
 import { AmountDiff } from '../components/atoms/AmountDiff'
 import { Badge } from '../components/atoms/Badge'
@@ -304,6 +309,67 @@ function DialogDemo() {
   )
 }
 
+function TabsDemo() {
+  const categoryTabs = [
+    { id: 'education', label: 'Education', icon: <BookOpen /> },
+    { id: 'fashion', label: 'Fashion', icon: <Shirt /> },
+    { id: 'music', label: 'Music', icon: <Music /> },
+    { id: 'podcast', label: 'Podcast', icon: <Mic /> },
+  ]
+
+  const labelTabs = [
+    { id: 'education', label: 'Education' },
+    { id: 'fashion', label: 'Fashion' },
+    { id: 'music', label: 'Music' },
+    { id: 'podcast', label: 'Podcast' },
+  ]
+
+  return (
+    <div className="tabs-preview">
+      <Tabs ariaLabel="Category underline" items={categoryTabs} />
+      <Tabs ariaLabel="Category stacked" layout="stacked" items={categoryTabs} />
+      <Tabs ariaLabel="Category soft" variant="soft" items={categoryTabs} />
+      <Tabs ariaLabel="Category solid" variant="solid" items={categoryTabs} />
+      <Tabs ariaLabel="Category boxed" variant="boxed" items={labelTabs} />
+      <Tabs ariaLabel="Category pills" variant="pills" items={labelTabs} />
+      <Tabs ariaLabel="Category segmented" variant="segmented" items={labelTabs} />
+      <Tabs
+        ariaLabel="Customer sections"
+        items={[
+          {
+            id: 'overview',
+            label: 'Overview',
+            content: (
+              <Text as="p" variant="muted">
+                Plan usage, seats, and recent invoices.
+              </Text>
+            ),
+          },
+          {
+            id: 'members',
+            label: 'Members',
+            badge: '12',
+            content: (
+              <Text as="p" variant="muted">
+                Invite teammates and manage roles.
+              </Text>
+            ),
+          },
+          {
+            id: 'billing',
+            label: 'Billing',
+            content: (
+              <Text as="p" variant="muted">
+                Payment method and invoice history.
+              </Text>
+            ),
+          },
+        ]}
+      />
+    </div>
+  )
+}
+
 function TableDemo() {
   const [sorted, setSorted] = useState<'asc' | 'desc' | false>('asc')
   return (
@@ -338,30 +404,66 @@ function TableDemo() {
 
 const previews: Record<string, ReactNode> = {
   button: (
-    <div className="demo-stack">
-      <div className="demo-row">
-        <Button variant="inverse" size="sm">
-          Default
+    <div className="demo-stack demo-stack--button">
+      <div className="button-matrix">
+        <span className="button-matrix__label" />
+        <span className="button-matrix__label">Contained</span>
+        <span className="button-matrix__label">Outlined</span>
+        <span className="button-matrix__label">Texted</span>
+        <span className="button-matrix__label">Split</span>
+
+        <span className="button-matrix__state">Default</span>
+        <Button size="sm">Enabled</Button>
+        <Button size="sm" variant="outlined">
+          Enabled
         </Button>
-        <Button variant="ghost" size="sm" disabled>
+        <Button size="sm" variant="texted">
+          Enabled
+        </Button>
+        <Button size="sm" variant="split">
+          Enabled
+        </Button>
+
+        <span className="button-matrix__state">With icon</span>
+        <Button size="sm" leftIcon={<Plus size={14} />}>
+          Enabled
+        </Button>
+        <Button size="sm" variant="outlined" leftIcon={<Plus size={14} />}>
+          Enabled
+        </Button>
+        <Button size="sm" variant="texted" leftIcon={<Plus size={14} />}>
+          Enabled
+        </Button>
+        <Button size="sm" variant="split" leftIcon={<Plus size={14} />}>
+          Enabled
+        </Button>
+
+        <span className="button-matrix__state">Icon only</span>
+        <Button size="sm" iconOnly aria-label="Add">
+          <Plus size={14} />
+        </Button>
+        <Button size="sm" variant="outlined" iconOnly aria-label="Add">
+          <Plus size={14} />
+        </Button>
+        <Button size="sm" variant="texted" iconOnly aria-label="Add">
+          <Plus size={14} />
+        </Button>
+        <Button size="sm" variant="split" iconOnly aria-label="Add">
+          <Plus size={14} />
+        </Button>
+
+        <span className="button-matrix__state">States</span>
+        <Button size="sm" disabled>
           Disabled
         </Button>
-        <Button variant="accent" size="sm" loading>
-          Loading
+        <Button size="sm" variant="outlined" loading>
+          Processing
         </Button>
-      </div>
-      <div className="demo-row">
-        <Button variant="inverse" size="sm">
-          Inverse
+        <Button size="sm" variant="texted" leftIcon={<Plus size={14} />} loading>
+          Processing
         </Button>
-        <Button variant="ghost" size="sm">
-          Ghost
-        </Button>
-        <Button variant="accent" size="sm">
-          Accent
-        </Button>
-        <Button variant="subtle" size="sm">
-          Subtle
+        <Button size="sm" variant="split" loading>
+          Processing
         </Button>
       </div>
     </div>
@@ -485,41 +587,7 @@ const previews: Record<string, ReactNode> = {
     </div>
   ),
   'user-chip': <UserChip name="Maya Chen" role="Admin" onClick={() => undefined} />,
-  tabs: (
-    <div className="tabs-preview">
-      <Tabs
-        ariaLabel="Customer sections"
-        items={[
-          {
-            id: 'overview',
-            label: 'Overview',
-            content: <Text as="p" variant="muted">Plan usage, seats, and recent invoices.</Text>,
-          },
-          {
-            id: 'members',
-            label: 'Members',
-            badge: '12',
-            content: <Text as="p" variant="muted">Invite teammates and manage roles.</Text>,
-          },
-          {
-            id: 'billing',
-            label: 'Billing',
-            content: <Text as="p" variant="muted">Payment method and invoice history.</Text>,
-          },
-        ]}
-      />
-      <Tabs
-        variant="segmented"
-        ariaLabel="Time range"
-        defaultValue="30d"
-        items={[
-          { id: '7d', label: '7d', content: null },
-          { id: '30d', label: '30d', content: null },
-          { id: '90d', label: '90d', content: null },
-        ]}
-      />
-    </div>
-  ),
+  tabs: <TabsDemo />,
   toast: (
     <div className="demo-stack">
       <Toast tone="info" title="Sync scheduled" description="Customer list refreshes in 5 minutes." />

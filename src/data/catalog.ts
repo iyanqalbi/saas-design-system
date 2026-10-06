@@ -15,7 +15,8 @@ export const catalog: CatalogEntry[] = [
     name: 'Button',
     layer: 'Atom',
     category: 'Actions',
-    description: 'Inverse, ghost, accent, and subtle actions with sm/md/lg sizes.',
+    description:
+      'Contained, outlined, texted, and split actions with icon, icon-only, and processing states.',
     tags: ['cta', 'form'],
   },
   {
@@ -127,7 +128,7 @@ export const catalog: CatalogEntry[] = [
     name: 'Tabs',
     layer: 'Molecule',
     category: 'Navigation',
-    description: 'Underline and segmented tabs for admin sections and filters.',
+    description: 'Underline, soft, solid, boxed, pills, and segmented tabs, with optional icons.',
     tags: ['admin', 'nav'],
   },
   {

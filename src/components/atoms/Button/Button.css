@@ -1,73 +1,62 @@
 .btn {
+  --btn-bg: transparent;
+  --btn-bg-hover: transparent;
+  --btn-bg-pressed: transparent;
+  --btn-fg: var(--color-primary);
+  --btn-fg-disabled: var(--color-disabled-fg);
+  --btn-border: transparent;
+  --btn-border-disabled: var(--color-disabled-bg);
+  --btn-divider: rgba(255, 255, 255, 0.35);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-8);
-  border: 1px solid transparent;
+  margin: 0;
+  padding: 0 var(--spacing-20);
+  min-height: 40px;
+  border: 1.5px solid var(--btn-border);
   border-radius: var(--radius-buttons);
-  cursor: pointer;
-  white-space: nowrap;
-  transition:
-    background var(--duration-fast) var(--ease-out),
-    border-color var(--duration-fast) var(--ease-out),
-    color var(--duration-fast) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out);
-}
-
-.btn:active:not(:disabled) {
-  transform: scale(0.98);
-}
-
-.btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.btn--loading {
-  position: relative;
-}
-
-.btn__spinner {
-  width: 14px;
-  height: 14px;
-  border: 2px solid currentColor;
-  border-right-color: transparent;
-  border-radius: 50%;
-  animation: btn-spin 0.7s linear infinite;
-  flex-shrink: 0;
-}
-
-@keyframes btn-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.btn__label {
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: inherit;
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
 }
 
-.btn__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
-.btn__icon svg {
-  width: 16px;
-  height: 16px;
+.btn:disabled,
+.btn[data-disabled] {
+  cursor: not-allowed;
 }
 
+/* ——— Sizes ——— */
 .btn--sm {
   min-height: 32px;
-  padding: 0 var(--spacing-12);
+  padding: 0 var(--spacing-16);
+  gap: 6px;
+}
+
+.btn--sm .btn__label {
+  font-size: var(--text-body);
 }
 
 .btn--md {
   min-height: 40px;
-  padding: 0 var(--spacing-16);
+  padding: 0 var(--spacing-20);
 }
 
 .btn--lg {
@@ -83,41 +72,348 @@
   width: 100%;
 }
 
-.btn--inverse {
-  background: var(--color-hof);
-  color: var(--color-white);
-  border-radius: var(--radius-ghost);
+/* ——— Parts ——— */
+.btn__label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 
-.btn--inverse:hover:not(:disabled) {
-  background: #000;
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.btn--ghost {
+.btn__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn--sm .btn__icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.btn--lg .btn__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Radiating tick spinner (Processing) */
+.btn__spinner {
+  --tick: currentColor;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--tick) 0deg 14deg,
+    transparent 14deg 45deg,
+    var(--tick) 45deg 59deg,
+    transparent 59deg 90deg,
+    var(--tick) 90deg 104deg,
+    transparent 104deg 135deg,
+    var(--tick) 135deg 149deg,
+    transparent 149deg 180deg,
+    var(--tick) 180deg 194deg,
+    transparent 194deg 225deg,
+    var(--tick) 225deg 239deg,
+    transparent 239deg 270deg,
+    var(--tick) 270deg 284deg,
+    transparent 284deg 315deg,
+    var(--tick) 315deg 329deg,
+    transparent 329deg 360deg
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent 52%, #000 53%);
+  mask: radial-gradient(farthest-side, transparent 52%, #000 53%);
+  animation: btn-spin 0.85s linear infinite;
+}
+
+.btn--sm .btn__spinner {
+  width: 14px;
+  height: 14px;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ——— Contained ——— */
+.btn--contained {
+  --btn-bg: var(--color-primary);
+  --btn-bg-hover: var(--color-primary-hover);
+  --btn-bg-pressed: var(--color-primary-pressed);
+  --btn-fg: var(--color-white);
+  --btn-border: transparent;
+}
+
+.btn--contained:hover:not(:disabled):not([data-disabled]) {
+  background: var(--btn-bg-hover);
+}
+
+.btn--contained:active:not(:disabled):not([data-disabled]) {
+  background: var(--btn-bg-pressed);
+}
+
+.btn--contained:disabled,
+.btn--contained[data-disabled] {
+  background: var(--color-disabled-bg);
+  color: var(--color-disabled-fg);
+  border-color: transparent;
+}
+
+/* ——— Outlined ——— */
+.btn--outlined {
+  --btn-bg: var(--color-white);
+  --btn-bg-hover: var(--color-primary-soft);
+  --btn-bg-pressed: var(--color-primary-soft-pressed);
+  --btn-fg: var(--color-primary);
+  --btn-border: var(--color-primary);
+}
+
+.btn--outlined:hover:not(:disabled):not([data-disabled]) {
+  background: var(--btn-bg-hover);
+}
+
+.btn--outlined:active:not(:disabled):not([data-disabled]) {
+  background: var(--btn-bg-pressed);
+}
+
+.btn--outlined:disabled,
+.btn--outlined[data-disabled] {
+  background: var(--color-white);
+  color: var(--color-disabled-fg);
+  border-color: var(--color-disabled-bg);
+}
+
+/* ——— Texted ——— */
+.btn--texted {
+  --btn-bg: transparent;
+  --btn-bg-hover: var(--color-primary-soft);
+  --btn-bg-pressed: var(--color-primary-soft-pressed);
+  --btn-fg: var(--color-primary);
+  --btn-border: transparent;
+}
+
+.btn--texted:hover:not(:disabled):not([data-disabled]) {
+  background: var(--btn-bg-hover);
+}
+
+.btn--texted:active:not(:disabled):not([data-disabled]) {
+  background: var(--btn-bg-pressed);
+}
+
+.btn--texted:disabled,
+.btn--texted[data-disabled] {
   background: transparent;
-  color: var(--color-hof);
-  border-color: var(--color-hof);
-  border-radius: var(--radius-ghost);
+  color: var(--color-disabled-fg);
 }
 
-.btn--ghost:hover:not(:disabled) {
-  background: var(--color-faint);
+/* Processing keeps enabled surface (texted uses soft fill like hover) */
+.btn--texted.btn--loading:not(:disabled),
+.btn--texted.btn--loading:disabled {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  cursor: progress;
 }
 
-.btn--accent {
-  background: var(--color-rausch);
+.btn--contained.btn--loading:disabled {
+  background: var(--color-primary);
+  color: var(--color-white);
+  cursor: progress;
+}
+
+.btn--outlined.btn--loading:disabled {
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  cursor: progress;
+}
+
+/* ——— Icon only ——— */
+.btn--icon-only {
+  width: 40px;
+  min-width: 40px;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.btn--icon-only.btn--sm {
+  width: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: 8px;
+}
+
+.btn--icon-only.btn--lg {
+  width: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 12px;
+}
+
+.btn--icon-only.btn--texted:hover:not(:disabled) {
+  background: transparent;
+  color: var(--color-primary-hover);
+}
+
+.btn--icon-only.btn--texted:active:not(:disabled) {
+  background: transparent;
+  color: var(--color-primary-pressed);
+}
+
+.btn--icon-only.btn--texted.btn--loading:disabled {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+/* ——— Split ——— */
+.btn--split {
+  display: inline-flex;
+  align-items: stretch;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  border: none;
+  background: var(--color-primary);
   color: var(--color-white);
 }
 
-.btn--accent:hover:not(:disabled) {
-  background: var(--color-rausch-600);
+.btn--split.btn--icon-only {
+  width: auto;
+  min-width: 0;
+  border-radius: var(--radius-buttons);
 }
 
-.btn--subtle {
-  background: var(--color-faint);
-  color: var(--color-hof);
+.btn--split .btn__main,
+.btn--split .btn__menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-out);
 }
 
-.btn--subtle:hover:not(:disabled) {
-  background: var(--color-bebe);
+.btn--split .btn__main {
+  padding: 0 var(--spacing-20);
+  min-height: inherit;
+}
+
+.btn--split.btn--sm .btn__main {
+  padding: 0 var(--spacing-16);
+}
+
+.btn--split.btn--lg .btn__main {
+  padding: 0 var(--spacing-24);
+}
+
+.btn--split.btn--icon-only .btn__main {
+  width: 40px;
+  padding: 0;
+}
+
+.btn--split.btn--icon-only.btn--sm .btn__main {
+  width: 32px;
+}
+
+.btn--split.btn--icon-only.btn--lg .btn__main {
+  width: 48px;
+}
+
+.btn--split .btn__menu {
+  width: 36px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.btn--split.btn--sm .btn__menu {
+  width: 30px;
+}
+
+.btn--split.btn--lg .btn__menu {
+  width: 42px;
+}
+
+.btn--split .btn__menu:focus-visible,
+.btn--split .btn__main:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.btn--split .btn__divider {
+  width: 1px;
+  align-self: stretch;
+  margin: 8px 0;
+  background: var(--btn-divider);
+  flex-shrink: 0;
+}
+
+.btn--split.btn--sm .btn__divider {
+  margin: 6px 0;
+}
+
+/* Split hover: main lightens, menu stays primary (or darkens slightly) */
+.btn--split:not([data-disabled]):hover {
+  background: var(--color-primary);
+}
+
+.btn--split:not([data-disabled]) .btn__main:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn--split:not([data-disabled]) .btn__menu:hover {
+  background: color-mix(in srgb, var(--color-primary-pressed) 35%, var(--color-primary));
+}
+
+.btn--split:not([data-disabled]) .btn__main:active {
+  background: var(--color-primary);
+}
+
+.btn--split:not([data-disabled]) .btn__menu:active {
+  background: var(--color-primary-pressed);
+}
+
+.btn--split[data-disabled] {
+  background: var(--color-disabled-bg);
+  color: var(--color-disabled-fg);
+}
+
+.btn--split[data-disabled] .btn__main,
+.btn--split[data-disabled] .btn__menu {
+  cursor: not-allowed;
+  color: inherit;
+}
+
+.btn--split[data-disabled] .btn__divider {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.btn--split.btn--loading[data-disabled] {
+  background: var(--color-primary);
+  color: var(--color-white);
+  cursor: progress;
+}
+
+.btn--split.btn--loading[data-disabled] .btn__main {
+  cursor: progress;
+}
+
+.btn--split.btn--loading[data-disabled] .btn__menu {
+  cursor: not-allowed;
+}
+
+.btn--split.btn--loading[data-disabled] .btn__divider {
+  background: rgba(255, 255, 255, 0.35);
 }

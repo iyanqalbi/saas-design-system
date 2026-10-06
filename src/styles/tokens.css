@@ -15,6 +15,15 @@
   --color-faint: #f7f7f7;
   --color-white: #ffffff;
 
+  /* Primary action (Button) */
+  --color-primary: #5b5ff7;
+  --color-primary-hover: #7c7ef8;
+  --color-primary-pressed: #1f2494;
+  --color-primary-soft: #eeeeff;
+  --color-primary-soft-pressed: #dddfff;
+  --color-disabled-bg: #e8e8e8;
+  --color-disabled-fg: #a0a0a0;
+
   /* Surfaces */
   --surface-canvas: #f7f7f7;
   --surface-card: #ffffff;
