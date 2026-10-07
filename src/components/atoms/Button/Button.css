@@ -267,11 +267,12 @@
   cursor: progress;
 }
 
-/* ——— Secondary gray — soft/tonal neutral fill ——— */
+/* ——— Secondary gray — soft/tonal neutral fill ———
+   Resting uses border (#e8e8e8) so the fill stays visible on surface-canvas/wash (#f5f5f5). */
 .btn--secondaryGray {
-  --btn-bg: var(--color-wash);
-  --btn-bg-hover: var(--color-border);
-  --btn-bg-pressed: var(--color-soft);
+  --btn-bg: var(--color-border);
+  --btn-bg-hover: var(--color-soft);
+  --btn-bg-pressed: #cfcfcf;
   --btn-fg: var(--color-muted);
   --btn-border: transparent;
 }
