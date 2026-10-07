@@ -155,7 +155,7 @@ export const docsNav: DocsNavGroup[] = [
       { id: 'page-headers', label: 'Page headers', previewIds: ['page-header'] },
       { id: 'paginations', label: 'Paginations', previewIds: ['pagination'] },
       { id: 'pie-charts', label: 'Pie charts', previewIds: [] },
-      { id: 'progress-steps', label: 'Progress steps', previewIds: ['stepper'] },
+      { id: 'progress-steps', label: 'Progress steps', previewIds: ['stepper', 'timeline'] },
       { id: 'radar-charts', label: 'Radar charts', previewIds: [] },
       { id: 'section-footers', label: 'Section footers', previewIds: [] },
       { id: 'section-headers', label: 'Section headers', previewIds: ['section-header'] },

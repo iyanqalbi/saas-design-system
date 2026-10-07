@@ -298,3 +298,44 @@
 .tabs--segmented .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
   color: var(--color-ink);
 }
+
+/* 8 · Folder — wash shelf with lifted white active tab */
+.tabs--folder .tabs__list {
+  width: 100%;
+  align-items: flex-end;
+  gap: 2px;
+  padding: 6px 6px 0;
+  background: var(--color-wash);
+  border-radius: var(--radius-inputs);
+  box-shadow: var(--shadow-subtle, 0 1px 2px rgb(0 0 0 / 4%));
+}
+
+.tabs--folder .tabs__trigger {
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 10px 10px 0 0;
+  color: var(--color-ink);
+  font-size: 14px;
+}
+
+.tabs--folder .tabs__trigger--active {
+  background: var(--color-white);
+  color: var(--color-primary);
+  box-shadow: 0 -1px 0 rgb(255 255 255 / 80%);
+}
+
+.tabs--folder .tabs__trigger:hover:not(:disabled):not(.tabs__trigger--active) {
+  color: var(--color-muted);
+  background: rgb(255 255 255 / 45%);
+  border-radius: 10px 10px 0 0;
+}
+
+.tabs--folder .tabs__trigger:focus-visible {
+  outline-offset: -2px;
+}
+
+.tabs--folder .tabs__icon svg {
+  width: 16px;
+  height: 16px;
+}

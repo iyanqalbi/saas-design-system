@@ -129,7 +129,7 @@ export const catalog: CatalogEntry[] = [
     layer: 'Molecule',
     category: 'Navigation',
     description:
-      'Underline, soft, solid, boxed, pills, and segmented tabs — matching common SaaS tab patterns, with optional icons and badges.',
+      'Underline, soft, solid, boxed, pills, segmented, and folder tabs — matching common SaaS tab patterns, with optional icons and badges.',
     tags: ['admin', 'nav'],
   },
   {
@@ -249,7 +249,17 @@ export const catalog: CatalogEntry[] = [
     name: 'Stepper',
     layer: 'Molecule',
     category: 'Navigation',
-    description: 'Multi-step progress for onboarding and seat checkout.',
+    description:
+      'Multi-step progress with chevrons, inline, circles, icons, status, and stack variants.',
+    tags: ['admin', 'onboarding'],
+  },
+  {
+    id: 'timeline',
+    name: 'Timeline',
+    layer: 'Molecule',
+    category: 'Navigation',
+    description:
+      'Vertical milestone timeline with complete, current, and upcoming states.',
     tags: ['admin', 'onboarding'],
   },
   {

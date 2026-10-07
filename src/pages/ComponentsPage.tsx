@@ -20,12 +20,22 @@ import {
   Trash2,
   Inbox,
   Info,
+  Flame,
+  Heart,
   Home,
   LayoutDashboard,
+  LayoutList,
+  Newspaper,
   Settings,
+  Star,
+  User,
   Users,
   SlidersHorizontal,
   BookOpen,
+  CreditCard,
+  IdCard,
+  LayoutGrid,
+  Share2,
   Shirt,
   Music,
   Mic,
@@ -106,6 +116,7 @@ import { SearchField } from '../components/molecules/SearchField'
 import { Select } from '../components/molecules/Select'
 import { StatMetric } from '../components/molecules/StatMetric'
 import { Stepper } from '../components/molecules/Stepper'
+import { Timeline } from '../components/molecules/Timeline'
 import {
   SortableTh,
   Table,
@@ -429,6 +440,22 @@ function TabsDemo() {
       <div className="demo-panel">
         <h4 className="demo-panel__title">Segmented</h4>
         <Tabs ariaLabel="Segmented tabs" variant="segmented" items={labelTabs} />
+      </div>
+      <div className="demo-panel">
+        <h4 className="demo-panel__title">Folder</h4>
+        <Tabs
+          ariaLabel="Folder tabs"
+          variant="folder"
+          defaultValue="news"
+          items={[
+            { id: 'all', label: 'All', icon: <LayoutList /> },
+            { id: 'news', label: 'News', icon: <Newspaper /> },
+            { id: 'trending', label: 'Trending', icon: <Flame /> },
+            { id: 'for-you', label: 'For you', icon: <Heart /> },
+            { id: 'following', label: 'Following', icon: <User /> },
+            { id: 'subscribed', label: 'Subscribed', icon: <Star /> },
+          ]}
+        />
       </div>
       <div className="demo-panel">
         <h4 className="demo-panel__title">Underline · with badge</h4>
@@ -1453,12 +1480,137 @@ const previews: Record<string, ReactNode> = {
     </div>
   ),
   stepper: (
-    <Stepper
-      currentStep={1}
-      steps={[
-        { id: 'workspace', label: 'Workspace', description: 'Name and region' },
-        { id: 'seats', label: 'Seats', description: 'Choose allocation' },
-        { id: 'billing', label: 'Billing', description: 'Confirm payment' },
+    <div className="demo-stack demo-stack--wide">
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Chevrons</h4>
+        <Stepper
+          variant="chevrons"
+          currentStep={1}
+          steps={[
+            { id: 'c1', label: 'Title', description: 'Supporting text' },
+            { id: 'c2', label: 'Title', description: 'Supporting text' },
+            { id: 'c3', label: 'Title', description: 'Supporting text' },
+            { id: 'c4', label: 'Title', description: 'Supporting text' },
+          ]}
+        />
+      </section>
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Inline</h4>
+        <Stepper
+          variant="inline"
+          currentStep={1}
+          steps={[
+            { id: 'i1', label: 'My details' },
+            { id: 'i2', label: 'Company details' },
+            { id: 'i3', label: 'Invite team' },
+            { id: 'i4', label: 'Submit application' },
+          ]}
+        />
+      </section>
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Circles</h4>
+        <Stepper
+          variant="circles"
+          currentStep={1}
+          steps={[
+            { id: 'n1', label: 'Title', description: 'Support Text' },
+            { id: 'n2', label: 'Title', description: 'Support Text' },
+            { id: 'n3', label: 'Title', description: 'Support Text' },
+            { id: 'n4', label: 'Title', description: 'Support Text' },
+          ]}
+        />
+      </section>
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Icons</h4>
+        <Stepper
+          variant="icons"
+          currentStep={1}
+          steps={[
+            {
+              id: 'ic1',
+              label: 'Title',
+              description: 'Support text',
+              icon: <IdCard strokeWidth={1.75} />,
+            },
+            {
+              id: 'ic2',
+              label: 'Title',
+              description: 'Support text',
+              icon: <Share2 strokeWidth={1.75} />,
+            },
+            {
+              id: 'ic3',
+              label: 'Title',
+              description: 'Support text',
+              icon: <LayoutGrid strokeWidth={1.75} />,
+            },
+            {
+              id: 'ic4',
+              label: 'Title',
+              description: 'Support text',
+              icon: <CreditCard strokeWidth={1.75} />,
+            },
+          ]}
+        />
+      </section>
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Status</h4>
+        <Stepper
+          variant="status"
+          currentStep={1}
+          steps={[
+            { id: 's1', label: 'Title' },
+            { id: 's2', label: 'Title' },
+            { id: 's3', label: 'Title' },
+            { id: 's4', label: 'Title' },
+          ]}
+        />
+      </section>
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Stack</h4>
+        <Stepper
+          variant="stack"
+          currentStep={1}
+          steps={[
+            { id: 'workspace', label: 'Workspace', description: 'Name and region' },
+            { id: 'seats', label: 'Seats', description: 'Choose allocation' },
+            { id: 'billing', label: 'Billing', description: 'Confirm payment' },
+          ]}
+        />
+      </section>
+    </div>
+  ),
+  timeline: (
+    <Timeline
+      items={[
+        {
+          id: 'start',
+          timestamp: 'Jan 15, 2024, 09:00 AM',
+          title: 'Project Started',
+          description: 'Initial project setup and planning phase',
+          status: 'complete',
+        },
+        {
+          id: 'dev',
+          timestamp: 'Feb 1, 2024, 10:30 AM',
+          title: 'Development Phase',
+          description: 'Core features implementation in progress',
+          status: 'current',
+        },
+        {
+          id: 'qa',
+          timestamp: 'Feb 15, 2024, 02:00 PM',
+          title: 'Testing & QA',
+          description: 'Quality assurance and testing phase',
+          status: 'upcoming',
+        },
+        {
+          id: 'launch',
+          timestamp: 'Mar 1, 2024, 04:00 PM',
+          title: 'Launch',
+          description: 'Production deployment and launch',
+          status: 'upcoming',
+        },
       ]}
     />
   ),

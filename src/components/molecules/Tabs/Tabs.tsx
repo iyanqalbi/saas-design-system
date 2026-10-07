@@ -13,6 +13,8 @@ export type TabsVariant =
   | 'boxed'
   | 'pills'
   | 'segmented'
+  /** Wash bar with a white “lifted” active tab — icon + label friendly. */
+  | 'folder'
 
 export type TabsLayout = 'inline' | 'stacked'
 
