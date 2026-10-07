@@ -1881,25 +1881,63 @@ const previews: Record<string, ReactNode> = {
     </div>
   ),
   tokens: (
-    <div className="token-swatches token-swatches--preview">
-      {[
-        ['Primary', '#5b5ff7'],
-        ['Ink', '#1c1c1c'],
-        ['Muted', '#656565'],
-        ['Border', '#e8e8e8'],
-        ['Wash', '#f5f5f5'],
-        ['White', '#ffffff'],
-      ].map(([name, value]) => (
-        <div key={name} className="token-swatch">
-          <span className="token-swatch__chip" style={{ background: value }} />
-          <Text as="p" variant="bodyMedium">
-            {name}
-          </Text>
-          <Text as="p" variant="muted">
-            {value}
-          </Text>
+    <div className="demo-stack demo-stack--wide">
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Core colors</h4>
+        <div className="token-swatches token-swatches--preview">
+          {[
+            ['Primary', '#5b5ff7', '--color-primary'],
+            ['Ink', '#1c1c1c', '--color-ink'],
+            ['Muted', '#656565', '--color-muted'],
+            ['Border', '#e8e8e8', '--color-border'],
+            ['Wash', '#f5f5f5', '--color-wash'],
+            ['White', '#ffffff', '--color-white'],
+          ].map(([name, value, token]) => (
+            <div key={token} className="token-swatch">
+              <span className="token-swatch__chip" style={{ background: value }} />
+              <Text as="p" variant="bodyMedium">
+                {name}
+              </Text>
+              <Text as="p" variant="muted">
+                {value}
+              </Text>
+              <Text as="p" variant="caption" className="token-swatch__token">
+                {token}
+              </Text>
+            </div>
+          ))}
         </div>
-      ))}
+      </section>
+      <section className="demo-panel">
+        <h4 className="demo-panel__title">Surfaces</h4>
+        <div className="token-swatches token-swatches--preview">
+          {[
+            ['Canvas', '#f5f5f5', '--surface-canvas', 'Page / app shell background'],
+            ['Card', '#ffffff', '--surface-card', 'Panels, cards, sidebars'],
+            ['Muted', '#d9d9d9', '--surface-muted', 'Soft well / inset areas'],
+            ['Inverse', '#1c1c1c', '--surface-inverse', 'Dark chrome / contrast blocks'],
+          ].map(([name, value, token, usage]) => (
+            <div key={token} className="token-swatch">
+              <span
+                className={`token-swatch__chip ${name === 'Inverse' ? 'token-swatch__chip--inverse' : ''}`}
+                style={{ background: value }}
+              />
+              <Text as="p" variant="bodyMedium">
+                {name}
+              </Text>
+              <Text as="p" variant="muted">
+                {value}
+              </Text>
+              <Text as="p" variant="caption" className="token-swatch__token">
+                {token}
+              </Text>
+              <Text as="p" variant="caption" className="token-swatch__usage">
+                {usage}
+              </Text>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   ),
   typography: (
@@ -2039,7 +2077,7 @@ const extraMeta: Record<
   },
   tokens: {
     name: 'Theming',
-    description: 'Color tokens for ink, canvas, and primary actions.',
+    description: 'Core color and surface tokens for canvas, cards, and primary actions.',
     layer: 'Docs',
     category: 'Documentation',
     tags: ['tokens'],

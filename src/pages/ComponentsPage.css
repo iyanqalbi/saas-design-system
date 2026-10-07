@@ -126,6 +126,26 @@
   border: 1px solid var(--color-border);
 }
 
+.token-swatch__chip--inverse {
+  border-color: var(--color-ink);
+}
+
+.token-swatch__token {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  color: var(--color-grey-500);
+}
+
+.token-swatch__usage {
+  color: var(--color-muted);
+}
+
+.token-swatches--preview {
+  width: 100%;
+  max-width: none;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
 .demo-row {
   display: flex;
   flex-wrap: wrap;
